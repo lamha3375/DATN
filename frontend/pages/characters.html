@@ -132,6 +132,52 @@
             </p>
           </div>
 
+
+        <!-- CHARACTER FILTERS - PHẦN BỔ SUNG -->
+        <div class="character-filter-panel mb-4">
+          <div class="row g-3 align-items-end">
+
+            <div class="col-md-4">
+              <label for="characterDynastyFilter" class="form-label">
+                <i class="bi bi-bank me-1"></i> Triều đại
+              </label>
+              <select id="characterDynastyFilter" class="form-select">
+                <option value="">Tất cả triều đại</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="characterRoleFilter" class="form-label">
+                <i class="bi bi-person-badge me-1"></i> Vai trò
+              </label>
+              <select id="characterRoleFilter" class="form-select">
+                <option value="">Tất cả vai trò</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="characterSort" class="form-label">
+                <i class="bi bi-sort-alpha-down me-1"></i> Sắp xếp
+              </label>
+              <select id="characterSort" class="form-select">
+                <option value="name_asc">Tên A - Z</option>
+                <option value="name_desc">Tên Z - A</option>
+              </select>
+            </div>
+
+            <div class="col-12 text-end">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm"
+                id="resetCharacterFilters">
+                <i class="bi bi-arrow-counterclockwise me-1"></i>
+                Xóa bộ lọc
+              </button>
+            </div>
+
+          </div>
+        </div>
+
           <div class="character-sort">
             <span><i class="bi bi-people me-1"></i> Nhân vật Tây Sơn</span>
           </div>

@@ -21,6 +21,7 @@ def get_timeline(
     end_year: int = Query(default=None, ge=1771, le=1802),
     keyword: str = Query(default=None, max_length=200)
 ):
+    # Kiểm tra khoảng thời gian
     if (
         start_year is not None
         and end_year is not None
@@ -31,6 +32,13 @@ def get_timeline(
             detail="Năm bắt đầu không được lớn hơn năm kết thúc."
         )
 
+    # Chuẩn hóa keyword
+    if keyword is not None:
+        keyword = keyword.strip()
+        if not keyword:
+            keyword = None
+
+    # Lấy Neo4j driver
     driver = getattr(request.app.state, "neo4j_driver", None)
 
     if driver is None:

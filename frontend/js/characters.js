@@ -7,7 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         limit: PAGE_SIZE,
         keyword: "",
         total: 0,
-        characters: []
+        characters: [],
+
+        allCharacters: [],
+        dynasty: "",
+        role: "",
+        sortBy: "name_asc"
     };
 
     const elements = {
@@ -23,16 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
         next: document.getElementById("nextPage"),
         searchForm: document.getElementById("characterSearchForm"),
         searchInput: document.getElementById("characterSearch"),
-        modalBody: document.getElementById("characterModalBody")
+        modalBody: document.getElementById("characterModalBody"),
+        retry: document.getElementById("retryCharacters"),
+        //  bộ lọc nhân vật
+        dynastyFilter: document.getElementById("characterDynastyFilter"),
+        roleFilter: document.getElementById("characterRoleFilter"),
+        sortFilter: document.getElementById("characterSort"),
+        resetFilters: document.getElementById("resetCharacterFilters")
     };
 
     const modalElement = document.getElementById("characterModal");
-    const characterModal = bootstrap.Modal.getOrCreateInstance(modalElement);
 
-    // -------------------------------------
+    const characterModal = bootstrap.Modal.getOrCreateInstance(
+        modalElement
+    );
     // UTILITIES
-    // -------------------------------------
-
     function escapeHTML(value) {
         return String(value ?? "").replace(/[&<>"']/g, char => ({
             "&": "&amp;",
@@ -51,14 +61,201 @@ document.addEventListener("DOMContentLoaded", () => {
         return value == null ? "" : String(value);
     }
 
+    // Neo4j Person sử dụng property id, ví dụ PER_001
     function getCharacterId(character) {
-        return character.character_id
-            || character.person_id
-            || character.id;
+        return normalizeText(character.id);
     }
 
+    // Property alias trong Neo4j là chuỗi phân cách bằng dấu ;
+    function formatAliases(value) {
+        return normalizeText(value)
+            .split(";")
+            .map(item => item.trim())
+            .filter(Boolean)
+            .join(", ");
+    }
+    // CHARACTER FILTERS AND SORTING
+    // Tách các vai trò nếu dữ liệu có nhiều vai trò
+    function getRoleList(value) {
+        return normalizeText(value)
+            .split(";")
+            .map(item => item.trim())
+            .filter(Boolean);
+    }
+
+    // Tạo danh sách bộ lọc từ dữ liệu Neo4j
+    function populateCharacterFilters(characters) {
+        if (!elements.dynastyFilter || !elements.roleFilter) {
+            return;
+        }
+
+        const selectedDynasty = state.dynasty;
+        const selectedRole = state.role;
+
+        const dynasties = [
+            ...new Set(
+                characters
+                    .map(c => normalizeText(c.dynasty).trim())
+                    .filter(Boolean)
+            )
+        ].sort((a, b) => a.localeCompare(b, "vi"));
+
+        const roles = [
+            ...new Set(
+                characters.flatMap(c => getRoleList(c.role))
+            )
+        ].sort((a, b) => a.localeCompare(b, "vi"));
+
+        elements.dynastyFilter.innerHTML =
+            '<option value="">Tất cả triều đại</option>';
+
+        elements.roleFilter.innerHTML =
+            '<option value="">Tất cả vai trò</option>';
+
+        dynasties.forEach(dynasty => {
+            const option = document.createElement("option");
+            option.value = dynasty;
+            option.textContent = dynasty;
+            elements.dynastyFilter.appendChild(option);
+        });
+
+        roles.forEach(role => {
+            const option = document.createElement("option");
+            option.value = role;
+            option.textContent = role;
+            elements.roleFilter.appendChild(option);
+        });
+
+        // Giữ lựa chọn nếu giá trị vẫn tồn tại
+        elements.dynastyFilter.value =
+            dynasties.includes(selectedDynasty)
+                ? selectedDynasty
+                : "";
+
+        elements.roleFilter.value =
+            roles.includes(selectedRole)
+                ? selectedRole
+                : "";
+
+        state.dynasty = elements.dynastyFilter.value;
+        state.role = elements.roleFilter.value;
+    }
+
+    // Lọc và sắp xếp danh sách nhân vật
+    function renderFilteredCharacters() {
+        let filtered = [...state.allCharacters];
+
+        if (state.dynasty) {
+            filtered = filtered.filter(character =>
+                normalizeText(character.dynasty).trim() === state.dynasty
+            );
+        }
+
+        if (state.role) {
+            filtered = filtered.filter(character =>
+                getRoleList(character.role).includes(state.role)
+            );
+        }
+
+        // Sắp xếp theo tên
+        filtered.sort((a, b) => {
+            const nameA = normalizeText(a.name);
+            const nameB = normalizeText(b.name);
+
+            const result = nameA.localeCompare(
+                nameB,
+                "vi",
+                { sensitivity: "base" }
+            );
+
+            return state.sortBy === "name_desc"
+                ? -result
+                : result;
+        });
+
+        // Cập nhật tổng số sau khi lọc
+        state.total = filtered.length;
+
+        elements.count.textContent =
+            `Tìm thấy ${state.total} nhân vật`;
+
+        // Phân trang trên danh sách đã lọc
+        const currentCharacters = filtered.slice(
+            state.skip,
+            state.skip + state.limit
+        );
+
+        state.characters = currentCharacters;
+
+        if (currentCharacters.length === 0) {
+            elements.grid.innerHTML = "";
+            showState("empty");
+            return;
+        }
+
+        elements.grid.innerHTML = currentCharacters
+            .map(createCharacterCard)
+            .join("");
+
+        showState("data");
+        renderPagination();
+    }
+
+    // Gắn sự kiện cho bộ lọc
+    if (elements.dynastyFilter) {
+        elements.dynastyFilter.addEventListener("change", () => {
+            state.dynasty = elements.dynastyFilter.value;
+            state.skip = 0;
+            renderFilteredCharacters();
+        });
+    }
+
+    if (elements.roleFilter) {
+        elements.roleFilter.addEventListener("change", () => {
+            state.role = elements.roleFilter.value;
+            state.skip = 0;
+            renderFilteredCharacters();
+        });
+    }
+
+    if (elements.sortFilter) {
+        elements.sortFilter.addEventListener("change", () => {
+            state.sortBy = elements.sortFilter.value || "name_asc";
+            state.skip = 0;
+            renderFilteredCharacters();
+        });
+    }
+
+    if (elements.resetFilters) {
+        elements.resetFilters.addEventListener("click", () => {
+            state.dynasty = "";
+            state.role = "";
+            state.sortBy = "name_asc";
+            state.skip = 0;
+
+            if (elements.dynastyFilter) {
+                elements.dynastyFilter.value = "";
+            }
+
+            if (elements.roleFilter) {
+                elements.roleFilter.value = "";
+            }
+
+            if (elements.sortFilter) {
+                elements.sortFilter.value = "name_asc";
+            }
+
+            renderFilteredCharacters();
+        });
+    }
+
+
+    
+
     function getInitials(name) {
-        const words = String(name || "?").trim().split(/\s+/);
+        const words = String(name || "?")
+            .trim()
+            .split(/\s+/);
 
         if (words.length === 1) {
             return words[0].substring(0, 2).toUpperCase();
@@ -71,31 +268,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showState(type) {
-        elements.loading.classList.toggle("d-none", type !== "loading");
-        elements.error.classList.toggle("d-none", type !== "error");
-        elements.empty.classList.toggle("d-none", type !== "empty");
-        elements.grid.classList.toggle("d-none", type !== "data");
+        elements.loading.classList.toggle(
+            "d-none",
+            type !== "loading"
+        );
+
+        elements.error.classList.toggle(
+            "d-none",
+            type !== "error"
+        );
+
+        elements.empty.classList.toggle(
+            "d-none",
+            type !== "empty"
+        );
+
+        elements.grid.classList.toggle(
+            "d-none",
+            type !== "data"
+        );
 
         if (type !== "data") {
             elements.pagination.classList.add("d-none");
         }
     }
 
-    // -------------------------------------
     // CHARACTER CARD
-    // -------------------------------------
-
     function createCharacterCard(character) {
         const id = getCharacterId(character);
-        const name = normalizeText(character.name) || "Chưa xác định";
 
-        const aliases = normalizeText(character.aliases);
-        const role = normalizeText(character.role) || "Nhân vật lịch sử";
-        const faction = normalizeText(character.faction) || "Chưa cập nhật";
+        const name = normalizeText(character.name)
+            || "Chưa xác định";
 
-        const description = normalizeText(
-            character.historical_notes
-        ) || "Thông tin nhân vật đang được cập nhật.";
+        const aliases = formatAliases(character.alias);
+
+        const role = normalizeText(character.role)
+            || "Nhân vật lịch sử";
+
+        const dynasty = normalizeText(character.dynasty)
+            || "Chưa cập nhật";
+
+        const period = normalizeText(character.period);
+
+        const description = normalizeText(character.bio)
+            || "Thông tin nhân vật đang được cập nhật.";
 
         return `
             <div class="col-md-6 col-lg-4">
@@ -124,9 +340,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         <h3>${escapeHTML(name)}</h3>
 
                         <p class="character-alias">
-                            ${aliases
-                                ? "Còn được biết đến: " + escapeHTML(aliases)
-                                : "&nbsp;"}
+                            ${
+                                aliases
+                                    ? "Còn được biết đến: "
+                                        + escapeHTML(aliases)
+                                    : "&nbsp;"
+                            }
                         </p>
 
                         <p class="character-description">
@@ -136,13 +355,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="character-card-footer">
                             <span class="character-faction">
                                 <i class="bi bi-flag me-1"></i>
-                                ${escapeHTML(faction)}
+                                ${escapeHTML(dynasty)}
                             </span>
 
                             <button
                                 class="character-detail-btn"
-                                data-character-id="${escapeHTML(id || "")}"
+                                data-character-id="${escapeHTML(id)}"
                                 type="button"
+                                ${id ? "" : "disabled"}
                             >
                                 Chi tiết
                                 <i class="bi bi-arrow-right"></i>
@@ -155,57 +375,68 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // -------------------------------------
     // LOAD CHARACTERS
-    // -------------------------------------
-
     async function loadCharacters() {
         showState("loading");
 
         try {
-            const params = {
-                skip: state.skip,
-                limit: state.limit
-            };
+            const limit = 100;
+            let skip = 0;
+            let total = 0;
+            let allCharacters = [];
 
-            if (state.keyword) {
-                params.keyword = state.keyword;
-            }
-
-            const response = await ApiClient.get(
+            // Lấy trang đầu tiên
+            const firstResponse = await ApiClient.get(
                 "/api/characters/",
-                params
+                {
+                    skip,
+                    limit,
+                    ...(state.keyword
+                        ? { keyword: state.keyword }
+                        : {})
+                }
             );
 
-            // API trả về:
-            // {
-            //   total: number,
-            //   skip: number,
-            //   limit: number,
-            //   data: [...]
-            // }
+            total = Number(firstResponse.total) || 0;
 
-            const characters = Array.isArray(response.data)
-                ? response.data
+            allCharacters = Array.isArray(firstResponse.data)
+                ? firstResponse.data
                 : [];
 
-            state.characters = characters;
-            state.total = Number(response.total) || 0;
+            // Lấy các trang tiếp theo nếu còn dữ liệu
+            skip += limit;
 
-            elements.count.textContent =
-                `Tìm thấy ${state.total} nhân vật`;
+            while (skip < total) {
+                const response = await ApiClient.get(
+                    "/api/characters/",
+                    {
+                        skip,
+                        limit,
+                        ...(state.keyword
+                            ? { keyword: state.keyword }
+                            : {})
+                    }
+                );
 
-            if (characters.length === 0) {
-                showState("empty");
-                return;
+                const pageData = Array.isArray(response.data)
+                    ? response.data
+                    : [];
+
+                if (pageData.length === 0) {
+                    break;
+                }
+
+                allCharacters.push(...pageData);
+                skip += limit;
             }
 
-            elements.grid.innerHTML = characters
-                .map(createCharacterCard)
-                .join("");
+            state.allCharacters = allCharacters;
 
-            showState("data");
-            renderPagination();
+            // Tạo lựa chọn bộ lọc từ dữ liệu thực tế
+            populateCharacterFilters(state.allCharacters);
+
+            // Hiển thị danh sách đã lọc
+            renderFilteredCharacters();
 
         } catch (error) {
             console.error("Character API error:", error);
@@ -217,10 +448,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // -------------------------------------
-    // PAGINATION
-    // -------------------------------------
 
+    // PAGINATION
     function renderPagination() {
         const totalPages = Math.ceil(
             state.total / state.limit
@@ -239,27 +468,25 @@ document.addEventListener("DOMContentLoaded", () => {
             `${currentPage} / ${totalPages}`;
 
         elements.prev.disabled = currentPage <= 1;
-        elements.next.disabled = currentPage >= totalPages;
+
+        elements.next.disabled =
+            currentPage >= totalPages;
     }
 
     elements.prev.addEventListener("click", () => {
         if (state.skip >= state.limit) {
             state.skip -= state.limit;
-            loadCharacters();
+            renderFilteredCharacters();
         }
     });
 
     elements.next.addEventListener("click", () => {
         if (state.skip + state.limit < state.total) {
             state.skip += state.limit;
-            loadCharacters();
+            renderFilteredCharacters();
         }
     });
-
-    // -------------------------------------
     // SEARCH
-    // -------------------------------------
-
     elements.searchForm.addEventListener("submit", event => {
         event.preventDefault();
 
@@ -269,10 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadCharacters();
     });
 
-    // -------------------------------------
     // CHARACTER DETAIL
-    // -------------------------------------
-
     async function showCharacterDetail(characterId) {
         if (!characterId) return;
 
@@ -293,7 +517,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const character = response.data;
 
             if (!character) {
-                throw new Error("Không tìm thấy thông tin nhân vật.");
+                throw new Error(
+                    "Không tìm thấy thông tin nhân vật."
+                );
             }
 
             renderCharacterDetail(character);
@@ -312,11 +538,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderCharacterDetail(character) {
-        const name = normalizeText(character.name) || "Chưa xác định";
-        const aliases = normalizeText(character.aliases);
+        const id = getCharacterId(character);
+
+        const name = normalizeText(character.name)
+            || "Chưa xác định";
+
+        const aliases = formatAliases(character.alias);
+
         const role = normalizeText(character.role);
-        const faction = normalizeText(character.faction);
-        const notes = normalizeText(character.historical_notes);
+
+        const dynasty = normalizeText(character.dynasty);
+
+        const bio = normalizeText(character.bio);
+
+        const period = normalizeText(character.period);
+
+        const module = normalizeText(character.module);
 
         elements.modalBody.innerHTML = `
             <div class="character-detail">
@@ -330,37 +567,71 @@ document.addEventListener("DOMContentLoaded", () => {
                 </h2>
 
                 <div class="character-detail-meta">
-                    ${faction
-                        ? `<span><i class="bi bi-flag me-1"></i>
-                            ${escapeHTML(faction)}</span>`
-                        : ""}
 
-                    ${character.person_id
-                        ? `<span>${escapeHTML(character.person_id)}</span>`
-                        : ""}
+                    ${
+                        id
+                            ? `<span>${escapeHTML(id)}</span>`
+                            : ""
+                    }
+
+                    ${
+                        dynasty
+                            ? `<span>
+                                <i class="bi bi-flag me-1"></i>
+                                ${escapeHTML(dynasty)}
+                            </span>`
+                            : ""
+                    }
+
                 </div>
 
-                ${aliases ? `
-                    <div class="character-detail-section">
-                        <h4>TÊN GỌI KHÁC</h4>
-                        <p>${escapeHTML(aliases)}</p>
-                    </div>
-                ` : ""}
+                ${
+                    aliases
+                        ? `
+                            <div class="character-detail-section">
+                                <h4>TÊN GỌI KHÁC</h4>
+                                <p>${escapeHTML(aliases)}</p>
+                            </div>
+                        `
+                        : ""
+                }
+
+                ${
+                    period
+                        ? `
+                            <div class="character-detail-section">
+                                <h4>GIAI ĐOẠN LỊCH SỬ</h4>
+                                <p>${escapeHTML(period)}</p>
+                            </div>
+                        `
+                        : ""
+                }
 
                 <div class="character-detail-section">
                     <h4>THÔNG TIN LỊCH SỬ</h4>
                     <p>
                         ${escapeHTML(
-                            notes || "Thông tin đang được cập nhật."
+                            bio || "Thông tin đang được cập nhật."
                         )}
                     </p>
                 </div>
+
+                ${
+                    module
+                        ? `
+                            <div class="character-detail-section">
+                                <h4>PHÂN HỆ DỮ LIỆU</h4>
+                                <p>${escapeHTML(module)}</p>
+                            </div>
+                        `
+                        : ""
+                }
 
             </div>
         `;
     }
 
-    // Event delegation: xử lý nút chi tiết
+    // EVENT DELEGATION
     elements.grid.addEventListener("click", event => {
         const button = event.target.closest(
             ".character-detail-btn"
@@ -373,12 +644,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 
-    // -------------------------------------
     // RETRY
-    // -------------------------------------
-
-    document.getElementById("retryCharacters")
-        .addEventListener("click", loadCharacters);
+    elements.retry.addEventListener(
+        "click",
+        loadCharacters
+    );
 
     // INITIAL LOAD
     loadCharacters();

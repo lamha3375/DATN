@@ -1,0 +1,15 @@
+﻿HỆ THỐNG ĐỒ THỊ TRI THỨC & GRAPHRAG LỊCH SỬ TÂY SƠN (1738 - 1820),Unnamed: 1,Unnamed: 2
+,,
+HẠNG MỤC DỮ LIỆU,SỐ LƯỢNG / GIÁ TRỊ,GHI CHÚ MÔ TẢ CHUẨN HÓA
+HẠNG MỤC DỮ LIỆU,SỐ LƯỢNG / GIÁ TRỊ,GHI CHÚ MÔ TẢ CHUẨN HÓA
+Tổng số sự kiện (Nodes_Event),94,Gồm 74 Core (1771-1802) và 20 Extended (1738-1771 & 1802-1820)
+Tổng số quan hệ (Relationships),735,"Đã kết nối 14 Node mồ côi và thiết lập chuỗi nhân quả EVT->EVT (TIỀN_ĐỀ_CỦA, DẪN_ĐẾN)"
+Thực thể Nhân vật (Nodes_Person),74,"Vua, tướng lĩnh, mưu sĩ, chúa Nguyễn, chúa Trịnh, tướng Thanh/Xiêm"
+Thực thể Địa danh (Nodes_Location),22,"Chiến trường, kinh thành, đồn lũy, sông biển, căn cứ lịch sử"
+Thực thể Thế lực (Nodes_Faction),7,"Tây Sơn, Chúa Nguyễn, Chúa Trịnh, Nhà Lê, Nhà Thanh, Xiêm La..."
+Thực thể Chính sách (Nodes_Policy),5,"Thẻ Tín Bài, Chiếu Khuyến Nông, Chiếu Lập Nhà Học, Nôm hóa, Tiền tệ & Thị Ti"
+Thực thể Văn kiện (Nodes_Document),4,"Chiếu cầu hiền, Lời dụ duyệt binh, Biểu văn bang giao, Chiếu Viện Sùng Chính"
+Thực thể Đơn vị & Chiến thuật (Nodes_Unit),5,"Tượng binh, Thủy binh Định Quốc, Đạo quân Khương Thượng, Mộc bộc rơm, Hành quân thần tốc"
+Bản đồ Ánh xạ Nguồn (Event_Sources),161,Bằng chứng trích dẫn và đối chiếu trang ruột chính sử
+Trạng thái mã hóa,UTF-8 with BOM (utf-8-sig),Tối ưu hiển thị không lỗi font trên Microsoft Excel và Google Sheets
+Kiến trúc Retrieval,GraphRAG & Hybrid Search,Sẵn sàng cho Vector DB (Dense Retrieval) và Graph DB (Cypher/NetworkX)

@@ -1,25 +1,118 @@
 
 from typing import Any, Dict, List, Optional
-
 from app.core.config import settings
 
+# =========================================================
+# NODE LABELS
+# =========================================================
+
+NODE_LABELS = {
+    "Person": "Nhân vật",
+    "Event": "Sự kiện",
+    "Location": "Địa điểm",
+    "Faction": "Phe phái",
+    "Policy": "Chính sách",
+    "Document": "Văn kiện",
+    "Unit": "Đơn vị",
+    "Tactics": "Chiến thuật",
+    "Source": "Nguồn tư liệu",
+}
+
+
+ENTITY_TYPE_MAP = {
+    "Nhân vật": "Person",
+    "Sự kiện": "Event",
+    "Địa điểm": "Location",
+    "Phe phái": "Faction",
+    "Chính sách": "Policy",
+    "Văn kiện": "Document",
+    "Đơn vị": "Unit",
+    "Chiến thuật": "Tactics",
+    "Nguồn tư liệu": "Source",
+}
+
+
+# =========================================================
+# RELATIONSHIP LABELS
+# =========================================================
+
+RELATIONSHIP_LABELS = {
+    "DIEN_RA_TAI": "Diễn ra tại",
+    "THAM_GIA_SU_KIEN": "Tham gia sự kiện",
+    "CHI_HUY_SU_KIEN": "Chỉ huy sự kiện",
+    "TRICH_DAN_TU_NGUON": "Trích dẫn từ nguồn",
+    "THUOC_VE_PHE_PHAI": "Thuộc về phe phái",
+    "ANH_EM_CUA": "Anh em của",
+    "CHA_ME_CUA": "Cha mẹ của",
+    "VO_CHONG_CUA": "Vợ chồng của",
+    "PHUNG_SU_TRIEU_INH": "Phụng sự triều đình",
+    "LIEN_MINH_VOI": "Liên minh với",
+    "THAY_HOC_CUA": "Thầy học của",
+    "BAN_HANH": "Ban hành",
+    "SOAN_THAO": "Soạn thảo",
+    "CHU_TRI_THUC_HIEN": "Chủ trì thực hiện",
+    "CHI_HUY_ON_VI": "Chỉ huy đơn vị",
+    "SANG_TAO_CHIEN_THUAT": "Sáng tạo chiến thuật",
+    "AP_DUNG_TRONG": "Áp dụng trong",
+    "BAN_HANH_TRONG_SU_KIEN": "Ban hành trong sự kiện",
+    "SU_DUNG_TRONG_SU_KIEN": "Sử dụng trong sự kiện",
+    "SU_DUNG_TRONG": "Sử dụng trong",
+    "TIEN_E_CUA": "Tiền đề của",
+    "DAN_EN": "Dẫn đến",
+    "CHU_TRI_SU_KIEN": "Chủ trì sự kiện",
+}
+
+
+# =========================================================
+# GRAPH SERVICE
+# =========================================================
 
 class GraphService:
 
     MAX_GRAPH_LIMIT = 500
+    MAX_SEARCH_LIMIT = 100
+    MAX_NEIGHBOR_LIMIT = 100
+
+    ALLOWED_TYPES = {
+        "Person",
+        "Event",
+        "Location",
+        "Faction",
+        "Policy",
+        "Document",
+        "Unit",
+        "Tactics",
+        "Source",
+    }
 
     def __init__(self, driver):
         self.driver = driver
 
+    # =====================================================
+    # HELPERS
+    # =====================================================
+
     @staticmethod
-    def _serialize_node(node) -> Dict[str, Any]:
-        """
-        Chuyển Neo4j Node thành dictionary.
-        """
+    def _empty_graph():
+        return {
+            "total_nodes": 0,
+            "total_edges": 0,
+            "nodes": [],
+            "edges": [],
+        }
 
-        properties = dict(node)
+    @staticmethod
+    def _normalize_keyword(keyword: Optional[str]) -> Optional[str]:
+        if keyword is None:
+            return None
 
-        business_id = (
+        keyword = str(keyword).strip()
+
+        return keyword if keyword else None
+
+    @staticmethod
+    def _get_business_id(properties: Dict) -> Optional[str]:
+        return (
             properties.get("person_id")
             or properties.get("event_id")
             or properties.get("location_id")
@@ -27,82 +120,297 @@ class GraphService:
             or properties.get("id")
         )
 
-        return {
-            "id": node.element_id,
-            "business_id": business_id,
-            "labels": list(node.labels),
-            "properties": properties
-        }
+    @staticmethod
+    def display_relationship_type(rel_type: str) -> str:
+        if not rel_type:
+            return "Quan hệ"
+
+        return RELATIONSHIP_LABELS.get(
+            rel_type,
+            rel_type.replace("_", " ").capitalize()
+        )
+
+    # =====================================================
+    # SERIALIZE NODE
+    # =====================================================
 
     @staticmethod
-    def _serialize_relationship(relationship) -> Dict[str, Any]:
-        """
-        Chuyển Neo4j Relationship thành dictionary.
-        """
+    def _serialize_node(node):
+
+        if node is None:
+            return None
+
+        properties = dict(node)
+        labels = list(node.labels)
+
+        display_labels = [
+            NODE_LABELS.get(label, label)
+            for label in labels
+        ]
+
+        return {
+            "id": node.element_id,
+            "business_id": GraphService._get_business_id(
+                properties
+            ),
+            "labels": labels,
+            "display_labels": display_labels,
+            "properties": properties,
+        }
+
+    # =====================================================
+    # SERIALIZE RELATIONSHIP
+    # =====================================================
+
+    @staticmethod
+    def _serialize_relationship(relationship):
+
+        if relationship is None:
+            return None
 
         properties = dict(relationship)
+        rel_type = relationship.type
 
         return {
             "id": relationship.element_id,
             "business_id": properties.get("edge_id"),
             "source": relationship.start_node.element_id,
             "target": relationship.end_node.element_id,
-            "type": relationship.type,
-            "properties": properties
+            "type": rel_type,
+            "display_type": GraphService.display_relationship_type(
+                rel_type
+            ),
+            "properties": properties,
         }
+
+    # =====================================================
+    # 1. GET FULL GRAPH
+    # =====================================================
 
     def get_graph(
         self,
         keyword: Optional[str] = None,
-        limit: int = 100
-    ) -> Dict[str, Any]:
+        limit: int = 500
+    ) -> Dict:
 
-        keyword = keyword.strip() if keyword else None
-        limit = max(1, min(limit, self.MAX_GRAPH_LIMIT))
+        keyword = self._normalize_keyword(keyword)
 
-        query = """
-        MATCH (n)-[r]-(m)
+        limit = max(
+            1,
+            min(int(limit), self.MAX_GRAPH_LIMIT)
+        )
 
-        WHERE $keyword IS NULL
-           OR any(
-               key IN keys(n)
-               WHERE n[key] IS NOT NULL
-                 AND toLower(toString(n[key]))
-                     CONTAINS toLower($keyword)
-           )
-           OR any(
-               key IN keys(m)
-               WHERE m[key] IS NOT NULL
-                 AND toLower(toString(m[key]))
-                     CONTAINS toLower($keyword)
-           )
-
-        WITH n, r, m
-        ORDER BY elementId(n), elementId(m)
-        LIMIT $limit
-
-        RETURN
-            collect(DISTINCT n) AS nodes,
-            collect(DISTINCT r) AS relationships
-        """
+        labels = sorted(self.ALLOWED_TYPES)
 
         with self.driver.session(
             database=settings.NEO4J_DATABASE
         ) as session:
 
-            result = session.run(
-                query,
-                keyword=keyword,
-                limit=limit
+            # ---------------------------------------------
+            # A. DATABASE DIAGNOSTICS
+            # ---------------------------------------------
+
+            try:
+                db_record = session.run(
+                    """
+                    CALL db.info()
+                    YIELD name
+                    RETURN name
+                    """
+                ).single()
+
+                database_name = (
+                    db_record["name"]
+                    if db_record else "UNKNOWN"
+                )
+
+                print(
+                    "[GRAPH] DATABASE:",
+                    database_name
+                )
+
+            except Exception as error:
+                print(
+                    "[GRAPH] DATABASE INFO ERROR:",
+                    error
+                )
+
+            # ---------------------------------------------
+            # B. COUNT NODES BY LABEL
+            # ---------------------------------------------
+
+            label_count_query = """
+            MATCH (n)
+            UNWIND labels(n) AS label
+            RETURN label, count(*) AS total
+            ORDER BY label
+            """
+
+            label_records = list(
+                session.run(label_count_query)
             )
 
-            record = result.single()
+            print("[GRAPH] NODE COUNTS BY LABEL:")
 
-            if record is None:
+            for record in label_records:
+                print(
+                    f"  {record['label']}: {record['total']}"
+                )
+
+            # ---------------------------------------------
+            # C. COUNT ALLOWED NODES
+            # ---------------------------------------------
+
+            count_nodes_query = """
+            MATCH (n)
+            WHERE any(
+                label IN labels(n)
+                WHERE label IN $labels
+            )
+            RETURN count(n) AS total
+            """
+
+            allowed_node_count = session.run(
+                count_nodes_query,
+                labels=labels
+            ).single()["total"]
+
+            print(
+                "[GRAPH] TOTAL ALLOWED NODES:",
+                allowed_node_count
+            )
+
+            # ---------------------------------------------
+            # D. COUNT ALL RELATIONSHIPS
+            # ---------------------------------------------
+
+            count_edges_query = """
+            MATCH ()-[r]->()
+            RETURN count(r) AS total
+            """
+
+            all_edge_count = session.run(
+                count_edges_query
+            ).single()["total"]
+
+            print(
+                "[GRAPH] TOTAL DATABASE RELATIONSHIPS:",
+                all_edge_count
+            )
+
+            # ---------------------------------------------
+            # E. GET NODES
+            # ---------------------------------------------
+
+            node_query = """
+            MATCH (n)
+            WHERE any(
+                label IN labels(n)
+                WHERE label IN $labels
+            )
+            AND (
+                $keyword IS NULL
+                OR any(
+                    key IN keys(n)
+                    WHERE n[key] IS NOT NULL
+                    AND toLower(toString(n[key]))
+                        CONTAINS toLower($keyword)
+                )
+            )
+            RETURN n
+            ORDER BY elementId(n)
+            LIMIT $limit
+            """
+
+            node_records = list(
+                session.run(
+                    node_query,
+                    labels=labels,
+                    keyword=keyword,
+                    limit=limit
+                )
+            )
+
+            raw_nodes = [
+                record["n"]
+                for record in node_records
+                if record["n"] is not None
+            ]
+
+            node_ids = [
+                node.element_id
+                for node in raw_nodes
+            ]
+
+            print(
+                "[GRAPH] FETCHED NODES:",
+                len(raw_nodes)
+            )
+
+            if not raw_nodes:
                 return self._empty_graph()
 
-            raw_nodes = record["nodes"]
-            raw_relationships = record["relationships"]
+            # ---------------------------------------------
+            # F. GET ALL RELATIONSHIPS BETWEEN THESE NODES
+            # ---------------------------------------------
+
+            relationship_query = """
+            MATCH (a)-[r]-(b)
+            WHERE elementId(a) IN $node_ids
+              AND elementId(b) IN $node_ids
+            RETURN DISTINCT r
+            ORDER BY elementId(r)
+            """
+
+            relationship_records = list(
+                session.run(
+                    relationship_query,
+                    node_ids=node_ids
+                )
+            )
+
+            raw_relationships = [
+                record["r"]
+                for record in relationship_records
+                if record["r"] is not None
+            ]
+
+            print(
+                "[GRAPH] FETCHED RELATIONSHIPS:",
+                len(raw_relationships)
+            )
+
+            # ---------------------------------------------
+            # G. CHECK RELATIONSHIP TYPES
+            # ---------------------------------------------
+
+            type_count_query = """
+            MATCH (a)-[r]->(b)
+            WHERE elementId(a) IN $node_ids
+              AND elementId(b) IN $node_ids
+            RETURN type(r) AS relationship_type,
+                   count(r) AS total
+            ORDER BY relationship_type
+            """
+
+            type_records = list(
+                session.run(
+                    type_count_query,
+                    node_ids=node_ids
+                )
+            )
+
+            print("[GRAPH] RELATIONSHIP COUNTS BY TYPE:")
+
+            for record in type_records:
+                print(
+                    f"  {record['relationship_type']}: "
+                    f"{record['total']}"
+                )
+
+        # ---------------------------------------------
+        # H. SERIALIZE
+        # ---------------------------------------------
 
         nodes = [
             self._serialize_node(node)
@@ -110,75 +418,100 @@ class GraphService:
         ]
 
         edges = [
-            self._serialize_relationship(relationship)
-            for relationship in raw_relationships
+            self._serialize_relationship(rel)
+            for rel in raw_relationships
         ]
 
-        return {
+        result = {
             "total_nodes": len(nodes),
             "total_edges": len(edges),
             "nodes": nodes,
-            "edges": edges
+            "edges": edges,
         }
+
+        print(
+            "[GRAPH] FINAL RESULT:",
+            result["total_nodes"],
+            "nodes /",
+            result["total_edges"],
+            "relationships"
+        )
+
+        return result
+
+    # =====================================================
+    # 2. SEARCH ENTITIES
+    # =====================================================
 
     def search_entities(
         self,
         keyword: str,
         entity_type: Optional[str] = None,
         limit: int = 20
-    ) -> Dict[str, Any]:
-        """
-        Tìm kiếm nhân vật, sự kiện và địa điểm.
-        """
+    ) -> Dict:
 
-        keyword = keyword.strip() if keyword else ""
+        keyword = self._normalize_keyword(keyword)
+
+        limit = max(
+            1,
+            min(int(limit), self.MAX_SEARCH_LIMIT)
+        )
 
         if not keyword:
-            raise ValueError("Từ khóa tìm kiếm không được để trống.")
+            return {
+                "keyword": "",
+                "entity_type": entity_type,
+                "total": 0,
+                "results": [],
+            }
 
-        allowed_types = {
-            "NhanVat",
-            "SuKien",
-            "DiaDiem"
-        }
+        if entity_type:
 
-        if entity_type is not None and entity_type not in allowed_types:
-            raise ValueError("Loại thực thể không hợp lệ.")
+            entity_type = ENTITY_TYPE_MAP.get(
+                entity_type,
+                entity_type
+            )
 
-        limit = max(1, min(limit, 100))
+            if entity_type not in self.ALLOWED_TYPES:
+                return {
+                    "keyword": keyword,
+                    "entity_type": entity_type,
+                    "total": 0,
+                    "results": [],
+                }
 
-        labels = (
-            [entity_type]
-            if entity_type
-            else list(allowed_types)
-        )
+            allowed_labels = [entity_type]
+
+        else:
+            allowed_labels = sorted(self.ALLOWED_TYPES)
 
         query = """
         MATCH (n)
-        WHERE any(label IN labels(n) WHERE label IN $labels)
-
-          AND any(
-              key IN keys(n)
-              WHERE n[key] IS NOT NULL
-                AND toLower(toString(n[key]))
-                    CONTAINS toLower($keyword)
-          )
-
+        WHERE any(
+            label IN labels(n)
+            WHERE label IN $labels
+        )
+        AND any(
+            key IN keys(n)
+            WHERE n[key] IS NOT NULL
+            AND toLower(toString(n[key]))
+                CONTAINS toLower($keyword)
+        )
+        WITH n
+        ORDER BY toLower(
+            coalesce(
+                n.name,
+                n.event_name,
+                n.location_name,
+                n.fullName,
+                n.id,
+                ''
+            )
+        )
         RETURN
             elementId(n) AS node_id,
             labels(n) AS labels,
             properties(n) AS properties
-
-        ORDER BY
-            toLower(
-                coalesce(
-                    n.name,
-                    n.event_name,
-                    n.location_name,
-                    ''
-                )
-            )
-
         LIMIT $limit
         """
 
@@ -186,51 +519,57 @@ class GraphService:
             database=settings.NEO4J_DATABASE
         ) as session:
 
-            result = session.run(
-                query,
-                labels=labels,
-                keyword=keyword,
-                limit=limit
+            records = list(
+                session.run(
+                    query,
+                    labels=allowed_labels,
+                    keyword=keyword,
+                    limit=limit
+                )
             )
 
-            entities = []
+        results = []
 
-            for record in result:
-                properties = record["properties"]
+        for record in records:
 
-                business_id = (
-                    properties.get("person_id")
-                    or properties.get("event_id")
-                    or properties.get("location_id")
-                    or properties.get("id")
-                )
+            labels = record["labels"] or []
+            properties = dict(record["properties"] or {})
 
-                entities.append({
-                    "id": record["node_id"],
-                    "business_id": business_id,
-                    "entity_type": record["labels"],
-                    "name": (
-                        properties.get("name")
-                        or properties.get("event_name")
-                        or properties.get("location_name")
-                    ),
-                    "properties": properties
-                })
+            results.append({
+                "node_id": record["node_id"],
+                "business_id": self._get_business_id(properties),
+                "labels": labels,
+                "display_labels": [
+                    NODE_LABELS.get(label, label)
+                    for label in labels
+                ],
+                "properties": properties,
+            })
 
         return {
             "keyword": keyword,
             "entity_type": entity_type,
-            "total": len(entities),
-            "results": entities
+            "total": len(results),
+            "results": results,
         }
+
+    # =====================================================
+    # 3. GET NODE NEIGHBORS
+    # =====================================================
 
     def get_node_neighbors(
         self,
         node_id: str,
         limit: int = 50
-    ) -> Optional[Dict[str, Any]]:
+    ) -> Dict:
 
-        limit = max(1, min(limit, self.MAX_GRAPH_LIMIT))
+        if not node_id:
+            return self._empty_graph()
+
+        limit = max(
+            1,
+            min(int(limit), self.MAX_NEIGHBOR_LIMIT)
+        )
 
         query = """
         MATCH (center)
@@ -259,72 +598,80 @@ class GraphService:
             database=settings.NEO4J_DATABASE
         ) as session:
 
-            result = session.run(
+            record = session.run(
                 query,
                 node_id=node_id,
                 limit=limit
-            )
+            ).single()
 
-            record = result.single()
+        if not record:
+            return self._empty_graph()
 
-            if record is None:
-                return None
+        center = record["center"]
 
-            center = record["center"]
-            items = record["items"]
+        if center is None:
+            return self._empty_graph()
 
-        nodes = [
-            self._serialize_node(center)
-        ]
+        center_data = self._serialize_node(center)
 
+        items = record["items"] or []
+
+        nodes = [center_data]
         edges = []
+
+        seen_node_ids = {
+            center.element_id
+        }
+
+        seen_edge_ids = set()
 
         for item in items:
 
-            neighbor = item["node"]
+            if not item:
+                continue
+
+            neighbor = item.get("node")
 
             if neighbor is None:
                 continue
 
-            nodes.append(
-                self._serialize_node(neighbor)
-            )
+            if neighbor.element_id not in seen_node_ids:
 
-            for relationship in item["relationships"]:
-                if relationship is not None:
-                    edges.append(
-                        self._serialize_relationship(relationship)
-                    )
+                nodes.append(
+                    self._serialize_node(neighbor)
+                )
 
-        # Loại bỏ node trùng lặp
-        unique_nodes = {
-            node["id"]: node
-            for node in nodes
-        }
+                seen_node_ids.add(
+                    neighbor.element_id
+                )
 
-        # Loại bỏ relationship trùng lặp
-        unique_edges = {
-            edge["id"]: edge
-            for edge in edges
-        }
+            relationships = item.get("relationships") or []
+
+            for relationship in relationships:
+
+                if relationship is None:
+                    continue
+
+                relationship_id = relationship.element_id
+
+                if relationship_id in seen_edge_ids:
+                    continue
+
+                edges.append(
+                    self._serialize_relationship(relationship)
+                )
+
+                seen_edge_ids.add(relationship_id)
+
+        center_properties = dict(center)
 
         return {
-            "center": center.element_id,
-            "center_business_id": (
-                self._serialize_node(center)["business_id"]
+            "center": center_data,
+            "center_business_id": self._get_business_id(
+                center_properties
             ),
-            "total_nodes": len(unique_nodes),
-            "total_edges": len(unique_edges),
-            "nodes": list(unique_nodes.values()),
-            "edges": list(unique_edges.values())
-        }
-
-    @staticmethod
-    def _empty_graph() -> Dict[str, Any]:
-
-        return {
-            "total_nodes": 0,
-            "total_edges": 0,
-            "nodes": [],
-            "edges": []
+            "total_nodes": len(nodes),
+            "total_edges": len(edges),
+            "nodes": nodes,
+            "edges": edges,
         }

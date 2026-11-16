@@ -15,7 +15,8 @@ class GraphSearchService:
         "name",
         "entity",
         "ten",
-        "title"
+        "title",
+        "fullName",
     )
 
     def __init__(self, graph_service: GraphService):
@@ -34,15 +35,19 @@ class GraphSearchService:
         if not keywords:
             return []
 
-        limit = max(1, min(limit, self.MAX_ENTITY_RESULTS))
+        limit = max(
+            1,
+            min(int(limit), self.MAX_ENTITY_RESULTS)
+        )
 
-        graph = self.graph_service.get_graph(limit=1000)
+        # Lấy graph để tìm kiếm thực thể
+        graph = self.graph_service.get_graph(limit=500)
 
         candidates = []
 
-        for node in graph["nodes"]:
+        for node in graph.get("nodes", []):
 
-            properties = node["properties"]
+            properties = node.get("properties", {})
 
             name = self._get_node_name(properties)
 
@@ -60,11 +65,23 @@ class GraphSearchService:
 
             candidates.append({
                 "id": node["id"],
+                "business_id": node.get("business_id"),
+
                 "name": name,
-                "labels": node["labels"],
+
+                # Label gốc
+                "labels": node.get("labels", []),
+
+                # Label tiếng Việt
+                "display_labels": node.get(
+                    "display_labels",
+                    node.get("labels", [])
+                ),
+
                 "properties": properties,
+
                 "score": score,
-                "matched_terms": matched_terms
+                "matched_terms": matched_terms,
             })
 
         candidates.sort(
@@ -84,33 +101,53 @@ class GraphSearchService:
         limit: int = MAX_RELATIONSHIPS
     ) -> Dict[str, Any]:
 
+        limit = max(
+            1,
+            min(int(limit), self.MAX_RELATIONSHIPS)
+        )
+
         graph = self.graph_service.get_node_neighbors(
             node_id=node_id,
             limit=limit
         )
 
-        if graph is None:
+        if not graph or not graph.get("center"):
+
             return {
                 "center": None,
                 "nodes": [],
-                "relationships": []
+                "relationships": [],
             }
 
         relationships = []
 
-        for edge in graph["edges"]:
+        for edge in graph.get("edges", []):
 
             relationships.append({
+                "id": edge.get("id"),
+                "business_id": edge.get("business_id"),
+
                 "source": edge["source"],
                 "target": edge["target"],
+
+                # Relationship gốc
                 "type": edge["type"],
-                "properties": edge["properties"]
+
+                # Relationship tiếng Việt
+                "display_type": edge.get(
+                    "display_type",
+                    self.graph_service.display_relationship_type(
+                        edge["type"]
+                    )
+                ),
+
+                "properties": edge.get("properties", {}),
             })
 
         return {
             "center": graph["center"],
-            "nodes": graph["nodes"],
-            "relationships": relationships
+            "nodes": graph.get("nodes", []),
+            "relationships": relationships,
         }
 
     # =====================================================
@@ -124,12 +161,16 @@ class GraphSearchService:
     ) -> Dict[str, Any]:
 
         if not entity_ids:
+
             return {
                 "nodes": [],
-                "relationships": []
+                "relationships": [],
             }
 
-        limit = max(1, min(limit, self.MAX_NEIGHBORS))
+        limit = max(
+            1,
+            min(int(limit), self.MAX_NEIGHBORS)
+        )
 
         all_nodes = {}
         all_relationships = {}
@@ -141,22 +182,30 @@ class GraphSearchService:
                 limit=limit
             )
 
+            # Gộp node, tránh trùng ID
             for node in result["nodes"]:
+
                 all_nodes[node["id"]] = node
 
+            # Gộp relationship, ưu tiên ID thực tế
             for edge in result["relationships"]:
 
-                key = (
-                    edge["source"],
-                    edge["target"],
-                    edge["type"]
-                )
+                edge_id = edge.get("id")
+
+                if edge_id:
+                    key = edge_id
+                else:
+                    key = (
+                        edge["source"],
+                        edge["target"],
+                        edge["type"],
+                    )
 
                 all_relationships[key] = edge
 
         return {
             "nodes": list(all_nodes.values()),
-            "relationships": list(all_relationships.values())
+            "relationships": list(all_relationships.values()),
         }
 
     # =====================================================
@@ -183,13 +232,13 @@ class GraphSearchService:
 
         relationships = {
             "nodes": [],
-            "relationships": []
+            "relationships": [],
         }
 
         should_expand = intent in {
             "relationship_query",
             "event_query",
-            "reasoning_query"
+            "reasoning_query",
         }
 
         if should_expand and entity_ids:
@@ -199,7 +248,10 @@ class GraphSearchService:
                 limit=relationship_limit
             )
 
+        # ---------------------------------------------
         # Gộp entity tìm được và entity mở rộng
+        # ---------------------------------------------
+
         all_nodes = {
             node["id"]: node
             for node in relationships["nodes"]
@@ -209,22 +261,37 @@ class GraphSearchService:
 
             all_nodes[entity["id"]] = {
                 "id": entity["id"],
+                "business_id": entity.get("business_id"),
+
+                "name": entity["name"],
+
                 "labels": entity["labels"],
-                "properties": entity["properties"]
+                "display_labels": entity.get(
+                    "display_labels",
+                    entity["labels"]
+                ),
+
+                "properties": entity["properties"],
             }
 
         return {
             "query_entities": entities,
+
             "related_entities": list(all_nodes.values()),
+
             "relationships": relationships["relationships"],
+
             "metadata": {
                 "intent": intent,
+
                 "entity_count": len(entities),
+
                 "related_entity_count": len(all_nodes),
+
                 "relationship_count": len(
                     relationships["relationships"]
-                )
-            }
+                ),
+            },
         }
 
     # =====================================================
@@ -241,7 +308,11 @@ class GraphSearchService:
             value = properties.get(field)
 
             if value is not None:
-                return str(value).strip()
+
+                name = str(value).strip()
+
+                if name:
+                    return name
 
         return None
 
@@ -269,12 +340,17 @@ class GraphSearchService:
                 continue
 
             if normalized_keyword == normalized_name:
+
                 score += 10
+                matched_terms.append(keyword)
 
             elif normalized_keyword in normalized_name:
+
                 score += 5
+                matched_terms.append(keyword)
 
             else:
+
                 for value in properties.values():
 
                     if isinstance(value, (str, int, float)):
@@ -284,14 +360,10 @@ class GraphSearchService:
                         )
 
                         if normalized_keyword in normalized_value:
-                            score += 1
-                            break
 
-            if (
-                normalized_keyword in normalized_name
-                or normalized_keyword == normalized_name
-            ):
-                matched_terms.append(keyword)
+                            score += 1
+                            matched_terms.append(keyword)
+                            break
 
         return score, list(dict.fromkeys(matched_terms))
 

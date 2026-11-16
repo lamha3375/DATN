@@ -1,0 +1,736 @@
+﻿Mã quan hệ (ID),Mã thực thể nguồn,Loại quan hệ (Tiếng Việt),Mã thực thể đích,Mô tả quan hệ lịch sử,Trích dẫn nguồn
+EDG_0001,EVT_001,DIỄN_RA_TẠI,LOC_003,Sự kiện Khởi nghĩa Tây Sơn bùng nổ diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0002,EVT_001,DIỄN_RA_TẠI,LOC_005,Sự kiện Khởi nghĩa Tây Sơn bùng nổ diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0003,EVT_002,DIỄN_RA_TẠI,LOC_003,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0004,EVT_1773_01,DIỄN_RA_TẠI,LOC_022,Sự kiện Nguyễn Văn Nhạc cho người sang Xiêm giả giảng hòa diễn ra tại địa bàn này,DNTL_TB_11
+EDG_0005,EVT_1774_06,DIỄN_RA_TẠI,LOC_002,"Sự kiện Quân Trịnh đánh bại Nguyễn Văn Chính, chiếm Thuận Hóa diễn ra tại địa bàn này",DNTL_TB_11
+EDG_0006,EVT_1775_03,DIỄN_RA_TẠI,LOC_004,Sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định diễn ra tại địa bàn này,DNTL_TB_12
+EDG_0007,EVT_003_CAMSA,DIỄN_RA_TẠI,LOC_015,Sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn diễn ra tại địa bàn này,"1, DNTL_TB_12, 1"
+EDG_0008,EVT_1775_07,DIỄN_RA_TẠI,LOC_002,Sự kiện Hoàng Ngũ Phúc rút quân về Phú Xuân và chết diễn ra tại địa bàn này,"DNTL_TB_12, 1"
+EDG_0009,EVT_1775_08,DIỄN_RA_TẠI,LOC_003,Sự kiện Biến cố Tôn Thất Quyên - Tôn Thất Xuân ở Quảng Nam diễn ra tại địa bàn này,DNTL_TB_12
+EDG_0010,EVT_004,DIỄN_RA_TẠI,LOC_004,Sự kiện Tây Sơn tấn công Gia Định lần thứ nhất diễn ra tại địa bàn này,"1, DNTL_TB_12"
+EDG_0011,EVT_003,DIỄN_RA_TẠI,LOC_003,Sự kiện Nguyễn Nhạc xưng Tây Sơn vương diễn ra tại địa bàn này,"1, DNTL_TB_12"
+EDG_0012,EVT_1776_05,DIỄN_RA_TẠI,LOC_003,Sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định diễn ra tại địa bàn này,DNTL_TB_12
+EDG_0013,EVT_1776_05,DIỄN_RA_TẠI,LOC_004,Sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định diễn ra tại địa bàn này,DNTL_TB_12
+EDG_0014,EVT_1776_06,DIỄN_RA_TẠI,LOC_004,Sự kiện Đông cung Dương lên ngôi Tân Chính vương diễn ra tại địa bàn này,DNTL_TB_12
+EDG_0015,EVT_1777_01,DIỄN_RA_TẠI,LOC_001,Sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam diễn ra tại địa bàn này,"DNTL_TB_12, 1"
+EDG_0016,EVT_005,DIỄN_RA_TẠI,LOC_004,"Sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn diễn ra tại địa bàn này","1, 1, DNTL_TB_12"
+EDG_0017,EVT_001_1780,DIỄN_RA_TẠI,LOC_001,Sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý) diễn ra tại địa bàn này,1
+EDG_0018,EVT_003_1781,DIỄN_RA_TẠI,LOC_001,Sự kiện Trịnh Sâm lập Trịnh Cán làm Thế tử diễn ra tại địa bàn này,1
+EDG_0019,EVT_004_1782,DIỄN_RA_TẠI,LOC_001,"Sự kiện Trịnh Sâm qua đời, Trịnh Cán nối ngôi (Điện Đô vương) diễn ra tại địa bàn này",1
+EDG_0020,EVT_005_1782,DIỄN_RA_TẠI,LOC_001,"Sự kiện Binh lính tam phủ nổi loạn (Loạn Kiêu binh), truất Trịnh Cán, lập Trịnh Khải diễn ra tại địa bàn này",1
+EDG_0021,EVT_007,DIỄN_RA_TẠI,LOC_004,Sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba diễn ra tại địa bàn này,"1, 1, 1"
+EDG_0022,EVT_007,DIỄN_RA_TẠI,LOC_019,Sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba diễn ra tại địa bàn này,"1, 1, 1"
+EDG_0023,EVT_003_1782,DIỄN_RA_TẠI,LOC_003,Sự kiện Nguyễn Hữu Chỉnh bỏ chạy vào Nam theo Nguyễn Nhạc diễn ra tại địa bàn này,"1, 1"
+EDG_0024,EVT_007_1783,DIỄN_RA_TẠI,LOC_001,Sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn diễn ra tại địa bàn này,1
+EDG_0025,EVT_008,DIỄN_RA_TẠI,LOC_004,Sự kiện Tây Sơn đánh Gia Định lần thứ tư diễn ra tại địa bàn này,1
+EDG_0026,EVT_008_1784,DIỄN_RA_TẠI,LOC_001,Sự kiện Binh lính tam phủ lại nổi loạn giết Nguyễn Triêm diễn ra tại địa bàn này,1
+EDG_0027,EVT_009_1784,DIỄN_RA_TẠI,LOC_001,Sự kiện Âm mưu dẹp kiêu binh của các trấn thất bại diễn ra tại địa bàn này,1
+EDG_0028,EVT_010,DIỄN_RA_TẠI,LOC_002,Sự kiện Quân Tây Sơn hạ thành Phú Xuân diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0029,EVT_011,DIỄN_RA_TẠI,LOC_001,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh diễn ra tại địa bàn này","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0030,EVT_011,DIỄN_RA_TẠI,LOC_006,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh diễn ra tại địa bàn này","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0031,EVT_011,DIỄN_RA_TẠI,LOC_007,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh diễn ra tại địa bàn này","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0032,EVT_011,DIỄN_RA_TẠI,LOC_020,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh diễn ra tại địa bàn này","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0033,EVT_011_YETKIEN,DIỄN_RA_TẠI,LOC_001,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0034,EVT_008_1786,DIỄN_RA_TẠI,LOC_001,"Sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi diễn ra tại địa bàn này","0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0035,EVT_008_RUT,DIỄN_RA_TẠI,LOC_001,Sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam diễn ra tại địa bàn này,"1, 1"
+EDG_0036,EVT_009_1786,DIỄN_RA_TẠI,LOC_001,Sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương) diễn ra tại địa bàn này,"1, 1"
+EDG_0037,EVT_010_1786,DIỄN_RA_TẠI,LOC_001,"Sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa diễn ra tại địa bàn này","1, 1"
+EDG_0038,EVT_009_BAVUONG,DIỄN_RA_TẠI,LOC_002,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) diễn ra tại địa bàn này,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0039,EVT_009_BAVUONG,DIỄN_RA_TẠI,LOC_003,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) diễn ra tại địa bàn này,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0040,EVT_009_BAVUONG,DIỄN_RA_TẠI,LOC_004,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) diễn ra tại địa bàn này,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0041,EVT_002_1787,DIỄN_RA_TẠI,LOC_002,Sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát diễn ra tại địa bàn này,1
+EDG_0042,EVT_012,DIỄN_RA_TẠI,LOC_001,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0043,EVT_007_1787,DIỄN_RA_TẠI,LOC_007,Sự kiện Trận cự chiến đường thủy của Nguyễn Viết Khang - Hoàng Viết Tuyển ở Lục Giang - Hiến Doanh diễn ra tại địa bàn này,1
+EDG_0044,EVT_013,DIỄN_RA_TẠI,LOC_001,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà diễn ra tại địa bàn này","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0045,EVT_012_1788,DIỄN_RA_TẠI,LOC_001,Sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam diễn ra tại địa bàn này,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0046,EVT_012_1788,DIỄN_RA_TẠI,LOC_011,Sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam diễn ra tại địa bàn này,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0047,EVT_014,DIỄN_RA_TẠI,LOC_011,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0048,EVT_015,DIỄN_RA_TẠI,LOC_010,Sự kiện Chiến thắng Hà Hồi diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc"
+EDG_0049,EVT_016,DIỄN_RA_TẠI,LOC_001,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0050,EVT_016,DIỄN_RA_TẠI,LOC_008,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0051,EVT_016,DIỄN_RA_TẠI,LOC_009,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0052,EVT_007_1789,DIỄN_RA_TẠI,LOC_001,Sự kiện Vua Quang Trung lập Ngọc Hân làm Bắc-cung Hoàng-hậu diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0053,EVT_007_1789,DIỄN_RA_TẠI,LOC_002,Sự kiện Vua Quang Trung lập Ngọc Hân làm Bắc-cung Hoàng-hậu diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0054,EVT_001_1789,DIỄN_RA_TẠI,LOC_001,"Sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê diễn ra tại địa bàn này","1, 1"
+EDG_0055,EVT_016_NGOAIGIAO,DIỄN_RA_TẠI,LOC_021,Sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0056,EVT_018_CAICACH,DIỄN_RA_TẠI,LOC_017,Sự kiện Cải cách nội chính và văn hóa của vua Quang Trung diễn ra tại địa bàn này,1
+EDG_0057,EVT_018,DIỄN_RA_TẠI,LOC_002,Sự kiện Hoàng đế Quang Trung đột ngột qua đời diễn ra tại địa bàn này,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0058,EVT_010_1793,DIỄN_RA_TẠI,LOC_003,Sự kiện Nguyễn Ánh vây thành Quy Nhơn và sự qua đời của Nguyễn Nhạc diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0059,EVT_020,DIỄN_RA_TẠI,LOC_001,Sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên) diễn ra tại địa bàn này,"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0060,EVT_020,DIỄN_RA_TẠI,LOC_002,Sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên) diễn ra tại địa bàn này,"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0061,EVT_012_1798,DIỄN_RA_TẠI,LOC_003,Sự kiện Biến cố Nguyễn Bảo phản công diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0062,EVT_014_1799,DIỄN_RA_TẠI,LOC_002,Sự kiện Hoàng hậu Ngọc Hân qua đời diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0063,EVT_013_1799,DIỄN_RA_TẠI,LOC_003,Sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại diễn ra tại địa bàn này,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0064,EVT_021,DIỄN_RA_TẠI,LOC_003,Sự kiện Trận thủy chiến Thị Nại diễn ra tại địa bàn này,1
+EDG_0065,EVT_021,DIỄN_RA_TẠI,LOC_013,Sự kiện Trận thủy chiến Thị Nại diễn ra tại địa bàn này,1
+EDG_0066,EVT_019,DIỄN_RA_TẠI,LOC_002,Sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân diễn ra tại địa bàn này,"1, 1, 1"
+EDG_0067,EVT_020_1802,DIỄN_RA_TẠI,LOC_001,"Sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ diễn ra tại địa bàn này","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0068,EVT_008_1804,DIỄN_RA_TẠI,LOC_001,Sự kiện Rước hài cốt Vua Lê Chiêu Thống và Thái hậu về nước an táng diễn ra tại địa bàn này,1
+EDG_0069,PER_001,THAM_GIA_SỰ_KIỆN,EVT_001,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Khởi nghĩa Tây Sơn bùng nổ,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0070,PER_002,THAM_GIA_SỰ_KIỆN,EVT_001,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Khởi nghĩa Tây Sơn bùng nổ,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0071,PER_003,THAM_GIA_SỰ_KIỆN,EVT_001,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Khởi nghĩa Tây Sơn bùng nổ,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0072,PER_023,THAM_GIA_SỰ_KIỆN,EVT_001,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Khởi nghĩa Tây Sơn bùng nổ,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0073,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_002,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0074,PER_022,THAM_GIA_SỰ_KIỆN,EVT_002,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0075,PER_056,THAM_GIA_SỰ_KIỆN,EVT_002,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0076,PER_057,THAM_GIA_SỰ_KIỆN,EVT_1773_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Văn Nhạc cho người sang Xiêm giả giảng hòa,DNTL_TB_11
+EDG_0077,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_1773_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm các phủ Bích Kê, Quảng Ngãi, Diên Khánh, Bình Khang, Bình Thuận",DNTL_TB_11
+EDG_0078,PER_022,THAM_GIA_SỰ_KIỆN,EVT_1773_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm các phủ Bích Kê, Quảng Ngãi, Diên Khánh, Bình Khang, Bình Thuận",DNTL_TB_11
+EDG_0079,PER_056,THAM_GIA_SỰ_KIỆN,EVT_1773_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh chiếm các phủ Bích Kê, Quảng Ngãi, Diên Khánh, Bình Khang, Bình Thuận",DNTL_TB_11
+EDG_0080,PER_054,THAM_GIA_SỰ_KIỆN,EVT_1773_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Mỹ Thị,DNTL_TB_11
+EDG_0081,PER_047,CHỈ_HUY_SỰ_KIỆN,EVT_1774_01,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tống Phước Hiệp thu hồi 3 phủ Bình Thuận, Diên Khánh, Bình Khang",DNTL_TB_11
+EDG_0082,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_003_1774,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0083,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_003_1774,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0084,PER_030,THAM_GIA_SỰ_KIỆN,EVT_003_1774,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0085,PER_031,THAM_GIA_SỰ_KIỆN,EVT_003_1774,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0086,PER_046,THAM_GIA_SỰ_KIỆN,EVT_003_1774,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, DNTL_TB_11, 1"
+EDG_0087,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1774_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần ngự giá thân chinh vào Quảng Nam,DNTL_TB_11
+EDG_0088,PER_046,THAM_GIA_SỰ_KIỆN,EVT_1774_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần ngự giá thân chinh vào Quảng Nam,DNTL_TB_11
+EDG_0089,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_1774_04,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh chiếm dinh Bố Chính và Quảng Bình,DNTL_TB_11
+EDG_0090,PER_031,THAM_GIA_SỰ_KIỆN,EVT_1774_04,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh chiếm dinh Bố Chính và Quảng Bình,DNTL_TB_11
+EDG_0091,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_1774_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tướng sĩ chúa Nguyễn bắt Trương Phúc Loan nộp cho quân Trịnh,DNTL_TB_11
+EDG_0092,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_1774_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tướng sĩ chúa Nguyễn bắt Trương Phúc Loan nộp cho quân Trịnh,DNTL_TB_11
+EDG_0093,PER_046,THAM_GIA_SỰ_KIỆN,EVT_1774_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tướng sĩ chúa Nguyễn bắt Trương Phúc Loan nộp cho quân Trịnh,DNTL_TB_11
+EDG_0094,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_1774_06,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh đánh bại Nguyễn Văn Chính, chiếm Thuận Hóa",DNTL_TB_11
+EDG_0095,PER_031,THAM_GIA_SỰ_KIỆN,EVT_1774_06,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh đánh bại Nguyễn Văn Chính, chiếm Thuận Hóa",DNTL_TB_11
+EDG_0096,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1774_06,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Trịnh đánh bại Nguyễn Văn Chính, chiếm Thuận Hóa",DNTL_TB_11
+EDG_0097,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1775_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần lập Tôn Thất Dương làm Đông cung,DNTL_TB_12
+EDG_0098,PER_045,THAM_GIA_SỰ_KIỆN,EVT_1775_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần lập Tôn Thất Dương làm Đông cung,DNTL_TB_12
+EDG_0099,PER_048,THAM_GIA_SỰ_KIỆN,EVT_1775_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần lập Tôn Thất Dương làm Đông cung,DNTL_TB_12
+EDG_0100,PER_054,THAM_GIA_SỰ_KIỆN,EVT_1775_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần lập Tôn Thất Dương làm Đông cung,DNTL_TB_12
+EDG_0101,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0102,PER_022,THAM_GIA_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0103,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0104,PER_045,THAM_GIA_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0105,PER_054,THAM_GIA_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0106,PER_056,THAM_GIA_SỰ_KIỆN,EVT_1775_02,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê","DNTL_TB_12, 1"
+EDG_0107,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_1775_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định,DNTL_TB_12
+EDG_0108,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1775_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định,DNTL_TB_12
+EDG_0109,PER_047,CHỈ_HUY_SỰ_KIỆN,EVT_1775_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định,DNTL_TB_12
+EDG_0110,PER_054,THAM_GIA_SỰ_KIỆN,EVT_1775_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định,DNTL_TB_12
+EDG_0111,PER_057,THAM_GIA_SỰ_KIỆN,EVT_1775_03,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định,DNTL_TB_12
+EDG_0112,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0113,PER_022,THAM_GIA_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0114,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0115,PER_030,THAM_GIA_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0116,PER_031,THAM_GIA_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0117,PER_056,THAM_GIA_SỰ_KIỆN,EVT_003_CAMSA,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn,"1, DNTL_TB_12, 1"
+EDG_0118,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_005_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc quy thuận chúa Trịnh,"DNTL_TB_12, 1"
+EDG_0119,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_005_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc quy thuận chúa Trịnh,"DNTL_TB_12, 1"
+EDG_0120,PER_045,THAM_GIA_SỰ_KIỆN,EVT_005_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc quy thuận chúa Trịnh,"DNTL_TB_12, 1"
+EDG_0121,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_005_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc quy thuận chúa Trịnh,"DNTL_TB_12, 1"
+EDG_0122,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_004_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên,"1, DNTL_TB_12"
+EDG_0123,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_004_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên,"1, DNTL_TB_12"
+EDG_0124,PER_045,THAM_GIA_SỰ_KIỆN,EVT_004_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên,"1, DNTL_TB_12"
+EDG_0125,PER_047,CHỈ_HUY_SỰ_KIỆN,EVT_004_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên,"1, DNTL_TB_12"
+EDG_0126,PER_056,THAM_GIA_SỰ_KIỆN,EVT_004_1775,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên,"1, DNTL_TB_12"
+EDG_0127,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_1775_07,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng Ngũ Phúc rút quân về Phú Xuân và chết,"DNTL_TB_12, 1"
+EDG_0128,PER_029,CHỈ_HUY_SỰ_KIỆN,EVT_1775_07,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng Ngũ Phúc rút quân về Phú Xuân và chết,"DNTL_TB_12, 1"
+EDG_0129,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_1775_08,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến cố Tôn Thất Quyên - Tôn Thất Xuân ở Quảng Nam,DNTL_TB_12
+EDG_0130,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_1775_09,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lý Tài phản Tây Sơn, theo về với Tống Phước Hiệp",DNTL_TB_12
+EDG_0131,PER_047,CHỈ_HUY_SỰ_KIỆN,EVT_1775_09,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lý Tài phản Tây Sơn, theo về với Tống Phước Hiệp",DNTL_TB_12
+EDG_0132,PER_056,THAM_GIA_SỰ_KIỆN,EVT_1775_09,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lý Tài phản Tây Sơn, theo về với Tống Phước Hiệp",DNTL_TB_12
+EDG_0133,PER_003,CHỈ_HUY_SỰ_KIỆN,EVT_004,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tấn công Gia Định lần thứ nhất,"1, DNTL_TB_12"
+EDG_0134,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_004,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tấn công Gia Định lần thứ nhất,"1, DNTL_TB_12"
+EDG_0135,PER_048,THAM_GIA_SỰ_KIỆN,EVT_004,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tấn công Gia Định lần thứ nhất,"1, DNTL_TB_12"
+EDG_0136,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_003,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Tây Sơn vương,"1, DNTL_TB_12"
+EDG_0137,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_003,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Tây Sơn vương,"1, DNTL_TB_12"
+EDG_0138,PER_003,CHỈ_HUY_SỰ_KIỆN,EVT_003,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Tây Sơn vương,"1, DNTL_TB_12"
+EDG_0139,PER_045,THAM_GIA_SỰ_KIỆN,EVT_003,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Tây Sơn vương,"1, DNTL_TB_12"
+EDG_0140,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1776_04,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tống Phước Hiệp mất,DNTL_TB_12
+EDG_0141,PER_047,THAM_GIA_SỰ_KIỆN,EVT_1776_04,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tống Phước Hiệp mất,DNTL_TB_12
+EDG_0142,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1776_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định,DNTL_TB_12
+EDG_0143,PER_045,THAM_GIA_SỰ_KIỆN,EVT_1776_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định,DNTL_TB_12
+EDG_0144,PER_056,THAM_GIA_SỰ_KIỆN,EVT_1776_05,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định,DNTL_TB_12
+EDG_0145,PER_044,THAM_GIA_SỰ_KIỆN,EVT_1776_06,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương lên ngôi Tân Chính vương,DNTL_TB_12
+EDG_0146,PER_045,THAM_GIA_SỰ_KIỆN,EVT_1776_06,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương lên ngôi Tân Chính vương,DNTL_TB_12
+EDG_0147,PER_048,THAM_GIA_SỰ_KIỆN,EVT_1776_06,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương lên ngôi Tân Chính vương,DNTL_TB_12
+EDG_0148,PER_056,THAM_GIA_SỰ_KIỆN,EVT_1776_06,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Đông cung Dương lên ngôi Tân Chính vương,DNTL_TB_12
+EDG_0149,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_1777_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam,"DNTL_TB_12, 1"
+EDG_0150,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_1777_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam,"DNTL_TB_12, 1"
+EDG_0151,PER_032,THAM_GIA_SỰ_KIỆN,EVT_1777_01,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam,"DNTL_TB_12, 1"
+EDG_0152,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0153,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0154,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0155,PER_044,THAM_GIA_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0156,PER_045,THAM_GIA_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0157,PER_056,THAM_GIA_SỰ_KIỆN,EVT_005,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn","1, 1, DNTL_TB_12"
+EDG_0158,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_006,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức),"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0159,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_006,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức),"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0160,PER_003,CHỈ_HUY_SỰ_KIỆN,EVT_006,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức),"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0161,PER_008,THAM_GIA_SỰ_KIỆN,EVT_001_1780,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý),1
+EDG_0162,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_001_1780,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý),1
+EDG_0163,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_001_1780,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý),1
+EDG_0164,PER_034,THAM_GIA_SỰ_KIỆN,EVT_001_1780,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý),1
+EDG_0165,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_002_1780,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh chiếm đất 6 châu ở phủ An Tây,1
+EDG_0166,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_003_1781,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm lập Trịnh Cán làm Thế tử,1
+EDG_0167,PER_027,THAM_GIA_SỰ_KIỆN,EVT_003_1781,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm lập Trịnh Cán làm Thế tử,1
+EDG_0168,PER_034,THAM_GIA_SỰ_KIỆN,EVT_003_1781,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm lập Trịnh Cán làm Thế tử,1
+EDG_0169,PER_025,CHỈ_HUY_SỰ_KIỆN,EVT_004_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm qua đời, Trịnh Cán nối ngôi (Điện Đô vương)",1
+EDG_0170,PER_027,THAM_GIA_SỰ_KIỆN,EVT_004_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm qua đời, Trịnh Cán nối ngôi (Điện Đô vương)",1
+EDG_0171,PER_034,THAM_GIA_SỰ_KIỆN,EVT_004_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Sâm qua đời, Trịnh Cán nối ngôi (Điện Đô vương)",1
+EDG_0172,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_005_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Binh lính tam phủ nổi loạn (Loạn Kiêu binh), truất Trịnh Cán, lập Trịnh Khải",1
+EDG_0173,PER_027,THAM_GIA_SỰ_KIỆN,EVT_005_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Binh lính tam phủ nổi loạn (Loạn Kiêu binh), truất Trịnh Cán, lập Trịnh Khải",1
+EDG_0174,PER_034,THAM_GIA_SỰ_KIỆN,EVT_005_1782,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Binh lính tam phủ nổi loạn (Loạn Kiêu binh), truất Trịnh Cán, lập Trịnh Khải",1
+EDG_0175,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_007,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba,"1, 1, 1"
+EDG_0176,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_007,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba,"1, 1, 1"
+EDG_0177,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_007,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba,"1, 1, 1"
+EDG_0178,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_003_1782,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh bỏ chạy vào Nam theo Nguyễn Nhạc,"1, 1"
+EDG_0179,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_003_1782,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh bỏ chạy vào Nam theo Nguyễn Nhạc,"1, 1"
+EDG_0180,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_007_1783,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn,1
+EDG_0181,PER_036,THAM_GIA_SỰ_KIỆN,EVT_007_1783,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn,1
+EDG_0182,PER_037,THAM_GIA_SỰ_KIỆN,EVT_007_1783,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn,1
+EDG_0183,PER_041,THAM_GIA_SỰ_KIỆN,EVT_007_1783,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn,1
+EDG_0184,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_008,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn đánh Gia Định lần thứ tư,1
+EDG_0185,PER_003,CHỈ_HUY_SỰ_KIỆN,EVT_008,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn đánh Gia Định lần thứ tư,1
+EDG_0186,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_008,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn đánh Gia Định lần thứ tư,1
+EDG_0187,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_008_1784,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Binh lính tam phủ lại nổi loạn giết Nguyễn Triêm,1
+EDG_0188,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_009_1784,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Âm mưu dẹp kiêu binh của các trấn thất bại,1
+EDG_0189,PER_030,THAM_GIA_SỰ_KIỆN,EVT_009_1784,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Âm mưu dẹp kiêu binh của các trấn thất bại,1
+EDG_0190,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_009,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1"
+EDG_0191,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_009,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1"
+EDG_0192,PER_063,THAM_GIA_SỰ_KIỆN,EVT_009,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1"
+EDG_0193,PER_064,THAM_GIA_SỰ_KIỆN,EVT_009,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1"
+EDG_0194,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_010,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn hạ thành Phú Xuân,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0195,PER_010,CHỈ_HUY_SỰ_KIỆN,EVT_010,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn hạ thành Phú Xuân,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0196,PER_031,THAM_GIA_SỰ_KIỆN,EVT_010,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn hạ thành Phú Xuân,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0197,PER_032,THAM_GIA_SỰ_KIỆN,EVT_010,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn hạ thành Phú Xuân,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0198,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_010,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Tây Sơn hạ thành Phú Xuân,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0199,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0200,PER_026,CHỈ_HUY_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0201,PER_030,THAM_GIA_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0202,PER_033,THAM_GIA_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0203,PER_035,THAM_GIA_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0204,PER_036,THAM_GIA_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0205,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_011,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0206,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_011_YETKIEN,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0207,PER_013,THAM_GIA_SỰ_KIỆN,EVT_011_YETKIEN,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0208,PER_036,THAM_GIA_SỰ_KIỆN,EVT_011_YETKIEN,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0209,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_011_YETKIEN,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0210,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_008_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi","0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0211,PER_013,THAM_GIA_SỰ_KIỆN,EVT_008_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi","0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0212,PER_036,THAM_GIA_SỰ_KIỆN,EVT_008_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi","0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0213,PER_037,THAM_GIA_SỰ_KIỆN,EVT_008_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi","0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0214,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_008_RUT,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam,"1, 1"
+EDG_0215,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_008_RUT,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam,"1, 1"
+EDG_0216,PER_037,THAM_GIA_SỰ_KIỆN,EVT_008_RUT,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam,"1, 1"
+EDG_0217,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_008_RUT,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam,"1, 1"
+EDG_0218,PER_028,THAM_GIA_SỰ_KIỆN,EVT_009_1786,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương),"1, 1"
+EDG_0219,PER_033,THAM_GIA_SỰ_KIỆN,EVT_009_1786,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương),"1, 1"
+EDG_0220,PER_037,THAM_GIA_SỰ_KIỆN,EVT_009_1786,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương),"1, 1"
+EDG_0221,PER_028,THAM_GIA_SỰ_KIỆN,EVT_010_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa","1, 1"
+EDG_0222,PER_030,THAM_GIA_SỰ_KIỆN,EVT_010_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa","1, 1"
+EDG_0223,PER_037,THAM_GIA_SỰ_KIỆN,EVT_010_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa","1, 1"
+EDG_0224,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_010_1786,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa","1, 1"
+EDG_0225,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_009_BAVUONG,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn phân chia quyền lực (Ba vương),"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0226,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_009_BAVUONG,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn phân chia quyền lực (Ba vương),"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0227,PER_003,CHỈ_HUY_SỰ_KIỆN,EVT_009_BAVUONG,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tây Sơn phân chia quyền lực (Ba vương),"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0228,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_002_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát,1
+EDG_0229,PER_039,THAM_GIA_SỰ_KIỆN,EVT_002_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát,1
+EDG_0230,PER_040,THAM_GIA_SỰ_KIỆN,EVT_002_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát,1
+EDG_0231,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_002_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát,1
+EDG_0232,PER_030,THAM_GIA_SỰ_KIỆN,EVT_003_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh đánh tan Hoàng Phùng Cơ ở Đại Phùng,1
+EDG_0233,PER_038,THAM_GIA_SỰ_KIỆN,EVT_003_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh đánh tan Hoàng Phùng Cơ ở Đại Phùng,1
+EDG_0234,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_003_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh đánh tan Hoàng Phùng Cơ ở Đại Phùng,1
+EDG_0235,PER_028,THAM_GIA_SỰ_KIỆN,EVT_004_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh dẹp tan hoàn toàn tàn dư họ Trịnh,1
+EDG_0236,PER_033,THAM_GIA_SỰ_KIỆN,EVT_004_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh dẹp tan hoàn toàn tàn dư họ Trịnh,1
+EDG_0237,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_004_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Hữu Chỉnh dẹp tan hoàn toàn tàn dư họ Trịnh,1
+EDG_0238,PER_007,THAM_GIA_SỰ_KIỆN,EVT_012,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0239,PER_010,CHỈ_HUY_SỰ_KIỆN,EVT_012,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0240,PER_037,THAM_GIA_SỰ_KIỆN,EVT_012,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0241,PER_038,THAM_GIA_SỰ_KIỆN,EVT_012,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0242,PER_055,CHỈ_HUY_SỰ_KIỆN,EVT_012,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0243,PER_018,THAM_GIA_SỰ_KIỆN,EVT_007_1787,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận cự chiến đường thủy của Nguyễn Viết Khang - Hoàng Viết Tuyển ở Lục Giang - Hiến Doanh,1
+EDG_0244,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0245,PER_007,THAM_GIA_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0246,PER_008,THAM_GIA_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0247,PER_009,THAM_GIA_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0248,PER_010,CHỈ_HUY_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0249,PER_015,THAM_GIA_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0250,PER_041,THAM_GIA_SỰ_KIỆN,EVT_013,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà","1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0251,PER_007,THAM_GIA_SỰ_KIỆN,EVT_012_1788,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0252,PER_008,THAM_GIA_SỰ_KIỆN,EVT_012_1788,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0253,PER_037,THAM_GIA_SỰ_KIỆN,EVT_012_1788,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0254,PER_058,CHỈ_HUY_SỰ_KIỆN,EVT_012_1788,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0255,PER_059,THAM_GIA_SỰ_KIỆN,EVT_012_1788,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam,"0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1"
+EDG_0256,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_014,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0257,PER_007,THAM_GIA_SỰ_KIỆN,EVT_014,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0258,PER_008,THAM_GIA_SỰ_KIỆN,EVT_014,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0259,PER_012,THAM_GIA_SỰ_KIỆN,EVT_014,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, 1"
+EDG_0260,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_015,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Chiến thắng Hà Hồi,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc"
+EDG_0261,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0262,PER_016,THAM_GIA_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0263,PER_017,THAM_GIA_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0264,PER_037,THAM_GIA_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0265,PER_058,CHỈ_HUY_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0266,PER_060,THAM_GIA_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0267,PER_061,THAM_GIA_SỰ_KIỆN,EVT_016,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf, 1"
+EDG_0268,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_017,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Ban hành Chiếu khuyến nông,1
+EDG_0269,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_007_1789,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Quang Trung lập Ngọc Hân làm Bắc-cung Hoàng-hậu,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0270,PER_013,THAM_GIA_SỰ_KIỆN,EVT_007_1789,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Vua Quang Trung lập Ngọc Hân làm Bắc-cung Hoàng-hậu,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0271,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_001_1789,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê","1, 1"
+EDG_0272,PER_037,THAM_GIA_SỰ_KIỆN,EVT_001_1789,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê","1, 1"
+EDG_0273,PER_042,THAM_GIA_SỰ_KIỆN,EVT_001_1789,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê","1, 1"
+EDG_0274,PER_059,THAM_GIA_SỰ_KIỆN,EVT_001_1789,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê","1, 1"
+EDG_0275,PER_062,THAM_GIA_SỰ_KIỆN,EVT_001_1789,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê","1, 1"
+EDG_0276,PER_008,THAM_GIA_SỰ_KIỆN,EVT_016_NGOAIGIAO,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0277,PER_009,THAM_GIA_SỰ_KIỆN,EVT_016_NGOAIGIAO,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0278,PER_019,THAM_GIA_SỰ_KIỆN,EVT_016_NGOAIGIAO,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0279,PER_059,THAM_GIA_SỰ_KIỆN,EVT_016_NGOAIGIAO,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0280,PER_062,THAM_GIA_SỰ_KIỆN,EVT_016_NGOAIGIAO,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0281,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_018_CAICACH,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Cải cách nội chính và văn hóa của vua Quang Trung,1
+EDG_0282,PER_008,THAM_GIA_SỰ_KIỆN,EVT_018_CAICACH,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Cải cách nội chính và văn hóa của vua Quang Trung,1
+EDG_0283,PER_012,THAM_GIA_SỰ_KIỆN,EVT_018_CAICACH,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Cải cách nội chính và văn hóa của vua Quang Trung,1
+EDG_0284,PER_020,THAM_GIA_SỰ_KIỆN,EVT_018_CAICACH,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Cải cách nội chính và văn hóa của vua Quang Trung,1
+EDG_0285,PER_001,CHỈ_HUY_SỰ_KIỆN,EVT_018,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng đế Quang Trung đột ngột qua đời,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0286,PER_004,THAM_GIA_SỰ_KIỆN,EVT_018,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng đế Quang Trung đột ngột qua đời,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0287,PER_020,THAM_GIA_SỰ_KIỆN,EVT_018,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng đế Quang Trung đột ngột qua đời,"1, 0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0288,PER_002,CHỈ_HUY_SỰ_KIỆN,EVT_010_1793,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Ánh vây thành Quy Nhơn và sự qua đời của Nguyễn Nhạc,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0289,PER_004,THAM_GIA_SỰ_KIỆN,EVT_010_1793,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Ánh vây thành Quy Nhơn và sự qua đời của Nguyễn Nhạc,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0290,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_010_1793,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nguyễn Ánh vây thành Quy Nhơn và sự qua đời của Nguyễn Nhạc,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0291,PER_004,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0292,PER_005,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0293,PER_007,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0294,PER_011,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0295,PER_014,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0296,PER_020,THAM_GIA_SỰ_KIỆN,EVT_020,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên),"1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0297,PER_004,THAM_GIA_SỰ_KIỆN,EVT_012_1798,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến cố Nguyễn Bảo phản công,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0298,PER_021,THAM_GIA_SỰ_KIỆN,EVT_012_1798,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Biến cố Nguyễn Bảo phản công,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0299,PER_004,THAM_GIA_SỰ_KIỆN,EVT_014_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng hậu Ngọc Hân qua đời,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0300,PER_009,THAM_GIA_SỰ_KIỆN,EVT_014_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng hậu Ngọc Hân qua đời,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0301,PER_013,THAM_GIA_SỰ_KIỆN,EVT_014_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Hoàng hậu Ngọc Hân qua đời,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0302,PER_005,THAM_GIA_SỰ_KIỆN,EVT_013_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0303,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_013_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0304,PER_051,THAM_GIA_SỰ_KIỆN,EVT_013_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0305,PER_052,THAM_GIA_SỰ_KIỆN,EVT_013_1799,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0306,PER_005,THAM_GIA_SỰ_KIỆN,EVT_021,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Thị Nại,1
+EDG_0307,PER_011,THAM_GIA_SỰ_KIỆN,EVT_021,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Thị Nại,1
+EDG_0308,PER_049,CHỈ_HUY_SỰ_KIỆN,EVT_021,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Thị Nại,1
+EDG_0309,PER_050,THAM_GIA_SỰ_KIỆN,EVT_021,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Thị Nại,1
+EDG_0310,PER_053,THAM_GIA_SỰ_KIỆN,EVT_021,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Trận thủy chiến Thị Nại,1
+EDG_0311,PER_004,THAM_GIA_SỰ_KIỆN,EVT_015_1801,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tế lễ Nam-giao ở hồ Tây dưới thời Bảo Hưng,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0312,PER_024,THAM_GIA_SỰ_KIỆN,EVT_015_1801,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Tế lễ Nam-giao ở hồ Tây dưới thời Bảo Hưng,(lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf
+EDG_0313,PER_004,THAM_GIA_SỰ_KIỆN,EVT_019,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân,"1, 1, 1"
+EDG_0314,PER_019,THAM_GIA_SỰ_KIỆN,EVT_019,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân,"1, 1, 1"
+EDG_0315,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_019,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân,"1, 1, 1"
+EDG_0316,PER_049,CHỈ_HUY_SỰ_KIỆN,EVT_019,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân,"1, 1, 1"
+EDG_0317,PER_004,THAM_GIA_SỰ_KIỆN,EVT_020_1802,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0318,PER_005,THAM_GIA_SỰ_KIỆN,EVT_020_1802,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0319,PER_006,THAM_GIA_SỰ_KIỆN,EVT_020_1802,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0320,PER_011,THAM_GIA_SỰ_KIỆN,EVT_020_1802,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0321,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_020_1802,"Nhân vật tham gia hoặc chỉ đạo trong sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ","1, 1, 1, (lichsu)-Quoc-Van-Doi-Tay-Son-dantocking.com.pdf"
+EDG_0322,PER_037,THAM_GIA_SỰ_KIỆN,EVT_008_1804,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Rước hài cốt Vua Lê Chiêu Thống và Thái hậu về nước an táng,1
+EDG_0323,PER_042,THAM_GIA_SỰ_KIỆN,EVT_008_1804,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Rước hài cốt Vua Lê Chiêu Thống và Thái hậu về nước an táng,1
+EDG_0324,PER_043,THAM_GIA_SỰ_KIỆN,EVT_008_1804,Nhân vật tham gia hoặc chỉ đạo trong sự kiện Rước hài cốt Vua Lê Chiêu Thống và Thái hậu về nước an táng,1
+EDG_0325,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0326,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0327,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0328,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0329,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0330,EVT_001,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Khởi nghĩa Tây Sơn bùng nổ được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0331,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0332,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0333,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0334,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0335,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0336,EVT_002,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Quân Tây Sơn đánh chiếm thành Quy Nhơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0337,EVT_1773_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Nguyễn Văn Nhạc cho người sang Xiêm giả giảng hòa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0338,EVT_1773_02,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Quân Tây Sơn đánh chiếm các phủ Bích Kê, Quảng Ngãi, Diên Khánh, Bình Khang, Bình Thuận được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0339,EVT_1773_03,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Trận Mỹ Thị được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0340,EVT_1774_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Tống Phước Hiệp thu hồi 3 phủ Bình Thuận, Diên Khánh, Bình Khang được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0341,EVT_003_1774,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0342,EVT_003_1774,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0343,EVT_003_1774,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Quân Trịnh do Hoàng Ngũ Phúc cầm đầu tiến quân vào Nam Hà được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0344,EVT_1774_03,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Chúa Nguyễn Phúc Thuần ngự giá thân chinh vào Quảng Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0345,EVT_1774_04,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Quân Trịnh chiếm dinh Bố Chính và Quảng Bình được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0346,EVT_1774_05,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Tướng sĩ chúa Nguyễn bắt Trương Phúc Loan nộp cho quân Trịnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0347,EVT_1774_06,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Quân Trịnh đánh bại Nguyễn Văn Chính, chiếm Thuận Hóa được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0348,EVT_1775_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Chúa Nguyễn Phúc Thuần lập Tôn Thất Dương làm Đông cung được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0349,EVT_1775_02,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,"Sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê được ghi chép và phối kiểm từ tài liệu nguồn",SRC_001
+EDG_0350,EVT_1775_02,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Quân Tây Sơn đánh Giá Tần, Đông cung Dương lùi về Cu Đê được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0351,EVT_1775_03,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Chúa Nguyễn Phúc Thuần rút chạy vào Gia Định được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0352,EVT_003_CAMSA,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0353,EVT_003_CAMSA,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0354,EVT_003_CAMSA,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Trận Cẩm Sa giữa quân Trịnh và quân Tây Sơn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0355,EVT_005_1775,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Nguyễn Nhạc quy thuận chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0356,EVT_005_1775,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Nguyễn Nhạc quy thuận chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0357,EVT_004_1775,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0358,EVT_004_1775,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0359,EVT_1775_07,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Hoàng Ngũ Phúc rút quân về Phú Xuân và chết được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0360,EVT_1775_07,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Hoàng Ngũ Phúc rút quân về Phú Xuân và chết được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0361,EVT_1775_08,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Biến cố Tôn Thất Quyên - Tôn Thất Xuân ở Quảng Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0362,EVT_1775_09,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Lý Tài phản Tây Sơn, theo về với Tống Phước Hiệp được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0363,EVT_004,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Tây Sơn tấn công Gia Định lần thứ nhất được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0364,EVT_004,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Tây Sơn tấn công Gia Định lần thứ nhất được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0365,EVT_003,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Nguyễn Nhạc xưng Tây Sơn vương được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0366,EVT_003,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Nguyễn Nhạc xưng Tây Sơn vương được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0367,EVT_1776_04,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Tống Phước Hiệp mất được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0368,EVT_1776_05,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Đông cung Dương trốn khỏi Quy Nhơn vào Gia Định được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0369,EVT_1776_06,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Đông cung Dương lên ngôi Tân Chính vương được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0370,EVT_1777_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_001,Sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_001
+EDG_0371,EVT_1777_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,Sự kiện Trịnh Sâm công nhận Nguyễn Nhạc làm Trấn thủ Quảng Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_005
+EDG_0372,EVT_005,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,"Sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn được ghi chép và phối kiểm từ tài liệu nguồn",SRC_002
+EDG_0373,EVT_005,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,"Sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn được ghi chép và phối kiểm từ tài liệu nguồn",SRC_004
+EDG_0374,EVT_005,TRÍCH_DẪN_TỪ_NGUỒN,SRC_005,"Sự kiện Tây Sơn tiến đánh Gia Định lần thứ hai, lật đổ dòng chúa Nguyễn được ghi chép và phối kiểm từ tài liệu nguồn",SRC_005
+EDG_0375,EVT_006,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0376,EVT_006,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0377,EVT_006,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0378,EVT_006,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Nguyễn Nhạc xưng Hoàng đế (Thái Đức) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0379,EVT_001_1780,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Sự biến Trịnh Khải mưu lật đổ Trịnh Sâm không thành (Mưu loạn năm Canh Tý) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0380,EVT_002_1780,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nhà Thanh chiếm đất 6 châu ở phủ An Tây được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0381,EVT_003_1781,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Trịnh Sâm lập Trịnh Cán làm Thế tử được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0382,EVT_004_1782,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Trịnh Sâm qua đời, Trịnh Cán nối ngôi (Điện Đô vương) được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0383,EVT_005_1782,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Binh lính tam phủ nổi loạn (Loạn Kiêu binh), truất Trịnh Cán, lập Trịnh Khải được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0384,EVT_007,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0385,EVT_007,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0386,EVT_007,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Trận thủy chiến Ngã Bảy (Thất Kỳ Giang) và Tây Sơn đánh Gia Định lần thứ ba được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0387,EVT_003_1782,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Nguyễn Hữu Chỉnh bỏ chạy vào Nam theo Nguyễn Nhạc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0388,EVT_003_1782,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Hữu Chỉnh bỏ chạy vào Nam theo Nguyễn Nhạc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0389,EVT_007_1783,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Lập Hoàng cháu trưởng Lê Duy Khiêm làm Hoàng thái tôn được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0390,EVT_008,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Tây Sơn đánh Gia Định lần thứ tư được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0391,EVT_008_1784,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Binh lính tam phủ lại nổi loạn giết Nguyễn Triêm được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0392,EVT_009_1784,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Âm mưu dẹp kiêu binh của các trấn thất bại được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0393,EVT_009,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0394,EVT_009,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0395,EVT_009,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Trận Rạch Gầm - Xoài Mút đại phá quân Xiêm được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0396,EVT_010,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Quân Tây Sơn hạ thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0397,EVT_010,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Quân Tây Sơn hạ thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0398,EVT_010,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Quân Tây Sơn hạ thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0399,EVT_010,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Quân Tây Sơn hạ thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0400,EVT_010,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Quân Tây Sơn hạ thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0401,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_002
+EDG_0402,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_003
+EDG_0403,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_004
+EDG_0404,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_006
+EDG_0405,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_007
+EDG_0406,EVT_011,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Tây Sơn tiến quân ra Bắc lần thứ nhất, lật đổ chúa Trịnh được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0407,EVT_011_YETKIEN,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0408,EVT_011_YETKIEN,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0409,EVT_011_YETKIEN,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0410,EVT_011_YETKIEN,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0411,EVT_011_YETKIEN,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Huệ diện kiến vua Lê Hiển Tông và hôn lễ với Ngọc Hân Công chúa được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0412,EVT_008_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,"Sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi được ghi chép và phối kiểm từ tài liệu nguồn",SRC_003
+EDG_0413,EVT_008_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,"Sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi được ghi chép và phối kiểm từ tài liệu nguồn",SRC_007
+EDG_0414,EVT_008_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Vua Lê Hiển Tông băng hà, Lê Chiêu Thống lên nối ngôi được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0415,EVT_008_RUT,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0416,EVT_008_RUT,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Nhạc ra Bắc Hà và rút toàn bộ quân Tây Sơn về Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0417,EVT_009_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0418,EVT_009_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Trịnh Bồng lập lại phủ Chúa (Án Đô vương) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0419,EVT_010_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,"Sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa được ghi chép và phối kiểm từ tài liệu nguồn",SRC_007
+EDG_0420,EVT_010_1786,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh, đốt phủ Chúa được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0421,EVT_009_BAVUONG,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0422,EVT_009_BAVUONG,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0423,EVT_009_BAVUONG,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Tây Sơn phân chia quyền lực (Ba vương) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0424,EVT_002_1787,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Sứ bộ Lê Chiêu Thống (Trần Công Xán) vào Thuận Hóa xin lại Nghệ An bị Tây Sơn mưu sát được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0425,EVT_003_1787,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Hữu Chỉnh đánh tan Hoàng Phùng Cơ ở Đại Phùng được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0426,EVT_004_1787,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Hữu Chỉnh dẹp tan hoàn toàn tàn dư họ Trịnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0427,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0428,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0429,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0430,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0431,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0432,EVT_012,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Vũ Văn Nhậm ra Bắc diệt Nguyễn Hữu Chỉnh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0433,EVT_007_1787,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Trận cự chiến đường thủy của Nguyễn Viết Khang - Hoàng Viết Tuyển ở Lục Giang - Hiến Doanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0434,EVT_013,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà được ghi chép và phối kiểm từ tài liệu nguồn",SRC_002
+EDG_0435,EVT_013,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà được ghi chép và phối kiểm từ tài liệu nguồn",SRC_003
+EDG_0436,EVT_013,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà được ghi chép và phối kiểm từ tài liệu nguồn",SRC_004
+EDG_0437,EVT_013,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà được ghi chép và phối kiểm từ tài liệu nguồn",SRC_007
+EDG_0438,EVT_013,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Nguyễn Huệ ra Bắc giết Vũ Văn Nhậm, tổ chức lại chính quyền Bắc Hà được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0439,EVT_012_1788,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0440,EVT_012_1788,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0441,EVT_012_1788,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nhà Thanh sai Tôn Sĩ Nghị cất quân xâm lược Việt Nam được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0442,EVT_014,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0443,EVT_014,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0444,EVT_014,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0445,EVT_014,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0446,EVT_014,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Nguyễn Huệ lên ngôi Hoàng đế (Quang Trung) và đại xuất quân ra Bắc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0447,EVT_015,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Chiến thắng Hà Hồi được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0448,EVT_015,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Chiến thắng Hà Hồi được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0449,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0450,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0451,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0452,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0453,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0454,EVT_016,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Trận Ngọc Hồi - Đống Đa đại phá 29 vạn quân Thanh được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0455,EVT_017,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Ban hành Chiếu khuyến nông được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0456,EVT_007_1789,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Vua Quang Trung lập Ngọc Hân làm Bắc-cung Hoàng-hậu được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0457,EVT_001_1789,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,"Sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê được ghi chép và phối kiểm từ tài liệu nguồn",SRC_008
+EDG_0458,EVT_001_1789,TRÍCH_DẪN_TỪ_NGUỒN,SRC_009,"Sự kiện Nhà Lê Chiêu Thống diệt vong, chấm dứt thời kỳ Hậu Lê được ghi chép và phối kiểm từ tài liệu nguồn",SRC_009
+EDG_0459,EVT_016_NGOAIGIAO,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0460,EVT_016_NGOAIGIAO,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0461,EVT_016_NGOAIGIAO,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0462,EVT_016_NGOAIGIAO,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Sứ bộ Phạm Công Trị (Giả Vương) sang Thanh triều cận Vua Càn Long được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0463,EVT_018_CAICACH,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Cải cách nội chính và văn hóa của vua Quang Trung được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0464,EVT_018,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Hoàng đế Quang Trung đột ngột qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0465,EVT_018,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Sự kiện Hoàng đế Quang Trung đột ngột qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_003
+EDG_0466,EVT_018,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Hoàng đế Quang Trung đột ngột qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0467,EVT_018,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Hoàng đế Quang Trung đột ngột qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0468,EVT_018,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Hoàng đế Quang Trung đột ngột qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0469,EVT_010_1793,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Nguyễn Ánh vây thành Quy Nhơn và sự qua đời của Nguyễn Nhạc được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0470,EVT_020,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0471,EVT_020,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0472,EVT_020,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Biến loạn nội bộ Tây Sơn (Chém Bùi Đắc Tuyên) được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0473,EVT_012_1798,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Biến cố Nguyễn Bảo phản công được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0474,EVT_014_1799,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Hoàng hậu Ngọc Hân qua đời được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0475,EVT_013_1799,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Quân Nguyễn Ánh chiếm Quy Nhơn và Trần Quang Diệu vây hãm lại được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0476,EVT_021,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Trận thủy chiến Thị Nại được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0477,EVT_015_1801,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,Sự kiện Tế lễ Nam-giao ở hồ Tây dưới thời Bảo Hưng được ghi chép và phối kiểm từ tài liệu nguồn,SRC_006
+EDG_0478,EVT_019,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,Sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_002
+EDG_0479,EVT_019,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,Sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_004
+EDG_0480,EVT_019,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,Sự kiện Quân Nguyễn Ánh đánh chiếm thành Phú Xuân được ghi chép và phối kiểm từ tài liệu nguồn,SRC_007
+EDG_0481,EVT_020_1802,TRÍCH_DẪN_TỪ_NGUỒN,SRC_002,"Sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ được ghi chép và phối kiểm từ tài liệu nguồn",SRC_002
+EDG_0482,EVT_020_1802,TRÍCH_DẪN_TỪ_NGUỒN,SRC_004,"Sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ được ghi chép và phối kiểm từ tài liệu nguồn",SRC_004
+EDG_0483,EVT_020_1802,TRÍCH_DẪN_TỪ_NGUỒN,SRC_006,"Sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ được ghi chép và phối kiểm từ tài liệu nguồn",SRC_006
+EDG_0484,EVT_020_1802,TRÍCH_DẪN_TỪ_NGUỒN,SRC_007,"Sự kiện Nhà Nguyễn hoàn thành bình định Bắc Hà, triều Tây Sơn hoàn toàn sụp đổ được ghi chép và phối kiểm từ tài liệu nguồn",SRC_007
+EDG_0485,EVT_008_1804,TRÍCH_DẪN_TỪ_NGUỒN,SRC_008,Sự kiện Rước hài cốt Vua Lê Chiêu Thống và Thái hậu về nước an táng được ghi chép và phối kiểm từ tài liệu nguồn,SRC_008
+EDG_0486,PER_001,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Huệ thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0487,PER_002,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Nhạc thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0488,PER_003,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Lữ thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0489,PER_004,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Quang Toản thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0490,PER_005,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Trần Quang Diệu thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0491,PER_006,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Bùi Thị Xuân thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0492,PER_007,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Ngô Văn Sở thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0493,PER_008,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Ngô Thì Nhậm thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0494,PER_009,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Phan Huy Ích thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0495,PER_010,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Vũ Văn Nhậm thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0496,PER_011,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Vũ Văn Dũng thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0497,PER_012,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Thiếp thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0498,PER_013,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Lê Ngọc Hân thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0499,PER_014,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Trần Văn Kỷ thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0500,PER_015,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Phan Văn Lân thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0501,PER_016,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Đô đốc Long thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0502,PER_017,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Đô đốc Bảo thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0503,PER_018,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Đô đốc Quỳnh thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0504,PER_019,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Phạm Công Trị thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0505,PER_020,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Bùi Đắc Tuyên thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0506,PER_021,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Bảo thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0507,PER_022,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Tập Đình thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0508,PER_023,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Hồ Phi Phúc thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0509,PER_024,THUỘC_VỀ_PHE_PHÁI,Tây Sơn,Nguyễn Huy Lượng thuộc phe phái / triều đình Tây Sơn,SRC_001
+EDG_0510,PER_025,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Trịnh Sâm thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0511,PER_026,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Trịnh Khải thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0512,PER_027,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Trịnh Cán thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0513,PER_028,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Trịnh Bồng thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0514,PER_029,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Hoàng Ngũ Phúc thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0515,PER_030,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Hoàng Phùng Cơ thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0516,PER_031,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Hoàng Đình Thể thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0517,PER_032,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Phạm Ngô Cầu thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0518,PER_033,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Đinh Tích Nhưỡng thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0519,PER_034,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Đặng Thị Huệ thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0520,PER_035,THUỘC_VỀ_PHE_PHÁI,Chúa Trịnh,Lý Trần Quán thuộc phe phái / triều đình Chúa Trịnh,SRC_001
+EDG_0521,PER_036,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Hiển Tông thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0522,PER_037,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Chiêu Thống thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0523,PER_038,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Duật thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0524,PER_039,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Duy Hiên thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0525,PER_040,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Trần Công Xán thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0526,PER_041,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Duy Cận thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0527,PER_042,THUỘC_VỀ_PHE_PHÁI,Nhà Hậu Lê,Lê Quýnh thuộc phe phái / triều đình Nhà Hậu Lê,SRC_001
+EDG_0528,PER_043,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Nguyễn Ánh thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0529,PER_044,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Nguyễn Phúc Thuần thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0530,PER_045,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Nguyễn Phúc Dương thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0531,PER_046,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Trương Phúc Loan thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0532,PER_047,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Tống Phước Hiệp thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0533,PER_048,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Đỗ Thanh Nhân thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0534,PER_049,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Lê Văn Duyệt thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0535,PER_050,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Võ Di Nguy thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0536,PER_051,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Vũ Tánh thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0537,PER_052,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Ngô Tùng Chu thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0538,PER_053,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn / Nhà Nguyễn,Nguyễn Văn Trương thuộc phe phái / triều đình Chúa Nguyễn / Nhà Nguyễn,SRC_001
+EDG_0539,PER_054,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Nguyễn Cửu Dật thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0540,PER_055,THUỘC_VỀ_PHE_PHÁI,Tây Sơn / Bắc Hà,Nguyễn Hữu Chỉnh thuộc phe phái / triều đình Tây Sơn / Bắc Hà,SRC_001
+EDG_0541,PER_056,THUỘC_VỀ_PHE_PHÁI,Tây Sơn / Chúa Nguyễn,Lý Tài thuộc phe phái / triều đình Tây Sơn / Chúa Nguyễn,SRC_001
+EDG_0542,PER_057,THUỘC_VỀ_PHE_PHÁI,Chúa Nguyễn,Mạc Thiên Tứ thuộc phe phái / triều đình Chúa Nguyễn,SRC_001
+EDG_0543,PER_058,THUỘC_VỀ_PHE_PHÁI,Mãn Thanh,Tôn Sĩ Nghị thuộc phe phái / triều đình Mãn Thanh,SRC_001
+EDG_0544,PER_059,THUỘC_VỀ_PHE_PHÁI,Mãn Thanh,Càn Long thuộc phe phái / triều đình Mãn Thanh,SRC_001
+EDG_0545,PER_060,THUỘC_VỀ_PHE_PHÁI,Mãn Thanh,Sầm Nghi Đống thuộc phe phái / triều đình Mãn Thanh,SRC_001
+EDG_0546,PER_061,THUỘC_VỀ_PHE_PHÁI,Mãn Thanh,Hứa Thế Hanh thuộc phe phái / triều đình Mãn Thanh,SRC_001
+EDG_0547,PER_062,THUỘC_VỀ_PHE_PHÁI,Mãn Thanh,Phúc Khang An thuộc phe phái / triều đình Mãn Thanh,SRC_001
+EDG_0548,PER_063,THUỘC_VỀ_PHE_PHÁI,Xiêm La,Chiêu Tăng thuộc phe phái / triều đình Xiêm La,SRC_001
+EDG_0549,PER_064,THUỘC_VỀ_PHE_PHÁI,Xiêm La,Chiêu Sương thuộc phe phái / triều đình Xiêm La,SRC_001
+EDG_0550,PER_002,ANH_EM_CỦA,PER_001,Nguyễn Nhạc là anh ruột của Nguyễn Huệ (Tây Sơn Tam Kiệt),"SRC_001, SRC_002"
+EDG_0551,PER_002,ANH_EM_CỦA,PER_003,Nguyễn Nhạc là anh ruột của Nguyễn Lữ,"SRC_001, SRC_002"
+EDG_0552,PER_001,ANH_EM_CỦA,PER_003,Nguyễn Huệ là anh ruột của Nguyễn Lữ,"SRC_001, SRC_002"
+EDG_0553,PER_026,ANH_EM_CỦA,PER_027,Trịnh Khải là anh cùng cha khác mẹ của Trịnh Cán,"SRC_008, SRC_010"
+EDG_0554,PER_023,CHA_MẸ_CỦA,PER_002,Hồ Phi Phúc là thân phụ của Nguyễn Nhạc,"SRC_001, SRC_002"
+EDG_0555,PER_023,CHA_MẸ_CỦA,PER_001,Hồ Phi Phúc là thân phụ của Nguyễn Huệ,"SRC_001, SRC_002"
+EDG_0556,PER_023,CHA_MẸ_CỦA,PER_003,Hồ Phi Phúc là thân phụ của Nguyễn Lữ,"SRC_001, SRC_002"
+EDG_0557,PER_001,CHA_MẸ_CỦA,PER_004,Quang Trung Nguyễn Huệ là cha của Nguyễn Quang Toản,"SRC_001, SRC_002"
+EDG_0558,PER_002,CHA_MẸ_CỦA,PER_021,Nguyễn Nhạc là cha của Nguyễn Bảo,"SRC_001, SRC_008"
+EDG_0559,PER_036,CHA_MẸ_CỦA,PER_013,Vua Lê Hiển Tông là vua cha của Công chúa Lê Ngọc Hân,"SRC_008, SRC_009"
+EDG_0560,PER_025,CHA_MẸ_CỦA,PER_026,Trịnh Sâm là thân phụ của chúa Trịnh Khải,"SRC_008, SRC_010"
+EDG_0561,PER_025,CHA_MẸ_CỦA,PER_027,Trịnh Sâm là thân phụ của chúa Trịnh Cán,"SRC_008, SRC_010"
+EDG_0562,PER_001,VỢ_CHỒNG_CỦA,PER_013,Nguyễn Huệ kết duyên cùng công chúa Lê Ngọc Hân (Bắc Cung Hoàng Hậu),"SRC_004, SRC_009"
+EDG_0563,PER_005,VỢ_CHỒNG_CỦA,PER_006,Danh tướng Trần Quang Diệu là phu quân của Nữ tướng Bùi Thị Xuân,"SRC_001, SRC_002"
+EDG_0564,PER_025,VỢ_CHỒNG_CỦA,PER_034,Chúa Trịnh Sâm sủng ái Tuyên phi Đặng Thị Huệ,"SRC_008, SRC_009"
+EDG_0565,PER_001,ĐÁNH_BẠI,PER_047,Nguyễn Huệ dùng mưu đánh tan danh tướng Tống Phước Hiệp ở Phú Yên (1775),"SRC_001, SRC_003"
+EDG_0566,PER_001,ĐÁNH_BẠI,PER_063,Nguyễn Huệ đại phá 5 vạn quân thủy bộ Xiêm La của Chiêu Tăng tại Rạch Gầm - Xoài Mút (1785),"SRC_001, SRC_002"
+EDG_0567,PER_001,ĐÁNH_BẠI,PER_032,Nguyễn Huệ dùng kế hạ thành Phú Xuân khiến Phạm Ngô Cầu đầu hàng (1786),"SRC_001, SRC_008"
+EDG_0568,PER_001,ĐÁNH_BẠI,PER_031,"Quân Tây Sơn hạ đồn Phú Xuân, Hoàng Đình Thể tử trận (1786)","SRC_001, SRC_008"
+EDG_0569,PER_001,ĐÁNH_BẠI,PER_033,Nguyễn Huệ đánh bại thủy quân của Đinh Tích Nhưỡng tại cửa Luộc (1786),"SRC_001, SRC_008"
+EDG_0570,PER_001,ĐÁNH_BẠI,PER_026,Nguyễn Huệ đánh tan toàn bộ phòng tuyến chúa Trịnh Khải tại Thăng Long (1786),"SRC_001, SRC_009"
+EDG_0571,PER_001,ĐÁNH_BẠI,PER_058,Vua Quang Trung đại phá 29 vạn quân Mãn Thanh của Tôn Sĩ Nghị (1789),"SRC_001, SRC_002"
+EDG_0572,PER_001,ĐÁNH_BẠI,PER_061,"Vua Quang Trung công phá cứ điểm Ngọc Hồi, Đề đốc Hứa Thế Hanh tử trận (1789)","SRC_001, SRC_002"
+EDG_0573,PER_016,ĐÁNH_BẠI,PER_060,Đô đốc Long đánh úp đồn Khương Thượng khiến Sầm Nghi Đống thắt cổ tự tử (1789),"SRC_001, SRC_002"
+EDG_0574,PER_010,ĐÁNH_BẠI,PER_055,Tiết chế Vũ Văn Nhậm đánh bại và bắt sống Nguyễn Hữu Chỉnh (1787),"SRC_001, SRC_009"
+EDG_0575,PER_001,HẠ_SÁT_XỬ_TỬ,PER_010,Nguyễn Huệ thần tốc ra Bắc bắt và xử tử Vũ Văn Nhậm vì tội chuyên quyền mưu phản (1788),"SRC_001, SRC_002"
+EDG_0576,PER_049,ĐÁNH_BẠI,PER_011,Lê Văn Duyệt dùng hỏa công đại phá hạm đội Tây Sơn của Vũ Văn Dũng tại Thị Nại (1801),SRC_003
+EDG_0577,PER_008,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_001,Ngô Thì Nhậm làm mưu sĩ đắc lực dâng kế lui quân và ngoại giao cho Quang Trung,"SRC_001, SRC_002"
+EDG_0578,PER_009,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_001,Phan Huy Ích làm Thượng thư bộ Lễ phụng sự triều Quang Trung,"SRC_001, SRC_002"
+EDG_0579,PER_012,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_001,La Sơn phu tử Nguyễn Thiếp nhận chức Viện trưởng Viện Sùng chính phụng sự vua Quang Trung,SRC_002
+EDG_0580,PER_007,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_001,Đại tư mã Ngô Văn Sở hết lòng phò tá vua Quang Trung,"SRC_001, SRC_002"
+EDG_0581,PER_005,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_004,Thiếu phó Trần Quang Diệu trung thành phò tá triều Cảnh Thịnh đến cùng,SRC_001
+EDG_0582,PER_006,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_004,Nữ tướng Bùi Thị Xuân kiên trinh cự chiến bảo vệ cơ nghiệp Tây Sơn,"SRC_001, SRC_002"
+EDG_0583,PER_037,LIÊN_MINH_VỚI,PER_058,Lê Chiêu Thống cầu viện và liên minh với Tổng đốc Tôn Sĩ Nghị,"SRC_008, SRC_010"
+EDG_0584,PER_043,LIÊN_MINH_VỚI,PER_063,Nguyễn Ánh sang Xiêm cầu viện và dẫn đường cho quân Xiêm tiến vào Gia Định (1784),"SRC_001, SRC_003"
+EDG_EXP_001,PER_002,CỨU_MẠNG_CƯU_MANG,PER_055,Nguyễn Nhạc cưu mang thu dung Nguyễn Hữu Chỉnh khi Chỉnh bị bế tắc ở Bắc Hà chạy vào Nam (1782).,"SRC_001, SRC_007"
+EDG_EXP_002,PER_112,CỨU_MẠNG_CƯU_MANG,PER_043,Giám mục Bá Đa Lộc (Pigneau de Béhaine) che chở cứu mạng Nguyễn Ánh nhiều lần khi bị Tây Sơn truy bắt.,"SRC_001, SRC_003"
+EDG_EXP_003,PER_001,CỨU_MẠNG_CƯU_MANG,PER_036,Nguyễn Huệ giữ nghiêm kỷ luật bảo vệ triều đình vua Lê Hiển Tông và hoàng thất tại Thăng Long (1786).,"SRC_007, SRC_008"
+EDG_EXP_004,PER_047,CỨU_MẠNG_CƯU_MANG,PER_056,Đại tướng Tống Phước Hiệp cưu mang và thu dung Lý Tài khi Lý Tài phản Tây Sơn hàng chúa Nguyễn.,SRC_003
+EDG_EXP_005,PER_057,CỨU_MẠNG_CƯU_MANG,PER_044,Mạc Thiên Tứ đón tiếp và che chở bảo vệ chúa Nguyễn Phúc Thuần tại Hà Tiên (1776).,SRC_003
+EDG_EXP_006,PER_PRE_001,TÁC_ĐỘNG_QUYỀN_LỰC,FAC_004,Trương Phúc Loan chuyên quyền lộng quyền thao túng chính quyền chúa Nguyễn Đàng Trong.,"SRC_003, SRC_008"
+EDG_EXP_007,PER_001,ĐỘNG_CƠ_KHỞI_NGHĨA,EVT_PRE_1765,Nguyễn Huệ và Tây Sơn dấy binh nhằm tiêu diệt quyền thần Trương Phúc Loan giải cứu Đàng Trong.,"SRC_001, SRC_003"
+EDG_EXP_008,PER_109,THẦY_HỌC_CỦA,PER_001,Giáo hiến Trương Văn Hiến là thầy dạy văn võ khuyên Tây Sơn dấy binh khởi nghĩa.,"SRC_001, SRC_002"
+EDG_EXP_009,PER_109,THẦY_HỌC_CỦA,PER_002,Trương Văn Hiến dạy học cho Nguyễn Nhạc.,"SRC_001, SRC_002"
+EDG_EXP_010,PER_109,THẦY_HỌC_CỦA,PER_003,Trương Văn Hiến dạy học cho Nguyễn Lữ.,"SRC_001, SRC_002"
+EDG_EXP_011,PER_001,VỢ_CHỒNG_CỦA,PER_110,Nguyễn Huệ kết duyên cùng Bùi Hoàng hậu (Bùi Thị Nhạn).,"SRC_001, SRC_002"
+EDG_EXP_012,PER_001,VỢ_CHỒNG_CỦA,PER_111,Nguyễn Huệ kết duyên cùng Chính thất Hoàng hậu Phạm Thị Liên.,"SRC_001, SRC_002"
+EDG_EXP_013,PER_043,CHA_MẸ_CỦA,PER_POST_002,Vua Gia Long (Nguyễn Ánh) là thân phụ của Hoàng tử Nguyễn Phúc Đảm (Vua Minh Mạng).,SRC_003
+EDG_EXP_014,PER_POST_001,PHỤNG_SỰ_TRIỀU_ĐÌNH,PER_043,Tổng trấn Nguyễn Văn Thành làm đại tướng quân phụng sự chúa Nguyễn Ánh.,SRC_003
+EDG_EXP_015,EVT_PRE_1738,DIỄN_RA_TẠI,LOC_002,Sự kiện xưng vương của Nguyễn Phúc Khoát diễn ra tại Phú Xuân.,SRC_003
+EDG_EXP_016,EVT_PRE_1738,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Trích dẫn từ Đại Nam Thực Lục Tiền biên.,SRC_003
+EDG_EXP_017,EVT_PRE_1765,DIỄN_RA_TẠI,LOC_002,Biến cố Trương Phúc Loan diễn ra tại Phú Xuân.,SRC_003
+EDG_EXP_018,EVT_PRE_1765,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Trích dẫn từ Đại Nam Thực Lục Tiền biên.,SRC_003
+EDG_EXP_019,EVT_POST_1802_01,DIỄN_RA_TẠI,LOC_002,Lễ đăng quang Gia Long diễn ra tại Phú Xuân.,SRC_003
+EDG_EXP_020,EVT_POST_1802_01,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Trích dẫn từ Đại Nam Thực Lục Chính biên.,SRC_003
+EDG_EXP_021,EVT_POST_1804,DIỄN_RA_TẠI,LOC_001,Định quốc hiệu VIỆT NAM công bố tại Thăng Long và Phú Xuân.,SRC_003
+EDG_EXP_022,EVT_POST_1804,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Trích dẫn từ Đại Nam Thực Lục Chính biên.,SRC_003
+EDG_EXP_023,EVT_POST_1820,DIỄN_RA_TẠI,LOC_002,Sự kiện Minh Mạng lên ngôi diễn ra tại Phú Xuân.,SRC_003
+EDG_EXP_024,EVT_POST_1820,TRÍCH_DẪN_TỪ_NGUỒN,SRC_003,Trích dẫn từ Đại Nam Thực Lục Chính biên.,SRC_003
+EDG_EXP_025,PER_001,BAN_HÀNH,POL_001,"Vua Quang Trung ban hành chính sách Thẻ Tín Bài để quản lý hộ tịch, tuyển quân và thuế khóa.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_026,PER_001,BAN_HÀNH,POL_002,Vua Quang Trung ban hành Chiếu Khuyến Nông để phục hồi sản xuất nông nghiệp sau chiến tranh.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_027,PER_001,BAN_HÀNH,POL_003,"Vua Quang Trung ban hành Chiếu Lập Nhà Học mở rộng trường học tới cấp xã, bãi bỏ chế độ mua bằng Sinh đồ.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_028,PER_001,BAN_HÀNH,POL_004,Vua Quang Trung ban hành chính sách dịch sách Hán sang Nôm và dùng chữ Nôm trong thi cử.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_029,PER_001,BAN_HÀNH,POL_005,Vua Quang Trung cho đúc tiền Quang Trung Thông Bảo và mở thị ti biên giới giao thương với nhà Thanh.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_030,PER_001,BAN_HÀNH,DOC_001,Vua Quang Trung ban hành Chiếu cầu hiền nhằm chiêu mộ sĩ phu Bắc Hà ra giúp nước.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc; Hoang Le Nhat Thong Chi
+EDG_EXP_031,PER_008,SOẠN_THẢO,DOC_001,Ngô Thì Nhậm vâng lệnh vua Quang Trung soạn thảo văn bản Chiếu cầu hiền nổi tiếng.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_032,PER_001,BAN_HÀNH,DOC_002,Quang Trung Nguyễn Huệ tuyên đọc Lời dụ duyệt binh tại Nghệ An trước 10 vạn quân sĩ tiến ra Bắc.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc; Viet Nam Su Luoc
+EDG_EXP_033,PER_008,SOẠN_THẢO,DOC_003,Ngô Thì Nhậm chủ trì soạn thảo các tập Biểu văn bang giao mềm dẻo nhưng kiên quyết gửi vua Càn Long.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_034,PER_009,SOẠN_THẢO,DOC_003,Phan Huy Ích tham gia soạn thảo các văn kiện ngoại giao bang giao dâng nhà Thanh.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_035,PER_001,BAN_HÀNH,DOC_004,Vua Quang Trung ban Chiếu lập Viện Sùng Chính và giao La Sơn phu tử Nguyễn Thiếp làm Viện trưởng.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_036,PER_012,CHỦ_TRÌ_THỰC_HIỆN,DOC_004,Nguyễn Thiếp tiếp nhận Chiếu lập Viện Sùng Chính và đảm nhiệm vai trò Viện trưởng dịch sách Hán Nôm.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_037,PER_012,CHỦ_TRÌ_THỰC_HIỆN,POL_004,La Sơn phu tử Nguyễn Thiếp trực tiếp tổ chức công tác dịch thuật kinh thư sang chữ Nôm tại Viện Sùng Chính.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_038,PER_001,CHỈ_HUY_ĐƠN_VỊ,UNI_001,Nguyễn Huệ chỉ huy binh chủng Tượng binh Tây Sơn trong các chiến dịch lớn.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_039,PER_006,CHỈ_HUY_ĐƠN_VỊ,UNI_001,Nữ tướng Bùi Thị Xuân trực tiếp huấn luyện và chỉ huy Đội Tượng binh Chiến Tây Sơn.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_040,PER_001,CHỈ_HUY_ĐƠN_VỊ,UNI_002,Nguyễn Huệ xây dựng và điều động Hạm đội Thủy binh Định Quốc làm lực lượng chiến lược.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_041,PER_011,CHỈ_HUY_ĐƠN_VỊ,UNI_002,Đại đô đốc Vũ Văn Dũng làm Tư lệnh thủy quân Tây Sơn chỉ huy Hạm đội Thủy binh Định Quốc.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_042,PER_018,CHỈ_HUY_ĐƠN_VỊ,UNI_002,Đô đốc Quỳnh chỉ huy các chiến thuyền thuộc Hạm đội Thủy binh Định Quốc tiến đánh Bắc Hà.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_043,PER_016,CHỈ_HUY_ĐƠN_VỊ,UNI_003,Đô đốc Long (Đặng Tiến Đông) chỉ huy Đạo quân Thần tốc Khương Thượng hạ đồn Đống Đa.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc; Hoang Le Nhat Thong Chi
+EDG_EXP_044,PER_001,SÁNG_TẠO_CHIẾN_THUẬT,TAC_001,Quang Trung chỉ đạo chế tạo mộc bộc rơm dấp nước che chắn hỏa lực địch công phá đồn Ngọc Hồi.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_045,PER_001,SÁNG_TẠO_CHIẾN_THUẬT,TAC_002,Vua Quang Trung sáng tạo chiến lược hành quân thần tốc nghìn dặm và tập kích bất ngờ dịp Tết.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_046,POL_001,ÁP_DỤNG_TRONG,EVT_018_CAICACH,Chính sách Thẻ Tín Bài được triển khai rộng rãi trong đợt cải cách nội chính của vua Quang Trung năm 1790.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_047,POL_002,BAN_HÀNH_TRONG_SỰ_KIỆN,EVT_017,Chiếu Khuyến Nông được ban hành năm 1789 ngay sau khi dẹp xong quân Thanh xâm lược.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_048,POL_002,ÁP_DỤNG_TRONG,EVT_018_CAICACH,Chiếu Khuyến Nông là trụ cột phục hồi kinh tế nông nghiệp trong công cuộc cải cách thời Quang Trung.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_049,POL_003,ÁP_DỤNG_TRONG,EVT_018_CAICACH,Chiếu Lập Nhà Học đặt nền móng cho hệ thống giáo dục công lập cấp phủ xã thời Tây Sơn.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_050,POL_003,TÁC_ĐỘNG_ĐẾN,LOC_001,Chính sách mở trường học cải tổ nền khoa cử tại Bắc Hà và Thăng Long.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_051,POL_004,ÁP_DỤNG_TRONG,EVT_018_CAICACH,Chính sách Nôm hóa văn bản và thi cử thể hiện tinh thần tự cường dân tộc thời Quang Trung.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_052,POL_005,ÁP_DỤNG_TRONG,EVT_018_CAICACH,Tiền Quang Trung Thông Bảo và việc mở Thị Ti thúc đẩy thương mại phát triển.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_053,POL_005,TÁC_ĐỘNG_ĐẾN,FAC_001,Chính sách tài chính tiền tệ củng cố sức mạnh kinh tế của triều đại Tây Sơn.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_054,DOC_001,BAN_HÀNH_TRONG_SỰ_KIỆN,EVT_013,Chiếu cầu hiền được phát đi sau khi Nguyễn Huệ ổn định tình hình Bắc Hà năm 1788.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_055,DOC_002,TUYÊN_ĐỌC_TẠI_SỰ_KIỆN,EVT_014,Lời dụ duyệt binh ở Nghệ An được đọc tại lễ duyệt binh trước khi đại quân tiến vào Thăng Long.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_056,DOC_002,DIỄN_RA_TẠI,LOC_006,Lễ tuyên đọc Lời dụ duyệt binh diễn ra tại trấn Nghệ An.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_057,DOC_003,SỬ_DỤNG_TRONG_SỰ_KIỆN,EVT_016_NGOAIGIAO,Biểu văn bang giao được sứ bộ Tây Sơn mang sang Yên Kinh dâng lên vua Càn Long.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_058,DOC_004,BAN_HÀNH_TRONG_SỰ_KIỆN,EVT_018_CAICACH,Chiếu lập Viện Sùng Chính được ban hành trong khuôn khổ chính sách phát triển văn hóa giáo dục năm 1791.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_059,UNI_001,SỬ_DỤNG_TRONG,EVT_016,Đội Tượng binh Chiến Tây Sơn đóng vai trò tiên phong hỏa lực san phẳng đồn lũy quân Thanh tại Ngọc Hồi.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_060,UNI_001,SỬ_DỤNG_TRONG,EVT_009,Đội Tượng binh tham gia cùng bộ binh Tây Sơn trong chiến thắng Rạch Gầm - Xoài Mút.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_061,UNI_001,SỬ_DỤNG_TRONG,EVT_010,Voi chiến Tây Sơn được huy động phá cửa thành Phú Xuân năm 1786.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_062,UNI_002,SỬ_DỤNG_TRONG,EVT_007,Hạm đội Thủy binh Định Quốc đánh tan hạm đội chúa Nguyễn trong trận Thất Kỳ Giang 1782.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_063,UNI_002,SỬ_DỤNG_TRONG,EVT_009,Thủy quân Định Quốc chặn đầu khóa đuôi đè bẹp 5 vạn quân Xiêm trên sông Tiền năm 1785.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_064,UNI_002,SỬ_DỤNG_TRONG,EVT_010,Hạm đội Thủy binh Định Quốc tiến vào sông Hương công phá thành Phú Xuân năm 1786.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_065,UNI_002,SỬ_DỤNG_TRONG,EVT_011,Hạm đội chiến thuyền Tây Sơn vượt biển tiến thẳng ra sông Vị Hoàng đánh dẹp quân Trịnh năm 1786.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_066,UNI_002,SỬ_DỤNG_TRONG,EVT_021,Hạm đội Thủy binh Định Quốc tham gia trận quyết chiến lịch sử tại cửa biển Thị Nại năm 1801.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_067,UNI_003,SỬ_DỤNG_TRONG,EVT_016,Đạo quân Thần tốc Khương Thượng tạo nên mũi tập kích bất ngờ hủy diệt đồn Khương Thượng - Đống Đa.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_068,UNI_003,SỬ_DỤNG_TRONG,EVT_015,Đạo quân Khương Thượng phối hợp bao vây bức hàng đồn Hà Hồi rạng sáng mồng 3 Tết.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_069,TAC_001,SỬ_DỤNG_TRONG,EVT_016,Chiến thuật Mộc bộc rơm dấp nước giúp bộ binh Tây Sơn che chắn hỏa lực quân Thanh hạ đồn Ngọc Hồi.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_070,TAC_002,SỬ_DỤNG_TRONG,EVT_014,Chiến thuật hành quân thần tốc được áp dụng trong đợt chuyển quân hàng ngàn dặm từ Tam Điệp ra Thăng Long.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_071,TAC_002,SỬ_DỤNG_TRONG,EVT_015,Chiến thuật tập kích Tết bất ngờ khiến quân Thanh hoàn toàn bị động tại Hà Hồi.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_072,TAC_002,SỬ_DỤNG_TRONG,EVT_016,Chiến thuật tổng tấn công dịp Tết Nguyên Đán đánh tan 29 vạn quân Thanh tại Ngọc Hồi - Đống Đa.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_073,EVT_001,TIỀN_ĐỀ_CỦA,EVT_002,Khởi nghĩa Tây Sơn bùng nổ năm 1771 tạo tiền đề cho chiến thắng chiếm thành Quy Nhơn năm 1773.,Viet Nam Su Luoc; Dai Nam Thuc Luc
+EDG_EXP_074,EVT_002,DẪN_ĐẾN,EVT_003_1774,Sự lớn mạnh của Tây Sơn tại Quy Nhơn khiến chúa Trịnh Hoàng Ngũ Phúc quyết định cất quân đánh Nam Hà.,Viet Nam Su Luoc
+EDG_EXP_075,EVT_003_1774,DẪN_ĐẾN,EVT_003_CAMSA,Quân Trịnh vượt sông Gianh đánh chiếm Phú Xuân và giao chiến với quân Tây Sơn tại trận Cẩm Sa 1775.,Viet Nam Su Luoc
+EDG_EXP_076,EVT_003_CAMSA,DẪN_ĐẾN,EVT_005_1775,Thất bại tại Cẩm Sa khiến Nguyễn Nhạc chủ động thương lượng quy thuận chúa Trịnh để rảnh tay đánh chúa Nguyễn.,Viet Nam Su Luoc
+EDG_EXP_077,EVT_005_1775,TIỀN_ĐỀ_CỦA,EVT_004_1775,Giảng hòa với Trịnh giúp Tây Sơn dồn lực cho Nguyễn Huệ đánh bại Tống Phước Hiệp ở Phú Yên.,Viet Nam Su Luoc
+EDG_EXP_078,EVT_004_1775,TIỀN_ĐỀ_CỦA,EVT_004,Chiến thắng Phú Yên làm bàn đạp cho cuộc tấn công Gia Định lần thứ nhất năm 1776.,Viet Nam Su Luoc
+EDG_EXP_079,EVT_004,TIỀN_ĐỀ_CỦA,EVT_005,Các đợt tiến công Gia Định liên tiếp dẫn đến đợt tổng tấn công lật đổ hoàn toàn dòng chúa Nguyễn năm 1777.,Viet Nam Su Luoc; Dai Nam Thuc Luc
+EDG_EXP_080,EVT_005,DẪN_ĐẾN,EVT_006,"Tiêu diệt được chúa Nguyễn ở Nam Hà, Nguyễn Nhạc chính thức xưng Hoàng đế (Thái Đức) năm 1778.",Viet Nam Su Luoc
+EDG_EXP_081,EVT_004_1782,DẪN_ĐẾN,EVT_005_1782,"Chúa Trịnh Sâm qua đời chấn động Bắc Hà, binh lính Tam phủ nổi loạn lập Trịnh Khải gây ra Loạn Kiêu binh.",Viet Nam Su Luoc; Hoang Le Nhat Thong Chi
+EDG_EXP_082,EVT_005_1782,TIỀN_ĐỀ_CỦA,EVT_010,Nội triều chúa Trịnh suy yếu hỗn loạn vì kiêu binh tạo cơ hội chiến lược cho Tây Sơn đánh hạ Phú Xuân 1786.,Hoang Le Nhat Thong Chi
+EDG_EXP_083,EVT_007,TIỀN_ĐỀ_CỦA,EVT_008,"Trận thủy chiến Ngã Bảy 1782 làm suy yếu quân Nguyễn, dẫn đến đợt tiến công Gia Định lần 4 năm 1783.",Dai Nam Thuc Luc
+EDG_EXP_084,EVT_008,DẪN_ĐẾN,EVT_009,"Nguyễn Ánh thua trận bỏ chạy sang Xiêm cầu viện, dẫn đến sự can thiệp của 5 vạn quân Xiêm và trận Rạch Gầm - Xoài Mút.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_085,EVT_009,TIỀN_ĐỀ_CỦA,EVT_010,"Đại thắng Rạch Gầm - Xoài Mút giải phóng hoàn toàn Gia Định, tạo thế và lực để Nguyễn Huệ tiến quân hạ Phú Xuân.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_086,EVT_010,DẪN_ĐẾN,EVT_011,"Hạ xong thành Phú Xuân, Nguyễn Huệ nghe lời Nguyễn Hữu Chỉnh quyết định thừa thắng tiến quân ra Bắc diệt chúa Trịnh.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc; Hoang Le Nhat Thong Chi
+EDG_EXP_087,EVT_011,DẪN_ĐẾN,EVT_011_YETKIEN,"Tiến quân vào Thăng Long lật đổ họ Trịnh, Nguyễn Huệ diện kiến vua Lê Hiển Tông và kết duyên cùng công chúa Ngọc Hân.",Hoang Le Nhat Thong Chi
+EDG_EXP_088,EVT_008_RUT,DẪN_ĐẾN,EVT_009_1786,"Khi đại quân Tây Sơn rút về Nam, Trịnh Bồng thừa cơ nổi dậy tái lập phủ Chúa (Án Đô vương).",Hoang Le Nhat Thong Chi
+EDG_EXP_089,EVT_009_1786,DẪN_ĐẾN,EVT_010_1786,Vua Lê Chiêu Thống triệu Nguyễn Hữu Chỉnh ra Bắc dẹp phe chúa Trịnh và đốt phá phủ Chúa.,Hoang Le Nhat Thong Chi
+EDG_EXP_090,EVT_010_1786,DẪN_ĐẾN,EVT_012,Nguyễn Hữu Chỉnh chuyên quyền chống Tây Sơn khiến Nguyễn Huệ cử Vũ Văn Nhậm ra Bắc diệt Chỉnh năm 1787.,Hoang Le Nhat Thong Chi
+EDG_EXP_091,EVT_012,DẪN_ĐẾN,EVT_013,"Vũ Văn Nhậm tỏ thái độ kiêu ngạo muốn kiêu hùng Bắc Hà, Nguyễn Huệ thần tốc ra Bắc giết Nhậm năm 1788.",Hoang Le Nhat Thong Chi
+EDG_EXP_092,EVT_013,DẪN_ĐẾN,EVT_012_1788,"Lê Chiêu Thống bỏ chạy sang Tàu xin cứu viện, khiến Tôn Sĩ Nghị cất 29 vạn quân Thanh xâm lược Việt Nam.",Hoang Le Nhat Thong Chi; Viet Nam Su Luoc
+EDG_EXP_093,EVT_012_1788,DẪN_ĐẾN,EVT_014,"Quân Thanh chiếm Thăng Long, Nguyễn Huệ làm lễ lên ngôi Hoàng đế (Quang Trung) tại Bán Sơn rồi thần tốc xuất quân.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_094,EVT_014,TIỀN_ĐỀ_CỦA,EVT_015,Cuộc xuất quân thần tốc dẫn tới đợt bao vây bức hàng đồn Hà Hồi rạng sáng mồng 3 Tết Kỷ Dậu.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_095,EVT_015,TIỀN_ĐỀ_CỦA,EVT_016,Chiến thắng Hà Hồi mở đường cho đại quân Tây Sơn đập tan sào huyệt Ngọc Hồi - Đống Đa rạng sáng mồng 5 Tết.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_096,EVT_016,DẪN_ĐẾN,EVT_001_1789,"Đại phá 29 vạn quân Thanh làm sụp đổ hoàn toàn chỗ dựa của Lê Chiêu Thống, chấm dứt triều Hậu Lê.",Hoang Le Nhat Thong Chi
+EDG_EXP_097,EVT_016,DẪN_ĐẾN,EVT_016_NGOAIGIAO,"Thắng lợi quân sự giòn giã buộc nhà Thanh đổi giọng, chấp nhận tiếp đại sứ bộ Phạm Công Trị tại Yên Kinh.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_098,EVT_016,TIỀN_ĐỀ_CỦA,EVT_018_CAICACH,"Quét sạch ngoại xâm mang lại hòa bình, tạo tiền đề cho vua Quang Trung thực hiện công cuộc cải cách toàn diện.",0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_099,EVT_018_CAICACH,TIỀN_ĐỀ_CỦA,EVT_017,Công cuộc cải cách nội chính đi liền với chính sách ban hành Chiếu khuyến nông phục hồi đất nước.,0315.Quang Trung Nguyễn Huệ - Anh Hùng Dân Tộc
+EDG_EXP_100,EVT_018,DẪN_ĐẾN,EVT_010_1793,"Cái chết đột ngột của vua Quang Trung khiến Tây Sơn mất đi vị thủ lĩnh kiệt xuất, Nguyễn Ánh thừa cơ vây Quy Nhơn.",Dai Nam Thuc Luc; Viet Nam Su Luoc
+EDG_EXP_101,EVT_010_1793,DẪN_ĐẾN,EVT_020,"Triều đình Cảnh Thịnh nhỏ tuổi rơi vào tay Thái sư Bùi Đắc Tuyên, gây nên biến loạn nội bộ chém giết lẫn nhau.",Viet Nam Su Luoc
+EDG_EXP_102,EVT_020,DẪN_ĐẾN,EVT_013_1799,Nội bộ Tây Sơn rạn nứt nghiêm trọng tạo điều kiện cho quân Nguyễn Ánh đánh chiếm thành Quy Nhơn năm 1799.,Dai Nam Thuc Luc
+EDG_EXP_103,EVT_013_1799,DẪN_ĐẾN,EVT_021,Trần Quang Diệu vây hãm Quy Nhơn buộc Nguyễn Ánh phải tập trung toàn bộ thủy quân nghênh chiến tại Thị Nại 1801.,Dai Nam Thuc Luc
+EDG_EXP_104,EVT_021,DẪN_ĐẾN,EVT_019,Hạm đội Tây Sơn tổn thất nặng tại Thị Nại giúp Nguyễn Ánh thừa thắng đánh chiếm kinh đô Phú Xuân 1801.,Dai Nam Thuc Luc
+EDG_EXP_105,EVT_019,DẪN_ĐẾN,EVT_020_1802,"Mất Phú Xuân và Quy Nhơn, quân Tây Sơn tan rã tại Bắc Hà, triều đại Tây Sơn chính thức sụp đổ năm 1802.",Viet Nam Su Luoc
+EDG_EXP_106,EVT_020_1802,DẪN_ĐẾN,EVT_POST_1802_01,"Diệt xong Tây Sơn, Nguyễn Ánh lên ngôi Hoàng đế lấy niên hiệu Gia Long lập ra nhà Nguyễn năm 1802.",Dai Nam Thuc Luc
+EDG_EXP_107,EVT_POST_1802_01,TIỀN_ĐỀ_CỦA,EVT_POST_1804,"Nhà Nguyễn ổn định cai trị, chính thức đổi quốc hiệu thành Việt Nam và nhận sắc phong của nhà Thanh năm 1804.",Dai Nam Thuc Luc
+EDG_EXP_108,EVT_PRE_1738,TIỀN_ĐỀ_CỦA,EVT_PRE_1744,Nguyễn Phúc Khoát xưng vương năm 1738 là tiền đề dẫn đến việc chính thức định chế triều phục năm 1744.,SRC_003
+EDG_EXP_109,PER_PRE_002,CHỦ_TRÌ_SỰ_KIỆN,EVT_PRE_1744,Chúa Nguyễn Phúc Khoát chủ trì xưng Võ Vương và định chế triều phục ở Đàng Trong năm 1744.,SRC_003
+EDG_EXP_110,EVT_PRE_1744,DIỄN_RA_TẠI,LOC_002,Sự kiện Nguyễn Phúc Khoát xưng vương diễn ra tại kinh thành Phú Xuân.,SRC_003
+EDG_EXP_111,EVT_PRE_1744,TIỀN_ĐỀ_CỦA,EVT_PRE_1750,Chi phí bộ máy quan lại tăng sau xưng vương dẫn đến việc siết chặt thuế khóa năm 1750.,SRC_008
+EDG_EXP_112,EVT_PRE_1750,DIỄN_RA_TẠI,LOC_003,Biến động thuế khóa lạm thu tác động mạnh tới vùng núi Quy Nhơn.,SRC_008
+EDG_EXP_113,EVT_PRE_1750,TIỀN_ĐỀ_CỦA,EVT_PRE_1755,Bất mãn kinh tế thuế khóa góp phần làm suy yếu bộ máy quan lại Đàng Trong giai đoạn 1755-1757.,SRC_008
+EDG_EXP_114,EVT_PRE_1755,TIỀN_ĐỀ_CỦA,EVT_PRE_1767,Khủng hoảng triều chính hai miền là tiền đề cho các cuộc phong trào nổi dậy giai đoạn 1767-1769.,SRC_001
+EDG_EXP_115,EVT_PRE_1767,DẪN_ĐẾN,EVT_PRE_1769,Khủng hoảng chính trị dẫn đến việc Trương Phúc Loan thâu tóm toàn bộ quyền lực Đàng Trong.,SRC_003
+EDG_EXP_116,PER_PRE_001,THAM_GIA_SỰ_KIỆN,EVT_PRE_1769,Trương Phúc Loan trực tiếp thao túng thuế khóa và dồn ép nông dân Bình Định.,SRC_003
+EDG_EXP_117,EVT_PRE_1769,DIỄN_RA_TẠI,LOC_002,Trương Phúc Loan lộng quyền tại phủ chúa Phú Xuân.,SRC_003
+EDG_EXP_118,EVT_PRE_1769,DẪN_ĐẾN,EVT_PRE_1770,Nạn tham nhũng của Trương Phúc Loan thôi thúc anh em Tây Sơn ngầm chuẩn bị lực lượng.,SRC_002
+EDG_EXP_119,PER_001,THAM_GIA_SỰ_KIỆN,EVT_PRE_1770,Nguyễn Huệ cùng các anh em tích lũy binh lương chuẩn bị khởi nghĩa.,SRC_002
+EDG_EXP_120,PER_002,THAM_GIA_SỰ_KIỆN,EVT_PRE_1770,Nguyễn Nhạc chiêu mộ nghĩa sĩ và liên kết tộc người thiểu số Tây Nguyên.,SRC_002
+EDG_EXP_121,PER_003,THAM_GIA_SỰ_KIỆN,EVT_PRE_1770,Nguyễn Lữ tham gia vận động và chuẩn bị căn cứ Tây Sơn.,SRC_002
+EDG_EXP_122,EVT_PRE_1770,DIỄN_RA_TẠI,LOC_005,Anh em Tây Sơn xây dựng căn cứ và vận động lực lượng tại Tây Sơn Thượng đạo.,SRC_002
+EDG_EXP_123,EVT_PRE_1770,DẪN_ĐẾN,EVT_001,Công tác chuẩn bị năm 1770 dẫn trực tiếp đến việc chính thức phất cờ khởi nghĩa Tây Sơn năm 1771.,SRC_002
+EDG_EXP_124,EVT_020_1802,DẪN_ĐẾN,EVT_POST_1802_02,Quân Nguyễn bình định Bắc Hà dẫn đến việc chiếm Thăng Long và bắt sống vua Cảnh Thịnh.,SRC_003
+EDG_EXP_125,PER_043,CHỈ_HUY_SỰ_KIỆN,EVT_POST_1802_02,Nguyễn Ánh trực tiếp chỉ huy đại quân tiến vào Thăng Long tháng 6/1802.,SRC_003
+EDG_EXP_126,PER_004,THAM_GIA_SỰ_KIỆN,EVT_POST_1802_02,Vua Cảnh Thịnh Nguyễn Quang Toản bị quân Nguyễn bắt sống tại Bắc Hà.,SRC_003
+EDG_EXP_127,EVT_POST_1802_02,DIỄN_RA_TẠI,LOC_001,Việc bắt sống vua Cảnh Thịnh và thu phục Bắc Hà diễn ra tại Thăng Long.,SRC_003
+EDG_EXP_128,EVT_POST_1802_02,DẪN_ĐẾN,EVT_POST_1802_03,Nguyễn Ánh chiếm được toàn bộ lãnh thổ dẫn đến tổ chức Lễ Hiến Phù xử tử tướng Tây Sơn.,SRC_003
+EDG_EXP_129,PER_043,CHỦ_TRÌ_SỰ_KIỆN,EVT_POST_1802_03,Vua Gia Long Nguyễn Ánh chủ trì Lễ Hiến Phù tại Phú Xuân tháng 11/1802.,SRC_003
+EDG_EXP_130,PER_004,THAM_GIA_SỰ_KIỆN,EVT_POST_1802_03,Nguyễn Quang Toản bị xử tử trong Lễ Hiến Phù.,SRC_003
+EDG_EXP_131,PER_005,THAM_GIA_SỰ_KIỆN,EVT_POST_1802_03,Danh tướng Trần Quang Diệu bị xử tử trong Lễ Hiến Phù.,SRC_003
+EDG_EXP_132,PER_006,THAM_GIA_SỰ_KIỆN,EVT_POST_1802_03,Nữ tướng Bùi Thị Xuân chịu án voi xé thảm khốc trong Lễ Hiến Phù.,SRC_003
+EDG_EXP_133,EVT_POST_1802_03,DIỄN_RA_TẠI,LOC_002,Lễ Hiến Phù được tổ chức tại kinh thành Phú Xuân.,SRC_003
+EDG_EXP_134,EVT_POST_1802_03,TIỀN_ĐỀ_CỦA,EVT_POST_1803,Lễ Hiến Phù kết thúc xử tử vương thất dẫn đến đợt răn đe phạt roi cựu thần Bắc Hà ở Văn Miếu.,SRC_003
+EDG_EXP_135,PER_008,THAM_GIA_SỰ_KIỆN,EVT_POST_1803,Ngô Thì Nhậm bị phạt roi tại Văn Miếu Thăng Long.,SRC_001
+EDG_EXP_136,PER_009,THAM_GIA_SỰ_KIỆN,EVT_POST_1803,Phan Huy Ích bị phạt roi công khai tại Văn Miếu Thăng Long.,SRC_001
+EDG_EXP_137,EVT_POST_1803,DIỄN_RA_TẠI,LOC_001,Hình phạt roi cựu thần Tây Sơn diễn ra tại Văn Miếu Thăng Long.,SRC_001
+EDG_EXP_138,EVT_POST_1803,DẪN_ĐẾN,EVT_POST_1804_02,Trấn áp xong tàn dư Tây Sơn giúp Gia Long tự tin đón sắc phong và đổi quốc hiệu Việt Nam.,SRC_003
+EDG_EXP_139,PER_043,THAM_GIA_SỰ_KIỆN,EVT_POST_1804_02,Gia Long Nguyễn Ánh đón nhận sắc phong An Nam Quốc Vương từ nhà Thanh.,SRC_003
+EDG_EXP_140,EVT_POST_1804_02,DIỄN_RA_TẠI,LOC_002,Lễ tiếp nhận sắc phong quốc hiệu Việt Nam diễn ra tại Phú Xuân.,SRC_003
+EDG_EXP_141,EVT_POST_1804_02,DẪN_ĐẾN,EVT_POST_1805,Chính thức hóa quốc hiệu làm tiền đề thành lập hai vùng Tổng trấn Bắc Thành và Gia Định Thành.,SRC_003
+EDG_EXP_142,PER_043,CHỦ_TRÌ_SỰ_KIỆN,EVT_POST_1805,Gia Long chủ trì thiết lập mô hình quản lý hai Tổng trấn.,SRC_003
+EDG_EXP_143,EVT_POST_1805,DẪN_ĐẾN,EVT_POST_1815,Ổn định bộ máy hành chính hai miền dẫn đến việc soạn thảo và ban hành Hoàng Việt luật lệ.,SRC_003
+EDG_EXP_144,PER_043,CHỦ_TRÌ_SỰ_KIỆN,EVT_POST_1815,Vua Gia Long ban hành Hoàng Việt luật lệ năm 1815.,SRC_003
+EDG_EXP_145,EVT_POST_1815,TIỀN_ĐỀ_CỦA,EVT_POST_1816,Hoàn thiện pháp luật là tiền đề chuẩn bị chuyển giao quyền lực cho Thái tử Đảm.,SRC_003
+EDG_EXP_146,PER_043,THAM_GIA_SỰ_KIỆN,EVT_POST_1816,Vua Gia Long quyết định lập Hoàng tử Đảm làm Thái tử.,SRC_003
+EDG_EXP_147,PER_POST_002,THAM_GIA_SỰ_KIỆN,EVT_POST_1816,Hoàng tử Nguyễn Phúc Đảm được sách lập làm Đông cung Thái tử.,SRC_003
+EDG_EXP_148,EVT_POST_1816,TIỀN_ĐỀ_CỦA,EVT_POST_1819,Định hướng củng cố quốc phòng dẫn đến quyết định khởi công đào kênh Vĩnh Tế năm 1819.,SRC_003
+EDG_EXP_149,PER_043,CHỦ_TRÌ_SỰ_KIỆN,EVT_POST_1819,Vua Gia Long ban lệnh huy động đào kênh Vĩnh Tế.,SRC_003
+EDG_EXP_150,EVT_POST_1819,DIỄN_RA_TẠI,LOC_004,Kênh Vĩnh Tế được đào tại khu vực miền Tây thuộc Gia Định thành.,SRC_003
+EDG_EXP_151,EVT_POST_1819,TIỀN_ĐỀ_CỦA,EVT_POST_1820,Kênh Vĩnh Tế hoàn thành một phần trước khi Gia Long qua đời năm 1820.,SRC_003

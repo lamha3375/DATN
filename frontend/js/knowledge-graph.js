@@ -1,587 +1,948 @@
-
 document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
+
     const API = window.ApiClient;
+    const $ = id => document.getElementById(id);
 
-    const elements = {
-        network: document.getElementById("knowledge-network"),
-        loading: document.getElementById("graph-loading"),
-        error: document.getElementById("graph-error"),
-        errorMessage: document.getElementById("graph-error-message"),
-        empty: document.getElementById("graph-empty"),
+    const el = {
+        network: $("knowledge-network"),
+        loading: $("graph-loading"),
+        error: $("graph-error"),
+        errorMessage: $("graph-error-message"),
+        empty: $("graph-empty"),
 
-        nodeCount: document.getElementById("node-count"),
-        edgeCount: document.getElementById("edge-count"),
+        totalNodes: $("total-node-count"),
+        totalEdges: $("total-edge-count"),
+        visibleNodes: $("visible-node-count"),
+        visibleEdges: $("visible-edge-count"),
+        status: $("graph-status-text"),
 
-        searchInput: document.getElementById("graph-search-input"),
-        searchButton: document.getElementById("graph-search-btn"),
-        searchResults: document.getElementById("search-results"),
+        searchInput: $("graph-search-input"),
+        searchButton: $("graph-search-btn"),
+        searchResults: $("search-results"),
 
-        entityFilter: document.getElementById("entity-filter"),
-        fitButton: document.getElementById("fit-graph-btn"),
-        resetButton: document.getElementById("reset-graph-btn"),
-        retryButton: document.getElementById("graph-retry-btn"),
+        filter: $("entity-filter"),
+        fit: $("fit-graph-btn"),
+        reset: $("reset-graph-btn"),
+        retry: $("graph-retry-btn"),
 
-        detailPlaceholder: document.getElementById("detail-placeholder"),
-        detailContent: document.getElementById("detail-content"),
-        detailType: document.getElementById("detail-type"),
-        detailName: document.getElementById("detail-name"),
-        detailBusinessId: document.getElementById("detail-business-id"),
-        detailProperties: document.getElementById("detail-properties-list"),
-        detailRelations: document.getElementById("detail-relations-list"),
-        relationCount: document.getElementById("relation-count"),
-        expandButton: document.getElementById("expand-node-btn")
+        placeholder: $("detail-placeholder"),
+        content: $("detail-content"),
+        type: $("detail-type"),
+        name: $("detail-name"),
+        businessId: $("detail-business-id"),
+        properties: $("detail-properties-list"),
+        relations: $("detail-relations-list"),
+        relationCount: $("relation-count"),
+        expand: $("expand-node-btn")
+    };
+
+    const CONFIG = {
+        INITIAL_LIMIT: 40,
+        INITIAL_NODE_COUNT: 18,
+        EXPANSION_LIMIT: 30,
+        SEARCH_LIMIT: 20,
+        MAX_PROPERTY_LENGTH: 1200
+    };
+
+    const LABELS = {
+        Person: "Nhân vật",
+        Event: "Sự kiện",
+        Location: "Địa điểm",
+        Faction: "Phe phái",
+        Policy: "Chính sách",
+        Document: "Văn kiện",
+        Unit: "Đơn vị",
+        Tactics: "Chiến thuật",
+        Source: "Nguồn tư liệu",
+        Unknown: "Thực thể"
+    };
+
+    const PROPERTY_LABELS = {
+        name: "Tên",
+        title: "Tiêu đề",
+        entity: "Thực thể",
+        ten: "Tên",
+        alias: "Tên gọi khác",
+        aliases: "Tên gọi khác",
+
+        role: "Vai trò",
+        position: "Chức vụ",
+        occupation: "Nghề nghiệp",
+        dynasty: "Triều đại",
+        period: "Thời kỳ",
+        bio: "Tiểu sử",
+        biography: "Tiểu sử",
+        birthDate: "Ngày sinh",
+        deathDate: "Ngày mất",
+        birthYear: "Năm sinh",
+        deathYear: "Năm mất",
+        hometown: "Quê quán",
+
+        description: "Mô tả",
+        summary: "Tóm tắt",
+        content: "Nội dung",
+        context: "Bối cảnh",
+        result: "Kết quả",
+        significance: "Ý nghĩa lịch sử",
+        historicalSignificance: "Ý nghĩa lịch sử",
+
+        startDate: "Thời gian bắt đầu",
+        endDate: "Thời gian kết thúc",
+        date: "Thời gian",
+        year: "Năm",
+        eventType: "Loại sự kiện",
+
+        location: "Địa điểm",
+        locationName: "Tên địa điểm",
+        historicalName: "Tên lịch sử",
+        modernName: "Tên hiện nay",
+        region: "Khu vực",
+        country: "Quốc gia",
+
+        leader: "Người lãnh đạo",
+        members: "Thành viên",
+        faction: "Phe phái",
+        unit: "Đơn vị",
+        tactics: "Chiến thuật",
+        policy: "Chính sách",
+
+        author: "Tác giả",
+        source: "Nguồn tư liệu",
+        sourceName: "Tên nguồn",
+        publisher: "Nhà xuất bản",
+        publicationDate: "Ngày xuất bản",
+        documentType: "Loại tài liệu",
+        url: "Đường dẫn",
+
+        tags: "Từ khóa",
+        note: "Ghi chú",
+        notes: "Ghi chú",
+        rank: "Cấp bậc",
+        militaryRank: "Cấp bậc quân sự",
+        achievements: "Thành tựu",
+        weapons: "Vũ khí",
+        forces: "Lực lượng",
+        participants: "Người tham gia",
+        commander: "Người chỉ huy",
+        cause: "Nguyên nhân",
+        consequences: "Hệ quả",
+        duration: "Thời gian diễn ra"
+    };
+
+    const HIDDEN_PROPERTIES = new Set([
+        "id",
+        "module",
+        "rag_text",
+        "embedding",
+        "embeddings",
+        "vector",
+        "raw_data",
+        "created_at",
+        "updated_at",
+        "createdAt",
+        "updatedAt",
+        "person_id",
+        "event_id",
+        "location_id",
+        "source_id",
+        "element_id",
+        "node_id"
+    ]);
+
+    const WIDE_PROPERTIES = new Set([
+        "description",
+        "summary",
+        "bio",
+        "biography",
+        "content",
+        "context",
+        "result",
+        "significance",
+        "historicalSignificance",
+        "achievements",
+        "consequences",
+        "notes",
+        "note"
+    ]);
+
+    const RELATION_LABELS = {
+        DIEN_RA_TAI: "Diễn ra tại",
+        THAM_GIA_SU_KIEN: "Tham gia sự kiện",
+        CHI_HUY_SU_KIEN: "Chỉ huy sự kiện",
+        TRICH_DAN_TU_NGUON: "Trích dẫn từ nguồn",
+        THUOC_VE_PHE_PHAI: "Thuộc về phe phái",
+        ANH_EM_CUA: "Anh em của",
+        CHA_ME_CUA: "Cha mẹ của",
+        VO_CHONG_CUA: "Vợ chồng với",
+        HA_SAT_XU_TU: "Hạ sát, xử tử",
+        PHUNG_SU_TRIEU_INH: "Phụng sự triều đình",
+        LIEN_MINH_VOI: "Liên minh với",
+        THAY_HOC_CUA: "Thầy học của",
+        BAN_HANH: "Ban hành",
+        SOAN_THAO: "Soạn thảo",
+        CHU_TRI_THUC_HIEN: "Chủ trì thực hiện",
+        CHI_HUY_DON_VI: "Chỉ huy đơn vị",
+        CHI_HUY_ON_VI: "Chỉ huy đơn vị",
+        SANG_TAO_CHIEN_THUAT: "Sáng tạo chiến thuật",
+        AP_DUNG_TRONG: "Áp dụng trong",
+        BAN_HANH_TRONG_SU_KIEN: "Ban hành trong sự kiện",
+        SU_DUNG_TRONG_SU_KIEN: "Sử dụng trong sự kiện",
+        SU_DUNG_TRONG: "Sử dụng trong",
+        TIEN_DE_CUA: "Là tiền đề của",
+        TIEN_E_CUA: "Là tiền đề của",
+        DAN_DEN: "Dẫn đến",
+        CHU_TRI_SU_KIEN: "Chủ trì sự kiện",
+        ANH_BAI: "Chịu ảnh hưởng bởi",
+        CUU_MANG: "Cưu mang",
+        CUU_MANG_CUU_MANG: "Cưu mang",
+        TUYEN_DOC_TAI_SU_KIEN: "Tuyển mộ tại sự kiện",
+        TUYEN_OC_TAI_SU_KIEN: "Tuyển mộ tại sự kiện",
+        TAC_DONG_DEN: "Tác động đến",
+        TAC_ONG_EN: "Tác động đến",
+        TAC_DONG_QUYEN_LUC: "Tác động đến quyền lực",
+        TAC_ONG_QUYEN_LUC: "Tác động đến quyền lực",
+        DONG_CO_KHOI_NGHIA: "Khởi nghĩa",
+        ONG_CO_KHOI_NGHIA: "Khởi nghĩa"
+    };
+
+    const COLORS = {
+        Person: { background: "#e7c49b", border: "#a87948" },
+        Event: { background: "#c8d5b7", border: "#788b68" },
+        Location: { background: "#c3d7e0", border: "#708b9c" },
+        Faction: { background: "#e0c5ce", border: "#a8798c" },
+        Policy: { background: "#ead5ae", border: "#b58b50" },
+        Document: { background: "#d9d5cb", border: "#999080" },
+        Unit: { background: "#d4c8e2", border: "#8974a5" },
+        Tactics: { background: "#d4d1ae", border: "#92905f" },
+        Source: { background: "#d5d5d5", border: "#858585" }
     };
 
     const state = {
         network: null,
-        nodes: new Map(),
-        edges: new Map(),
-        selectedNodeId: null,
-        isExpanding: false,
-        isLoading: false
+        nodes: null,
+        edges: null,
+
+        nodeMap: new Map(),
+        edgeMap: new Map(),
+
+        selectedId: null,
+        expandedIds: new Set(),
+
+        loading: false,
+        expanding: false,
+        searchRequest: 0
     };
 
-    const NODE_COLORS = {
-        NhanVat: {
-            background: "#d8b58b",
-            border: "#a87948",
-            highlight: "#b88b5b"
-        },
-        SuKien: {
-            background: "#b9c5a8",
-            border: "#788b68",
-            highlight: "#8b9d77"
-        },
-        DiaDiem: {
-            background: "#b5c9d3",
-            border: "#708b9c",
-            highlight: "#849eac"
-        },
-        TheLuc: {
-            background: "#d5b8c2",
-            border: "#a8798c",
-            highlight: "#b58c9b"
-        },
-        NguonTaiLieu: {
-            background: "#d2cec3",
-            border: "#999080",
-            highlight: "#aaa394"
-        },
-        Default: {
-            background: "#d8cbb5",
-            border: "#9a8263",
-            highlight: "#b18a4b"
-        }
-    };
-
-    const LABEL_NAMES = {
-        NhanVat: "Nhân vật",
-        SuKien: "Sự kiện",
-        DiaDiem: "Địa điểm",
-        TheLuc: "Thế lực",
-        NguonTaiLieu: "Nguồn tài liệu"
-    };
-
-    /* =====================================
-       HELPERS
-    ===================================== */
+    // ================================================
+    // HELPERS
+    // ================================================
 
     function escapeHTML(value) {
-        return String(value ?? "").replace(/[&<>"']/g, character => ({
+        return String(value ?? "").replace(/[&<>"']/g, char => ({
             "&": "&amp;",
             "<": "&lt;",
             ">": "&gt;",
             '"': "&quot;",
             "'": "&#039;"
-        })[character]);
+        })[char]);
+    }
+
+    function normalizeId(id) {
+        return String(id ?? "");
+    }
+
+    function getNodeType(node) {
+        const labels = node?.labels;
+
+        if (Array.isArray(labels)) {
+            return labels.find(label => LABELS[label]) || labels[0] || "Unknown";
+        }
+
+        return labels || "Unknown";
     }
 
     function getNodeName(node) {
-        const properties = node.properties || {};
+        const p = node?.properties || {};
 
         return (
-            properties.name ||
-            properties.event_name ||
-            properties.location_name ||
-            properties.title ||
-            properties.source_name ||
-            node.name ||
+            p.name ||
+            p.event_name ||
+            p.location_name ||
+            p.source_name ||
+            p.fullName ||
+            p.full_name ||
+            p.title ||
+            p.entity ||
+            p.ten ||
+            node?.name ||
             "Chưa có tên"
         );
     }
 
-    function getNodeType(node) {
-        const labels = node.labels || node.entity_type || [];
-
-        if (!Array.isArray(labels)) {
-            return labels || "Khác";
-        }
-
-        return labels.find(label => LABEL_NAMES[label]) || labels[0] || "Khác";
-    }
-
-    function getTypeName(type) {
-        return LABEL_NAMES[type] || type || "Thực thể";
-    }
-
     function getNodeColor(type) {
-        return NODE_COLORS[type] || NODE_COLORS.Default;
+        return COLORS[type] || {
+            background: "#ded2bd",
+            border: "#9a8263"
+        };
     }
 
-    function formatValue(value, maxLength = 500) {
-        if (value === null || value === undefined || value === "") {
-            return "Chưa có thông tin";
+    function getRelationshipName(edge) {
+        const type = String(edge?.type || "QUAN_HE").toUpperCase();
+
+        return (
+            RELATION_LABELS[type] ||
+            edge?.display_type ||
+            type.replace(/_/g, " ").toLowerCase()
+        );
+    }
+
+    function getPropertyLabel(key) {
+        if (PROPERTY_LABELS[key]) {
+            return PROPERTY_LABELS[key];
         }
 
-        let result;
+        const readable = String(key)
+            .replace(/([a-z])([A-Z])/g, "$1 $2")
+            .replace(/[_-]/g, " ")
+            .trim();
+
+        return readable
+            ? readable.charAt(0).toUpperCase() + readable.slice(1)
+            : "Thông tin khác";
+    }
+
+    function formatValue(value) {
+        if (value === null || value === undefined || value === "") {
+            return "";
+        }
 
         if (Array.isArray(value)) {
-            result = value.map(item =>
-                typeof item === "object"
-                    ? JSON.stringify(item)
-                    : String(item)
-            ).join(", ");
-        } else if (typeof value === "object") {
-            result = JSON.stringify(value);
-        } else {
-            result = String(value);
+            return value.map(item => {
+                if (item === null || item === undefined) return "";
+                if (typeof item === "object") {
+                    return Object.values(item).join(" – ");
+                }
+                return String(item);
+            }).filter(Boolean).join(", ");
         }
 
-        if (result.length > maxLength) {
-            result = result.slice(0, maxLength) + "...";
+        if (typeof value === "object") {
+            return Object.entries(value)
+                .map(([key, item]) => `${getPropertyLabel(key)}: ${formatValue(item)}`)
+                .join("\n");
         }
 
-        return result;
+        return String(value);
     }
 
-    function setLoading(isLoading) {
-        elements.loading.hidden = !isLoading;
+    function setLoading(value) {
+        el.loading.hidden = !value;
     }
 
     function showError(message) {
-        elements.errorMessage.textContent = message;
-        elements.error.hidden = false;
-        elements.empty.hidden = true;
+        el.errorMessage.textContent = message;
+        el.error.hidden = false;
+        el.empty.hidden = true;
     }
 
     function hideError() {
-        elements.error.hidden = true;
+        el.error.hidden = true;
     }
 
-    function getNodeLabel(node) {
-        const name = getNodeName(node);
-        return name.length > 25
-            ? name.slice(0, 22) + "..."
-            : name;
+    function updateStatus(message) {
+        el.status.textContent = message;
     }
 
-    /* =====================================
-       GRAPH DATA CONVERSION
-    ===================================== */
+    function getFilter() {
+        return el.filter.value || "all";
+    }
+
+    function isNodeAllowed(node) {
+        const filter = getFilter();
+        const labels = Array.isArray(node.labels) ? node.labels : [node.labels];
+
+        return filter === "all" || labels.includes(filter);
+    }
+
+    // ================================================
+    // NODE / EDGE CONVERSION
+    // ================================================
 
     function convertNode(node) {
         const type = getNodeType(node);
-        const colors = getNodeColor(type);
+        const color = getNodeColor(type);
+        const name = getNodeName(node);
+        const id = normalizeId(node.id);
+        const selected = state.selectedId === id;
 
         return {
-            id: String(node.id),
-            label: getNodeLabel(node),
-            title: escapeHTML(getNodeName(node)),
+            id,
+            label: name.length > 25 ? `${name.slice(0, 22)}...` : name,
+            title: escapeHTML(name),
             group: type,
             shape: "dot",
-            size: 17,
+            size: selected ? 25 : 18,
+
             color: {
-                background: colors.background,
-                border: colors.border,
+                background: color.background,
+                border: selected ? "#805a2b" : color.border,
                 highlight: {
-                    background: colors.highlight,
-                    border: colors.border
+                    background: color.background,
+                    border: "#805a2b"
                 },
                 hover: {
-                    background: colors.highlight,
-                    border: colors.border
+                    background: color.background,
+                    border: "#805a2b"
                 }
             },
-            borderWidth: 2,
+
+            borderWidth: selected ? 4 : 2,
+
             font: {
                 face: "Be Vietnam Pro",
-                size: 11,
-                color: "#4c3b2c",
-                strokeWidth: 2,
+                size: selected ? 14 : 12,
+                color: "#35291f",
+                strokeWidth: 4,
                 strokeColor: "#fffdf8"
-            }
+            },
+
+            hidden: !isNodeAllowed(node)
         };
     }
 
     function convertEdge(edge) {
+        const relationship = getRelationshipName(edge);
+
         return {
-            id: String(edge.id),
-            from: String(edge.source),
-            to: String(edge.target),
-            label: edge.type || "",
-            title: escapeHTML(edge.type || "Quan hệ"),
+            id: normalizeId(edge.id),
+            from: normalizeId(edge.source),
+            to: normalizeId(edge.target),
+
+            label: "",
+            title: escapeHTML(relationship),
+
             arrows: {
                 to: {
                     enabled: true,
                     scaleFactor: 0.55
                 }
             },
+
             color: {
-                color: "#c4b59d",
+                color: "#cbbda8",
                 highlight: "#a87948",
                 hover: "#a87948"
             },
-            width: 1.3,
-            font: {
-                face: "Be Vietnam Pro",
-                size: 8,
-                color: "#897963",
-                strokeWidth: 3,
-                strokeColor: "#fffdf8",
-                align: "middle"
-            },
+
+            width: 1.4,
+
             smooth: {
                 enabled: true,
-                type: "dynamic"
+                type: "continuous",
+                roundness: 0.22
             }
         };
     }
 
-    /* =====================================
-       GRAPH DATA MANAGEMENT
-    ===================================== */
+    // ================================================
+    // COUNTERS
+    // ================================================
 
     function updateCounters() {
-        elements.nodeCount.textContent = state.nodes.size;
-        elements.edgeCount.textContent = state.edges.size;
+        let visibleNodes = 0;
+        let visibleEdges = 0;
+
+        state.nodeMap.forEach(node => {
+            if (isNodeAllowed(node)) visibleNodes++;
+        });
+
+        state.edgeMap.forEach(edge => {
+            const source = state.nodeMap.get(normalizeId(edge.source));
+            const target = state.nodeMap.get(normalizeId(edge.target));
+
+            if (source && target && isNodeAllowed(source) && isNodeAllowed(target)) {
+                visibleEdges++;
+            }
+        });
+
+        el.totalNodes.textContent = state.nodeMap.size;
+        el.totalEdges.textContent = state.edgeMap.size;
+
+        el.visibleNodes.textContent = visibleNodes;
+        el.visibleEdges.textContent = visibleEdges;
     }
 
-    function mergeGraphData(data) {
-        const nodes = data.nodes || [];
-        const edges = data.edges || [];
+    // ================================================
+    // DATA MANAGEMENT
+    // ================================================
 
-        nodes.forEach(node => {
-            if (!node.id) return;
+    function mergeData(data) {
+        const incomingNodes = Array.isArray(data.nodes) ? data.nodes : [];
+        const incomingEdges = Array.isArray(data.edges) ? data.edges : [];
 
-            const normalizedNode = {
+        incomingNodes.forEach(node => {
+            if (!node || node.id === undefined || node.id === null) return;
+
+            const normalized = {
                 ...node,
-                id: String(node.id)
+                id: normalizeId(node.id)
             };
 
-            state.nodes.set(normalizedNode.id, normalizedNode);
-
-            if (state.network) {
-                state.network.body.data.nodes.update(
-                    convertNode(normalizedNode)
-                );
-            }
+            state.nodeMap.set(normalized.id, normalized);
+            state.nodes.update(convertNode(normalized));
         });
 
-        edges.forEach(edge => {
-            if (!edge.id || !edge.source || !edge.target) return;
-
-            const normalizedEdge = {
-                ...edge,
-                id: String(edge.id),
-                source: String(edge.source),
-                target: String(edge.target)
-            };
-
-            state.edges.set(normalizedEdge.id, normalizedEdge);
-
-            if (state.network) {
-                state.network.body.data.edges.update(
-                    convertEdge(normalizedEdge)
-                );
-            }
-        });
-
-        updateCounters();
-        applyNodeFilter();
-    }
-
-    function initializeNetwork() {
-        if (typeof vis === "undefined") {
-            throw new Error(
-                "Không tải được thư viện vis-network. Hãy kiểm tra kết nối Internet."
-            );
-        }
-
-        const nodeDataSet = new vis.DataSet();
-        const edgeDataSet = new vis.DataSet();
-
-        const options = {
-            autoResize: true,
-
-            interaction: {
-                hover: true,
-                tooltipDelay: 150,
-                navigationButtons: true,
-                keyboard: {
-                    enabled: true,
-                    speed: {
-                        x: 10,
-                        y: 10,
-                        zoom: 0.05
-                    }
-                }
-            },
-
-            physics: {
-                enabled: true,
-                solver: "forceAtlas2Based",
-                forceAtlas2Based: {
-                    gravitationalConstant: -45,
-                    centralGravity: 0.008,
-                    springLength: 125,
-                    springConstant: 0.07,
-                    damping: 0.45,
-                    avoidOverlap: 0.7
-                },
-                stabilization: {
-                    enabled: true,
-                    iterations: 250,
-                    updateInterval: 25
-                }
-            },
-
-            nodes: {
-                chosen: true,
-                scaling: {
-                    min: 12,
-                    max: 24
-                }
-            },
-
-            edges: {
-                selectionWidth: 2,
-                hoverWidth: 2,
-                smooth: {
-                    enabled: true,
-                    type: "dynamic"
-                }
-            }
-        };
-
-        state.network = new vis.Network(
-            elements.network,
-            {
-                nodes: nodeDataSet,
-                edges: edgeDataSet
-            },
-            options
-        );
-
-        state.network.on("click", params => {
-            if (params.nodes.length > 0) {
-                showNodeDetails(params.nodes[0]);
-            }
-        });
-
-        state.network.on("deselectNode", () => {
-            // Giữ thông tin đang xem khi click vùng trống.
-        });
-
-        state.network.once("stabilizationIterationsDone", () => {
-            state.network.setOptions({
-                physics: {
-                    enabled: false
-                }
-            });
-        });
-    }
-
-    /* =====================================
-       FILTER
-    ===================================== */
-
-    function applyNodeFilter() {
-        if (!state.network) return;
-
-        const selectedType = elements.entityFilter.value;
-
-        const visibleNodeIds = new Set();
-
-        state.nodes.forEach(node => {
-            const labels = node.labels || [];
-            const isVisible =
-                selectedType === "all" ||
-                labels.includes(selectedType);
-
-            if (isVisible) {
-                visibleNodeIds.add(String(node.id));
-            }
-
-            state.network.body.data.nodes.update({
-                id: String(node.id),
-                hidden: !isVisible
-            });
-        });
-
-        state.edges.forEach(edge => {
-            const isVisible =
-                visibleNodeIds.has(String(edge.source)) &&
-                visibleNodeIds.has(String(edge.target));
-
-            state.network.body.data.edges.update({
-                id: String(edge.id),
-                hidden: !isVisible
-            });
-        });
-
-        if (state.selectedNodeId) {
-            const selectedNode = state.nodes.get(state.selectedNodeId);
-
+        incomingEdges.forEach(edge => {
             if (
-                selectedNode &&
-                selectedType !== "all" &&
-                !(selectedNode.labels || []).includes(selectedType)
-            ) {
-                clearNodeDetails();
-            }
-        }
-    }
-
-    /* =====================================
-       NODE DETAILS
-    ===================================== */
-
-    function clearNodeDetails() {
-        state.selectedNodeId = null;
-
-        elements.detailPlaceholder.hidden = false;
-        elements.detailContent.hidden = true;
-    }
-
-    function getNodeRelations(nodeId) {
-        const relations = [];
-
-        state.edges.forEach(edge => {
-            if (
-                String(edge.source) !== String(nodeId) &&
-                String(edge.target) !== String(nodeId)
+                !edge ||
+                edge.id === undefined ||
+                edge.source === undefined ||
+                edge.target === undefined
             ) {
                 return;
             }
 
-            const relatedId =
-                String(edge.source) === String(nodeId)
-                    ? String(edge.target)
-                    : String(edge.source);
+            const normalized = {
+                ...edge,
+                id: normalizeId(edge.id),
+                source: normalizeId(edge.source),
+                target: normalizeId(edge.target)
+            };
 
-            const relatedNode = state.nodes.get(relatedId);
+            if (
+                !state.nodeMap.has(normalized.source) ||
+                !state.nodeMap.has(normalized.target)
+            ) {
+                return;
+            }
+
+            state.edgeMap.set(normalized.id, normalized);
+            state.edges.update(convertEdge(normalized));
+        });
+
+        applyFilter();
+        updateCounters();
+    }
+
+    // ================================================
+    // NETWORK
+    // ================================================
+
+    function initializeNetwork() {
+        if (typeof vis === "undefined") {
+            throw new Error("Không tải được thư viện vis-network.");
+        }
+
+        state.nodes = new vis.DataSet();
+        state.edges = new vis.DataSet();
+
+        state.network = new vis.Network(
+            el.network,
+            {
+                nodes: state.nodes,
+                edges: state.edges
+            },
+            {
+                autoResize: true,
+
+                interaction: {
+                    hover: true,
+                    tooltipDelay: 150,
+                    hideEdgesOnDrag: true,
+                    navigationButtons: false,
+                    keyboard: { enabled: true }
+                },
+
+                physics: {
+                    enabled: true,
+                    solver: "forceAtlas2Based",
+
+                    forceAtlas2Based: {
+                        gravitationalConstant: -85,
+                        centralGravity: 0.012,
+                        springLength: 155,
+                        springConstant: 0.045,
+                        damping: 0.58,
+                        avoidOverlap: 0.9
+                    },
+
+                    stabilization: {
+                        enabled: true,
+                        iterations: 160,
+                        updateInterval: 25
+                    }
+                },
+
+                nodes: {
+                    chosen: true
+                },
+
+                edges: {
+                    selectionWidth: 2,
+                    hoverWidth: 2
+                }
+            }
+        );
+
+        state.network.on("click", params => {
+            if (params.nodes.length) {
+                showDetails(params.nodes[0]);
+            }
+        });
+
+        state.network.on("doubleClick", params => {
+            if (params.nodes.length) {
+                expandNode(params.nodes[0]).catch(console.error);
+            }
+        });
+
+        state.network.once("stabilizationIterationsDone", () => {
+            state.network.setOptions({
+                physics: { enabled: false }
+            });
+        });
+    }
+
+    // ================================================
+    // FILTER
+    // ================================================
+
+    function applyFilter() {
+        if (!state.nodes || !state.edges) return;
+
+        state.nodeMap.forEach(node => {
+            state.nodes.update({
+                id: normalizeId(node.id),
+                hidden: !isNodeAllowed(node)
+            });
+        });
+
+        state.edgeMap.forEach(edge => {
+            const source = state.nodeMap.get(normalizeId(edge.source));
+            const target = state.nodeMap.get(normalizeId(edge.target));
+
+            const visible =
+                source &&
+                target &&
+                isNodeAllowed(source) &&
+                isNodeAllowed(target);
+
+            state.edges.update({
+                id: normalizeId(edge.id),
+                hidden: !visible
+            });
+        });
+
+        if (state.selectedId) {
+            const selected = state.nodeMap.get(state.selectedId);
+
+            if (selected && !isNodeAllowed(selected)) {
+                clearDetails();
+            }
+        }
+
+        updateCounters();
+
+        const hasVisibleNodes = Array.from(state.nodeMap.values()).some(isNodeAllowed);
+        el.empty.hidden = hasVisibleNodes;
+    }
+
+    // ================================================
+    // DETAIL PANEL
+    // ================================================
+
+    function clearDetails() {
+        state.selectedId = null;
+
+        el.placeholder.hidden = false;
+        el.content.hidden = true;
+    }
+
+    function getRelations(nodeId) {
+        const relations = [];
+
+        state.edgeMap.forEach(edge => {
+            const source = normalizeId(edge.source);
+            const target = normalizeId(edge.target);
+
+            if (source !== nodeId && target !== nodeId) return;
+
+            const isSource = source === nodeId;
+            const relatedId = isSource ? target : source;
+            const relatedNode = state.nodeMap.get(relatedId);
 
             if (!relatedNode) return;
 
             relations.push({
-                type: edge.type,
-                name: getNodeName(relatedNode),
-                id: relatedId
+                edge,
+                relatedId,
+                relatedNode,
+                direction: isSource ? "out" : "in"
             });
         });
 
         return relations;
     }
 
-    function showNodeDetails(nodeId) {
-        const node = state.nodes.get(String(nodeId));
+    function showDetails(nodeId) {
+        nodeId = normalizeId(nodeId);
 
+        const node = state.nodeMap.get(nodeId);
         if (!node) return;
 
-        state.selectedNodeId = String(nodeId);
+        state.selectedId = nodeId;
 
-        const properties = node.properties || {};
+        el.placeholder.hidden = true;
+        el.content.hidden = false;
+
         const type = getNodeType(node);
-        const name = getNodeName(node);
 
-        elements.detailPlaceholder.hidden = true;
-        elements.detailContent.hidden = false;
+        el.type.textContent = LABELS[type] || "Thực thể";
+        el.name.textContent = getNodeName(node);
 
-        elements.detailType.textContent = getTypeName(type);
-        elements.detailName.textContent = name;
-        elements.detailBusinessId.textContent =
-            node.business_id
-                ? `Mã thực thể: ${node.business_id}`
-                : `Node ID: ${node.id}`;
+        el.businessId.textContent = node.business_id
+            ? `Mã thực thể: ${node.business_id}`
+            : "";
 
-        renderProperties(properties);
+        renderProperties(node.properties || {});
         renderRelations(nodeId);
+
+        state.nodes.update(
+            Array.from(state.nodeMap.values()).map(convertNode)
+        );
+
+        el.expand.disabled = false;
     }
 
     function renderProperties(properties) {
-        const ignoredFields = new Set([
-            "person_id",
-            "event_id",
-            "location_id",
-            "source_id",
-            "id"
-        ]);
+        const entries = Object.entries(properties || {})
+            .filter(([key, value]) => {
+                return (
+                    !HIDDEN_PROPERTIES.has(key) &&
+                    value !== null &&
+                    value !== undefined &&
+                    value !== ""
+                );
+            })
+            .map(([key, value]) => ({
+                key,
+                label: getPropertyLabel(key),
+                value: formatValue(value)
+            }))
+            .filter(item => item.value !== "")
+            .slice(0, 20);
 
-        const entries = Object.entries(properties)
-            .filter(([key, value]) =>
-                value !== null &&
-                value !== undefined &&
-                value !== "" &&
-                !ignoredFields.has(key)
-            )
-            .slice(0, 10);
-
-        if (entries.length === 0) {
-            elements.detailProperties.innerHTML = `
-                <p class="relation-empty">
+        if (!entries.length) {
+            el.properties.innerHTML = `
+                <p class="detail-empty">
                     Chưa có thông tin chi tiết cho thực thể này.
                 </p>
             `;
             return;
         }
 
-        elements.detailProperties.innerHTML = entries.map(([key, value]) => `
-            <div class="property-row">
-                <span class="property-label">${escapeHTML(key)}</span>
-                <span class="property-value">${escapeHTML(formatValue(value))}</span>
-            </div>
-        `).join("");
+        el.properties.innerHTML = entries.map(item => {
+            const isWide =
+                WIDE_PROPERTIES.has(item.key) ||
+                item.value.length > 150;
+
+            const value = item.value.length > CONFIG.MAX_PROPERTY_LENGTH
+                ? `${item.value.slice(0, CONFIG.MAX_PROPERTY_LENGTH)}…`
+                : item.value;
+
+            return `
+                <article class="property-item ${isWide ? "property-item-wide" : ""}">
+                    <span class="property-label">
+                        ${escapeHTML(item.label)}
+                    </span>
+
+                    <span class="property-value">
+                        ${escapeHTML(value)}
+                    </span>
+                </article>
+            `;
+        }).join("");
     }
 
     function renderRelations(nodeId) {
-        const relations = getNodeRelations(nodeId);
+        const relations = getRelations(nodeId);
 
-        elements.relationCount.textContent = relations.length;
+        el.relationCount.textContent = relations.length;
 
-        if (relations.length === 0) {
-            elements.detailRelations.innerHTML = `
-                <p class="relation-empty">
-                    Chưa có mối quan hệ được tải cho thực thể này.
-                    Hãy chọn "Khám phá các kết nối" để mở rộng đồ thị.
+        if (!relations.length) {
+            el.relations.innerHTML = `
+                <p class="detail-empty">
+                    Chưa có kết nối được tải. Hãy chọn “Khám phá các kết nối”
+                    để tìm hiểu thêm về thực thể này.
                 </p>
             `;
             return;
         }
 
-        elements.detailRelations.innerHTML = relations.map(relation => `
-            <div class="relation-item">
-                <span class="relation-type">
-                    ${escapeHTML(relation.type || "QUAN HỆ")}
-                </span>
-                <span class="relation-name">
-                    ${escapeHTML(relation.name)}
-                </span>
-            </div>
-        `).join("");
+        el.relations.innerHTML = relations.map(relation => {
+            const name = getNodeName(relation.relatedNode);
+            const type = getRelationshipName(relation.edge);
+
+            const direction = relation.direction === "out"
+                ? "Thực thể này →"
+                : "← Thực thể này";
+
+            return `
+                <button
+                    type="button"
+                    class="relation-item"
+                    data-related-id="${escapeHTML(relation.relatedId)}">
+
+                    <span class="relation-direction">
+                        ${escapeHTML(direction)}
+                    </span>
+
+                    <span class="relation-name">
+                        ${escapeHTML(type)}
+                    </span>
+
+                    <span class="relation-target">
+                        ${escapeHTML(name)}
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+                </button>
+            `;
+        }).join("");
+
+        el.relations.querySelectorAll(".relation-item").forEach(button => {
+            button.addEventListener("click", () => {
+                focusNode(button.dataset.relatedId);
+            });
+        });
     }
 
-    /* =====================================
-       LOAD INITIAL GRAPH
-    ===================================== */
+    // ================================================
+    // FOCUS
+    // ================================================
+
+    function focusNode(nodeId) {
+        nodeId = normalizeId(nodeId);
+
+        const node = state.nodeMap.get(nodeId);
+        if (!node || !state.network) return;
+
+        if (!isNodeAllowed(node)) {
+            el.filter.value = "all";
+            applyFilter();
+        }
+
+        showDetails(nodeId);
+        state.network.selectNodes([nodeId]);
+
+        state.network.focus(nodeId, {
+            scale: 1.15,
+            animation: {
+                duration: 500,
+                easingFunction: "easeInOutQuad"
+            }
+        });
+    }
+
+    // ================================================
+    // INITIAL GRAPH
+    // ================================================
+
+    function selectInitialNodes(nodes, edges) {
+        const filter = getFilter();
+
+        const candidates = nodes.filter(node => {
+            const labels = Array.isArray(node.labels)
+                ? node.labels
+                : [node.labels];
+
+            return filter === "all" || labels.includes(filter);
+        });
+
+        const degree = new Map();
+
+        candidates.forEach(node => degree.set(normalizeId(node.id), 0));
+
+        edges.forEach(edge => {
+            const source = normalizeId(edge.source);
+            const target = normalizeId(edge.target);
+
+            if (degree.has(source)) degree.set(source, degree.get(source) + 1);
+            if (degree.has(target)) degree.set(target, degree.get(target) + 1);
+        });
+
+        const priority = [
+            "Person",
+            "Event",
+            "Location",
+            "Faction",
+            "Policy",
+            "Document",
+            "Unit",
+            "Tactics",
+            "Source"
+        ];
+
+        candidates.sort((a, b) => {
+            const degreeDifference =
+                (degree.get(normalizeId(b.id)) || 0) -
+                (degree.get(normalizeId(a.id)) || 0);
+
+            if (degreeDifference !== 0) return degreeDifference;
+
+            return priority.indexOf(getNodeType(a)) -
+                priority.indexOf(getNodeType(b));
+        });
+
+        return candidates.slice(0, CONFIG.INITIAL_NODE_COUNT);
+    }
+
+    function buildInitialGraph(nodes, edges) {
+        const selectedNodes = selectInitialNodes(nodes, edges);
+
+        const selectedIds = new Set(
+            selectedNodes.map(node => normalizeId(node.id))
+        );
+
+        const selectedEdges = edges.filter(edge =>
+            selectedIds.has(normalizeId(edge.source)) &&
+            selectedIds.has(normalizeId(edge.target))
+        );
+
+        mergeData({
+            nodes: selectedNodes,
+            edges: selectedEdges
+        });
+
+        if (!selectedNodes.length) {
+            el.empty.hidden = false;
+            updateStatus("Chưa có dữ liệu");
+            return;
+        }
+
+        el.empty.hidden = true;
+
+        state.network.fit({
+            animation: {
+                duration: 600,
+                easingFunction: "easeInOutQuad"
+            }
+        });
+
+        updateStatus("Sẵn sàng khám phá");
+    }
 
     async function loadGraph() {
-        if (state.isLoading) return;
+        if (state.loading) return;
 
-        state.isLoading = true;
+        state.loading = true;
+
         setLoading(true);
         hideError();
-        elements.empty.hidden = true;
-        elements.searchResults.hidden = true;
+        el.empty.hidden = true;
+
+        updateStatus("Đang tải dữ liệu");
 
         try {
             if (!API) {
@@ -589,222 +950,68 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const response = await API.get("/api/graph/", {
-                limit: 100
+                limit: CONFIG.INITIAL_LIMIT
             });
 
-            if (!response || !Array.isArray(response.nodes)) {
-                throw new Error("Dữ liệu đồ thị trả về không đúng định dạng.");
+            if (
+                !response ||
+                !Array.isArray(response.nodes) ||
+                !Array.isArray(response.edges)
+            ) {
+                throw new Error("Dữ liệu đồ thị không hợp lệ.");
             }
 
             if (!state.network) {
                 initializeNetwork();
             }
 
+            state.nodeMap.clear();
+            state.edgeMap.clear();
             state.nodes.clear();
             state.edges.clear();
+            state.expandedIds.clear();
+            state.selectedId = null;
 
-            state.network.body.data.nodes.clear();
-            state.network.body.data.edges.clear();
+            clearDetails();
 
-            mergeGraphData(response);
+            buildInitialGraph(response.nodes, response.edges);
 
-            if (state.nodes.size === 0) {
-                elements.empty.hidden = false;
-                clearNodeDetails();
-                return;
-            }
-
-            state.network.setOptions({
-                physics: {
-                    enabled: true
-                }
-            });
-
-            state.network.fit({
-                animation: {
-                    duration: 700,
-                    easingFunction: "easeInOutQuad"
-                }
-            });
-
-            clearNodeDetails();
+            updateCounters();
 
         } catch (error) {
             console.error("Load graph error:", error);
-            showError(error.message || "Không thể tải dữ liệu đồ thị.");
+
+            updateStatus("Không thể tải dữ liệu");
+            showError(error.message || "Không thể tải đồ thị.");
+
         } finally {
-            state.isLoading = false;
+            state.loading = false;
             setLoading(false);
         }
     }
 
-    /* =====================================
-       SEARCH ENTITIES
-    ===================================== */
+    // ================================================
+    // EXPANSION
+    // ================================================
 
-    function renderSearchResults(results) {
-        elements.searchResults.hidden = false;
+    async function expandNode(nodeId) {
+        nodeId = normalizeId(nodeId);
 
-        if (!results.length) {
-            elements.searchResults.innerHTML = `
-                <div class="search-no-result">
-                    Không tìm thấy thực thể phù hợp.
-                </div>
-            `;
+        if (state.expanding) return;
+
+        if (state.expandedIds.has(nodeId)) {
+            showDetails(nodeId);
             return;
         }
 
-        elements.searchResults.innerHTML = results.map((item, index) => `
-            <button type="button"
-                    class="search-result-item"
-                    data-result-index="${index}">
-                <span class="search-result-name">
-                    ${escapeHTML(item.name || "Chưa có tên")}
-                </span>
-                <span class="search-result-type">
-                    ${escapeHTML(
-                        (item.entity_type || [])
-                            .map(getTypeName)
-                            .join(", ")
-                    )}
-                </span>
-            </button>
-        `).join("");
-
-        elements.searchResults.querySelectorAll(
-            ".search-result-item"
-        ).forEach(button => {
-            button.addEventListener("click", () => {
-                const index = Number(button.dataset.resultIndex);
-                selectSearchResult(results[index]);
-            });
-        });
-    }
-
-    async function searchEntities() {
-        const keyword = elements.searchInput.value.trim();
-
-        if (!keyword) {
-            elements.searchInput.focus();
-            return;
+        if (!API) {
+            throw new Error("Không tìm thấy ApiClient.");
         }
 
-        const selectedType = elements.entityFilter.value;
+        state.expanding = true;
+        el.expand.disabled = true;
 
-        // API search hiện chỉ hỗ trợ ba loại thực thể này.
-        if (
-            selectedType !== "all" &&
-            !["NhanVat", "SuKien", "DiaDiem"].includes(selectedType)
-        ) {
-            renderSearchResults([]);
-            elements.searchResults.innerHTML = `
-                <div class="search-no-result">
-                    API tìm kiếm hiện hỗ trợ nhân vật, sự kiện và địa điểm.
-                </div>
-            `;
-            return;
-        }
-
-        elements.searchButton.disabled = true;
-        elements.searchButton.textContent = "Đang tìm...";
-
-        try {
-            const params = {
-                keyword,
-                limit: 20
-            };
-
-            if (selectedType !== "all") {
-                params.entity_type = selectedType;
-            }
-
-            const response = await API.get(
-                "/api/graph/search",
-                params
-            );
-
-            renderSearchResults(response.results || []);
-
-        } catch (error) {
-            console.error("Search graph error:", error);
-
-            elements.searchResults.hidden = false;
-            elements.searchResults.innerHTML = `
-                <div class="search-no-result">
-                    ${escapeHTML(error.message)}
-                </div>
-            `;
-        } finally {
-            elements.searchButton.disabled = false;
-            elements.searchButton.textContent = "Tìm kiếm";
-        }
-    }
-
-    /* =====================================
-       SELECT SEARCH RESULT
-    ===================================== */
-
-    async function selectSearchResult(result) {
-        if (!result) return;
-
-        elements.searchResults.hidden = true;
-
-        const nodeId = String(result.id || result.node_id || "");
-
-        if (!nodeId) {
-            showError("Thực thể tìm được không có node ID hợp lệ.");
-            return;
-        }
-
-        // Đưa kết quả tìm kiếm vào đồ thị nếu chưa có.
-        const node = {
-            id: nodeId,
-            business_id: result.business_id,
-            labels: result.entity_type || [],
-            properties: result.properties || {},
-            name: result.name
-        };
-
-        state.nodes.set(nodeId, node);
-
-        if (!state.network) {
-            initializeNetwork();
-        }
-
-        state.network.body.data.nodes.update(convertNode(node));
-
-        // Bỏ lọc nếu node không thuộc loại đang hiển thị.
-        const selectedType = elements.entityFilter.value;
-
-        if (
-            selectedType !== "all" &&
-            !(node.labels || []).includes(selectedType)
-        ) {
-            elements.entityFilter.value = "all";
-            applyNodeFilter();
-        }
-
-        try {
-            await expandNode(nodeId, true);
-        } catch (error) {
-            console.error("Load search result error:", error);
-            showNodeDetails(nodeId);
-            showError(
-                "Không thể tải các kết nối của thực thể: " + error.message
-            );
-        }
-    }
-
-    /* =====================================
-       EXPAND NODE
-    ===================================== */
-
-    async function expandNode(nodeId, focusAfterExpand = false) {
-        if (state.isExpanding) return;
-
-        state.isExpanding = true;
-        elements.expandButton.disabled = true;
-        elements.expandButton.innerHTML = `
+        el.expand.innerHTML = `
             <span class="spinner-border spinner-border-sm me-2"></span>
             Đang khám phá...
         `;
@@ -812,73 +1019,245 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await API.get(
                 `/api/graph/node/${encodeURIComponent(nodeId)}`,
-                { limit: 50 }
+                {
+                    limit: CONFIG.EXPANSION_LIMIT
+                }
             );
 
-            if (!response || !Array.isArray(response.nodes)) {
+            if (
+                !response ||
+                !Array.isArray(response.nodes) ||
+                !Array.isArray(response.edges)
+            ) {
                 throw new Error("Dữ liệu kết nối không hợp lệ.");
             }
 
-            mergeGraphData(response);
+            // Một số API trả thêm center riêng.
+            const nodes = [...response.nodes];
 
-            // Đảm bảo node trung tâm có trong dữ liệu.
-            if (response.center) {
-                state.selectedNodeId = String(response.center);
+            if (response.center?.id !== undefined) {
+                const centerId = normalizeId(response.center.id);
+
+                if (!nodes.some(node => normalizeId(node.id) === centerId)) {
+                    nodes.push(response.center);
+                }
             }
 
-            if (focusAfterExpand && state.network) {
-                state.network.selectNodes([String(nodeId)]);
-                state.network.focus(String(nodeId), {
-                    scale: 1.15,
-                    animation: {
-                        duration: 600,
-                        easingFunction: "easeInOutQuad"
-                    }
-                });
-            }
+            mergeData({
+                nodes,
+                edges: response.edges
+            });
 
-            applyNodeFilter();
-            showNodeDetails(nodeId);
+            state.expandedIds.add(nodeId);
+
+            showDetails(nodeId);
+
+            state.network.selectNodes([nodeId]);
+
+            state.network.focus(nodeId, {
+                scale: 1.05,
+                animation: {
+                    duration: 500,
+                    easingFunction: "easeInOutQuad"
+                }
+            });
+
+            updateStatus("Đã mở rộng kết nối");
 
         } finally {
-            state.isExpanding = false;
-            elements.expandButton.disabled = false;
-            elements.expandButton.innerHTML = `
-                <i class="bi bi-diagram-3"></i>
+            state.expanding = false;
+            el.expand.disabled = false;
+
+            el.expand.innerHTML = `
+                <i class="bi bi-plus-circle"></i>
                 Khám phá các kết nối
             `;
         }
     }
 
-    /* =====================================
-       EVENT LISTENERS
-    ===================================== */
+    // ================================================
+    // SEARCH
+    // ================================================
 
-    elements.searchButton.addEventListener("click", searchEntities);
+    function renderSearchResults(results) {
+        el.searchResults.hidden = false;
 
-    elements.searchInput.addEventListener("keydown", event => {
-        if (event.key === "Enter") {
-            searchEntities();
+        if (!results.length) {
+            el.searchResults.innerHTML = `
+                <div class="search-no-result">
+                    Không tìm thấy thực thể phù hợp.
+                </div>
+            `;
+            return;
         }
+
+        el.searchResults.innerHTML = results.map((item, index) => {
+            const labels = Array.isArray(item.labels)
+                ? item.labels
+                : [item.labels];
+
+            const type = labels
+                .filter(Boolean)
+                .map(label => LABELS[label] || label)
+                .join(", ") || "Thực thể";
+
+            return `
+                <button
+                    type="button"
+                    class="search-result-item"
+                    data-index="${index}">
+
+                    <span class="search-result-name">
+                        ${escapeHTML(getNodeName(item))}
+                    </span>
+
+                    <span class="search-result-type">
+                        ${escapeHTML(type)}
+                    </span>
+
+                    <i class="bi bi-arrow-up-right"></i>
+                </button>
+            `;
+        }).join("");
+
+        el.searchResults.querySelectorAll(".search-result-item").forEach(button => {
+            button.addEventListener("click", () => {
+                selectSearchResult(results[Number(button.dataset.index)]);
+            });
+        });
+    }
+
+    async function searchEntities() {
+        const keyword = el.searchInput.value.trim();
+
+        if (!keyword) {
+            el.searchInput.focus();
+            return;
+        }
+
+        if (!API) {
+            showError("Không tìm thấy ApiClient.");
+            return;
+        }
+
+        const requestId = ++state.searchRequest;
+
+        el.searchButton.disabled = true;
+        el.searchButton.textContent = "Đang tìm...";
+
+        try {
+            const params = {
+                keyword,
+                limit: CONFIG.SEARCH_LIMIT
+            };
+
+            if (getFilter() !== "all") {
+                params.entity_type = getFilter();
+            }
+
+            const response = await API.get("/api/graph/search", params);
+
+            if (requestId !== state.searchRequest) return;
+
+            renderSearchResults(response.results || []);
+
+        } catch (error) {
+            console.error("Search error:", error);
+
+            el.searchResults.hidden = false;
+            el.searchResults.innerHTML = `
+                <div class="search-no-result">
+                    ${escapeHTML(error.message || "Không thể tìm kiếm.")}
+                </div>
+            `;
+
+        } finally {
+            if (requestId === state.searchRequest) {
+                el.searchButton.disabled = false;
+                el.searchButton.textContent = "Tìm kiếm";
+            }
+        }
+    }
+
+    async function selectSearchResult(result) {
+        if (!result) return;
+
+        el.searchResults.hidden = true;
+
+        const nodeId = normalizeId(result.node_id || result.id);
+
+        if (!nodeId) {
+            showError("Thực thể không có mã định danh hợp lệ.");
+            return;
+        }
+
+        if (state.nodeMap.has(nodeId)) {
+            focusNode(nodeId);
+
+            if (!state.expandedIds.has(nodeId)) {
+                await expandNode(nodeId);
+            }
+
+            return;
+        }
+
+        const node = {
+            id: nodeId,
+            business_id: result.business_id,
+            labels: result.labels || [],
+            display_labels: result.display_labels || [],
+            properties: result.properties || {}
+        };
+
+        state.nodeMap.set(nodeId, node);
+        state.nodes.update(convertNode(node));
+
+        if (!isNodeAllowed(node)) {
+            el.filter.value = "all";
+        }
+
+        applyFilter();
+        focusNode(nodeId);
+
+        await expandNode(nodeId);
+    }
+
+    // ================================================
+    // EVENTS
+    // ================================================
+
+    el.searchButton.addEventListener("click", searchEntities);
+
+    el.searchInput.addEventListener("keydown", event => {
+        if (event.key === "Enter") searchEntities();
 
         if (event.key === "Escape") {
-            elements.searchResults.hidden = true;
+            el.searchResults.hidden = true;
         }
     });
 
-    elements.searchInput.addEventListener("input", () => {
-        if (!elements.searchInput.value.trim()) {
-            elements.searchResults.hidden = true;
+    el.searchInput.addEventListener("input", () => {
+        if (!el.searchInput.value.trim()) {
+            el.searchResults.hidden = true;
         }
     });
 
-    elements.entityFilter.addEventListener("change", () => {
-        applyNodeFilter();
-        elements.searchResults.hidden = true;
+    el.filter.addEventListener("change", () => {
+        applyFilter();
+        el.searchResults.hidden = true;
+
+        if (state.network) {
+            state.network.fit({
+                animation: {
+                    duration: 400,
+                    easingFunction: "easeInOutQuad"
+                }
+            });
+        }
     });
 
-    elements.fitButton.addEventListener("click", () => {
-        if (!state.network || state.nodes.size === 0) return;
+    el.fit.addEventListener("click", () => {
+        if (!state.network) return;
 
         state.network.fit({
             animation: {
@@ -888,38 +1267,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    elements.resetButton.addEventListener("click", () => {
-        elements.entityFilter.value = "all";
-        elements.searchInput.value = "";
-        state.selectedNodeId = null;
+    el.reset.addEventListener("click", () => {
+        el.filter.value = "all";
+        el.searchInput.value = "";
+        el.searchResults.hidden = true;
 
+        state.searchRequest++;
         loadGraph();
     });
 
-    elements.retryButton.addEventListener("click", loadGraph);
+    el.retry.addEventListener("click", loadGraph);
 
-    elements.expandButton.addEventListener("click", async () => {
-        if (!state.selectedNodeId) return;
+    el.expand.addEventListener("click", async () => {
+        if (!state.selectedId) return;
 
         try {
-            await expandNode(state.selectedNodeId);
+            await expandNode(state.selectedId);
         } catch (error) {
-            console.error("Expand node error:", error);
-            showError(
-                "Không thể mở rộng kết nối: " + error.message
-            );
+            console.error("Expand error:", error);
+            showError("Không thể mở rộng kết nối: " + error.message);
         }
     });
 
     document.addEventListener("click", event => {
         if (!event.target.closest(".graph-search")) {
-            elements.searchResults.hidden = true;
+            el.searchResults.hidden = true;
         }
     });
 
-    /* =====================================
-       INITIALIZE
-    ===================================== */
+    // ================================================
+    // START
+    // ================================================
 
     loadGraph();
 });

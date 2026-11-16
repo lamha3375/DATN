@@ -35,6 +35,7 @@ class TimelineService:
         limit: int = 500
     ) -> Dict[str, Any]:
 
+        # Kiểm tra khoảng năm
         if (
             start_year is not None
             and end_year is not None
@@ -44,29 +45,51 @@ class TimelineService:
                 "Năm bắt đầu không được lớn hơn năm kết thúc."
             )
 
+        if limit < 1:
+            raise ValueError("Limit phải lớn hơn 0.")
+
         keyword = keyword.strip() if keyword else None
 
         query = """
-        MATCH (e:SuKien)
-        WITH e, properties(e) AS props,
-             toInteger(substring(toString(e.start_date), 0, 4)) AS event_year
+        MATCH (e:Event)
 
-        WHERE e.start_date IS NOT NULL
+        WITH e,
+             properties(e) AS props,
+             toInteger(substring(toString(e.startDate), 0, 4))
+             AS event_year
+
+        WHERE e.startDate IS NOT NULL
           AND event_year IS NOT NULL
-          AND ($start_year IS NULL OR event_year >= $start_year)
-          AND ($end_year IS NULL OR event_year <= $end_year)
+
+          AND ($start_year IS NULL
+               OR event_year >= $start_year)
+
+          AND ($end_year IS NULL
+               OR event_year <= $end_year)
+
           AND (
               $keyword IS NULL
               OR any(
-                  key IN keys(props)
-                  WHERE toLower(toString(props[key]))
+                  value IN [
+                      e.name,
+                      e.period,
+                      e.eventType,
+                      e.description,
+                      e.result,
+                      e.significance,
+                      e.tags
+                  ]
+                  WHERE value IS NOT NULL
+                    AND toLower(toString(value))
                         CONTAINS toLower($keyword)
               )
           )
 
-        RETURN props AS event, event_year AS year
+        RETURN props AS event,
+               event_year AS year
 
-        ORDER BY event_year ASC, e.start_date ASC
+        ORDER BY event_year ASC,
+                 toString(e.startDate) ASC
 
         LIMIT $limit
         """
