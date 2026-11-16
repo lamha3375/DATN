@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khám phá lịch sử Tây Sơn qua nhân vật, sự kiện, dòng thời gian và đồ thị tri thức.">
+  <title>Tây Sơn Sử Ký | Khám phá lịch sử</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/chat-widget.css">
+</head>
+
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/chat-core.js"></script>
+<script src="js/chat-widget.js"></script>
+
+<body>
+  <div class="topline"></div>
+  <nav class="navbar navbar-expand-lg site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="index.html">
+        <span class="brand-mark"><i class="bi bi-compass"></i></span>
+        <span>TÂY SƠN <small>SỬ KÝ</small></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Mở menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Khám phá</a></li>
+          <li class="nav-item"><a class="nav-link" href="#timeline">Dòng thời gian</a></li>
+          <li class="nav-item"><a class="nav-link" href="#characters">Nhân vật</a></li>
+          <li class="nav-item"><a class="nav-link" href="#knowledge">Bản đồ tri thức</a></li>
+        </ul>
+        <a class="btn btn-outline-ink btn-sm px-3" href="#ask"><i class="bi bi-chat-dots me-2"></i>Hỏi đáp lịch sử</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 hero-copy">
+            <div class="eyebrow"><span></span> HÀNH TRÌNH LỊCH SỬ 1771 — 1802</div>
+            <h1>Lịch sử không chỉ để đọc.<br><em>Mà để khám phá.</em></h1>
+            <p class="hero-lead">Bước vào hành trình tìm hiểu phong trào Tây Sơn qua những con người, biến cố và mối liên hệ đã làm nên một giai đoạn đặc biệt trong lịch sử Việt Nam.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#explore" class="btn btn-primary-custom">Bắt đầu khám phá <i class="bi bi-arrow-right ms-2"></i></a>
+              <a href="#timeline" class="btn btn-link-custom">Xem dòng thời gian</a>
+            </div>
+            <div class="hero-note mt-5"><i class="bi bi-book-half"></i><span>Nội dung được tổ chức từ tư liệu lịch sử và đồ thị tri thức.</span></div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-art">
+              <div class="hero-image" role="img" aria-label="Minh họa không khí lịch sử Việt Nam thời Tây Sơn"></div>
+              <div class="image-caption"><span>CHUYÊN ĐỀ</span><strong>Phong trào Tây Sơn</strong><small>1771 – 1802</small></div>
+              <div class="hero-stamp">TÂY SƠN<br><span>HISTORY EXPLORER</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-decoration">TÂY SƠN</div>
+    </section>
+
+    <section class="search-band" id="explore">
+      <div class="container">
+        <div class="search-panel">
+          <div>
+            <span class="section-kicker">BẮT ĐẦU TỪ ĐIỀU BẠN TÒ MÒ</span>
+            <h2>Bạn muốn khám phá điều gì?</h2>
+          </div>
+          <form class="search-form" id="siteSearch">
+            <i class="bi bi-search"></i>
+            <input id="searchInput" type="search" placeholder="Tìm nhân vật, sự kiện, địa danh..." aria-label="Tìm kiếm lịch sử">
+            <button type="submit">Tìm kiếm</button>
+          </form>
+          <p class="search-hint" id="searchMessage" aria-live="polite">Thử tìm: Nguyễn Huệ · Chiến thắng Ngọc Hồi · Tây Sơn</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="timeline">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">NHÌN LẠI DIỄN BIẾN</span><h2>Một giai đoạn, nhiều dấu mốc</h2></div>
+          <a class="text-link" href="pages/timeline.html">Khám phá dòng thời gian <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+        <div class="timeline-preview">
+          <div class="timeline-line"></div>
+          <article class="milestone">
+            <span class="milestone-dot"></span><span class="milestone-year">1771</span>
+            <h3>Khởi nghĩa Tây Sơn</h3><p>Phong trào khởi nghĩa bùng nổ tại vùng Tây Sơn.</p>
+          </article>
+          <article class="milestone">
+            <span class="milestone-dot"></span><span class="milestone-year">1785</span>
+            <h3>Rạch Gầm – Xoài Mút</h3><p>Một dấu mốc quân sự nổi bật trong cuộc đối đầu với quân Xiêm.</p>
+          </article>
+          <article class="milestone">
+            <span class="milestone-dot"></span><span class="milestone-year">1789</span>
+            <h3>Đại phá quân Thanh</h3><p>Chiến thắng gắn với mùa xuân Kỷ Dậu.</p>
+          </article>
+          <article class="milestone">
+            <span class="milestone-dot"></span><span class="milestone-year">1802</span>
+            <h3>Kết thúc triều Tây Sơn</h3><p>Khép lại một giai đoạn lịch sử nhiều biến động.</p>
+          </article>
+        </div>
+        <p class="content-note"><i class="bi bi-info-circle me-1"></i> Các mốc trên là nội dung giới thiệu ban đầu; dữ liệu chi tiết sẽ được kết nối với API lịch sử ở bước tích hợp.</p>
+      </div>
+    </section>
+
+    <section class="section-block section-soft" id="characters">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">NHỮNG CON NGƯỜI LỊCH SỬ</span><h2>Gặp gỡ các nhân vật tiêu biểu</h2></div>
+          <a class="text-link" href="pages/characters.html">Xem danh sách nhân vật <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="person-card">
+              <div class="person-portrait portrait-one"><span>PER_001</span></div>
+              <div class="person-info"><span class="card-category">LÃNH TỤ PHONG TRÀO</span><h3>Nguyễn Huệ</h3><p>Người sau này lên ngôi hoàng đế với niên hiệu Quang Trung.</p><a href="pages/characters.html" class="text-link">Khám phá nhân vật <i class="bi bi-arrow-right"></i></a></div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="person-card">
+              <div class="person-portrait portrait-two"><span>NHÂN VẬT</span></div>
+              <div class="person-info"><span class="card-category">THỦ LĨNH TÂY SƠN</span><h3>Nguyễn Nhạc</h3><p>Một trong những người khởi xướng phong trào Tây Sơn.</p><a href="pages/characters.html" class="text-link">Khám phá nhân vật <i class="bi bi-arrow-right"></i></a></div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="person-card">
+              <div class="person-portrait portrait-three"><span>NHÂN VẬT</span></div>
+              <div class="person-info"><span class="card-category">THỦ LĨNH TÂY SƠN</span><h3>Nguyễn Lữ</h3><p>Một trong ba anh em gắn với buổi đầu phong trào Tây Sơn.</p><a href="pages/characters.html" class="text-link">Khám phá nhân vật <i class="bi bi-arrow-right"></i></a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block" id="knowledge">
+      <div class="container">
+        <div class="knowledge-banner">
+          <div class="knowledge-copy">
+            <span class="section-kicker">KẾT NỐI TRI THỨC</span>
+            <h2>Một nhân vật.<br>Nhiều câu chuyện liên kết.</h2>
+            <p>Khám phá lịch sử qua mạng lưới nhân vật, sự kiện, địa điểm và những mối quan hệ giữa chúng.</p>
+            <a href="pages/knowledge-graph.html" class="btn btn-light-custom">Mở bản đồ tri thức <i class="bi bi-arrow-up-right ms-2"></i></a>
+          </div>
+          <div class="knowledge-visual" aria-label="Minh họa mạng lưới tri thức">
+            <div class="network network-a"></div><div class="network network-b"></div><div class="network network-c"></div>
+            <span class="node node-main">Nguyễn Huệ</span><span class="node node-small node-1">Sự kiện</span><span class="node node-small node-2">Nhân vật</span><span class="node node-small node-3">Địa điểm</span><span class="node node-small node-4">1789</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block ask-section" id="ask">
+      <div class="container">
+        <div class="ask-card">
+          <div class="ask-icon"><i class="bi bi-chat-square-quote"></i></div>
+          <div><span class="section-kicker">HỎI ĐÁP LỊCH SỬ</span><h2>Điều gì trong lịch sử khiến bạn tò mò?</h2><p>Đặt câu hỏi bằng ngôn ngữ tự nhiên và tìm hiểu câu chuyện phía sau các sự kiện.</p></div>
+          <a href="pages/chat.html" class="btn btn-primary-custom">Trò chuyện cùng trợ lý <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+      <a class="navbar-brand brand brand-footer" href="index.html"><span class="brand-mark"><i class="bi bi-compass"></i></span><span>TÂY SƠN <small>SỬ KÝ</small></span></a>
+      <p class="mb-0">Không chỉ đọc về lịch sử, mà tự mình khám phá lịch sử.</p>
+      <span class="footer-period">1771 — 1802</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

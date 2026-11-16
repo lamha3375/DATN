@@ -1,0 +1,255 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Khám phá những nhân vật lịch sử tiêu biểu trong phong trào Tây Sơn.">
+  <title>Nhân vật lịch sử | Tây Sơn Sử Ký</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/characters.css">
+  <link rel="stylesheet" href="../css/chat-widget.css">
+</head>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/chat-core.js"></script>
+<script src="../js/chat-widget.js"></script>
+
+<body>
+  <div class="topline"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg site-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand" href="../index.html">
+        <span class="brand-mark"><i class="bi bi-compass"></i></span>
+        <span>TÂY SƠN <small>SỬ KÝ</small></span>
+      </a>
+
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false"
+        aria-label="Mở menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Khám phá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="timeline.html">Dòng thời gian</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="characters.html">Nhân vật</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="knowledge-graph.html">Bản đồ tri thức</a>
+          </li>
+        </ul>
+
+        <a class="btn btn-outline-ink btn-sm px-3" href="chat.html">
+          <i class="bi bi-chat-dots me-2"></i>Hỏi đáp lịch sử
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="character-hero">
+      <div class="container">
+        <div class="character-hero-content">
+          <div class="eyebrow">
+            <span></span> NHỮNG CON NGƯỜI LỊCH SỬ
+          </div>
+
+          <h1>
+            Dấu ấn của những<br>
+            <em>con người làm nên lịch sử.</em>
+          </h1>
+
+          <p>
+            Gặp gỡ những nhân vật đã góp phần tạo nên phong trào Tây Sơn.
+            Tìm hiểu cuộc đời, vai trò và những mối liên hệ lịch sử
+            đằng sau mỗi con người.
+          </p>
+
+          <div class="character-hero-note">
+            <i class="bi bi-book-half"></i>
+            <span>Khám phá nhân vật qua dữ liệu và đồ thị tri thức lịch sử.</span>
+          </div>
+        </div>
+
+        <div class="character-hero-decoration">NHÂN VẬT</div>
+      </div>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="character-search-section">
+      <div class="container">
+        <div class="character-search-panel">
+          <div>
+            <span class="section-kicker">KHÁM PHÁ NHÂN VẬT</span>
+            <h2>Ai đã làm nên thời đại?</h2>
+            <p>Tìm kiếm theo tên, vai trò hoặc thông tin nhân vật.</p>
+          </div>
+
+          <form id="characterSearchForm" class="character-search-form">
+            <i class="bi bi-search"></i>
+            <input
+              type="search"
+              id="characterSearch"
+              placeholder="Ví dụ: Nguyễn Huệ, Quang Trung..."
+              aria-label="Tìm kiếm nhân vật"
+            >
+            <button type="submit">Tìm kiếm</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARACTER LIST -->
+    <section class="section-block character-list-section">
+      <div class="container">
+
+        <div class="section-heading character-list-heading">
+          <div>
+            <span class="section-kicker">GƯƠNG MẶT LỊCH SỬ</span>
+            <h2>Những nhân vật tiêu biểu</h2>
+            <p class="character-result-count" id="characterCount">
+              Đang tải dữ liệu nhân vật...
+            </p>
+          </div>
+
+          <div class="character-sort">
+            <span><i class="bi bi-people me-1"></i> Nhân vật Tây Sơn</span>
+          </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="characterLoading" class="character-state">
+          <div class="spinner-border" role="status"></div>
+          <p>Đang khám phá dữ liệu lịch sử...</p>
+        </div>
+
+        <!-- Error -->
+        <div id="characterError" class="character-state d-none">
+          <i class="bi bi-exclamation-circle"></i>
+          <h3>Chưa thể tải dữ liệu</h3>
+          <p id="characterErrorMessage">
+            Vui lòng kiểm tra kết nối máy chủ.
+          </p>
+          <button class="btn btn-primary-custom" id="retryCharacters">
+            Thử lại <i class="bi bi-arrow-clockwise ms-2"></i>
+          </button>
+        </div>
+
+        <!-- Empty -->
+        <div id="characterEmpty" class="character-state d-none">
+          <i class="bi bi-search"></i>
+          <h3>Không tìm thấy nhân vật</h3>
+          <p>Thử tìm kiếm bằng một tên hoặc từ khóa khác.</p>
+        </div>
+
+        <!-- Data -->
+        <div class="row g-4" id="characterGrid"></div>
+
+        <!-- Pagination -->
+        <nav class="character-pagination d-none"
+          id="characterPagination"
+          aria-label="Phân trang nhân vật">
+          <button class="page-control" id="prevPage" aria-label="Trang trước">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+
+          <span id="pageInfo">1 / 1</span>
+
+          <button class="page-control" id="nextPage" aria-label="Trang sau">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- DISCOVERY BANNER -->
+    <section class="section-block character-discovery-section">
+      <div class="container">
+        <div class="character-discovery">
+          <div>
+            <span class="section-kicker">VƯỢT RA NGOÀI NHỮNG TRANG SỬ</span>
+            <h2>Mỗi nhân vật là một phần của câu chuyện lớn.</h2>
+            <p>
+              Tìm hiểu các sự kiện, nhân vật và mối quan hệ lịch sử
+              thông qua bản đồ tri thức.
+            </p>
+
+            <a href="knowledge-graph.html" class="btn btn-light-custom">
+              Khám phá bản đồ tri thức
+              <i class="bi bi-arrow-up-right ms-2"></i>
+            </a>
+          </div>
+
+          <div class="character-discovery-icon">
+            <i class="bi bi-diagram-3"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- CHARACTER DETAIL MODAL -->
+  <div class="modal fade" id="characterModal" tabindex="-1"
+    aria-labelledby="characterModalTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content character-modal-content">
+
+        <div class="modal-header">
+          <span class="section-kicker">HỒ SƠ NHÂN VẬT</span>
+          <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+
+        <div class="modal-body" id="characterModalBody">
+          <div class="character-state">
+            <div class="spinner-border" role="status"></div>
+            <p>Đang tải thông tin...</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+      <a class="navbar-brand brand brand-footer" href="../index.html">
+        <span class="brand-mark"><i class="bi bi-compass"></i></span>
+        <span>TÂY SƠN <small>SỬ KÝ</small></span>
+      </a>
+
+      <p class="mb-0">Không chỉ đọc về lịch sử, mà tự mình khám phá lịch sử.</p>
+
+      <span class="footer-period">1771 — 1802</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/characters.js"></script>
+</body>
+</html>

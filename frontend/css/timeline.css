@@ -1,0 +1,646 @@
+
+/* =========================================
+   TIMELINE PAGE - TAY SON SU KY
+========================================= */
+
+.timeline-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0 90px;
+    background: #f5f0e7;
+}
+
+.timeline-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.timeline-hero .eyebrow {
+    margin-bottom: 24px;
+}
+
+.timeline-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.24;
+    letter-spacing: -1px;
+    color: #29251f;
+    margin-bottom: 24px;
+}
+
+.timeline-hero h1 em {
+    color: #a77b43;
+}
+
+.timeline-hero-content > p {
+    max-width: 660px;
+    color: #777064;
+    font-size: 14px;
+    line-height: 1.95;
+    margin-bottom: 0;
+}
+
+.timeline-hero-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    color: #82765f;
+    font-size: 12px;
+}
+
+.timeline-hero-note i {
+    color: #a77b43;
+    font-size: 19px;
+}
+
+.timeline-hero-decoration {
+    position: absolute;
+    right: -15px;
+    bottom: -42px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(85px, 14vw, 185px);
+    font-weight: 800;
+    color: rgba(127, 97, 58, .045);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* =========================================
+   FILTER SECTION
+========================================= */
+
+.timeline-filter-section {
+    padding: 45px 0;
+    background: #fff;
+}
+
+.timeline-filter-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 25px 35px;
+    align-items: center;
+}
+
+.timeline-filter-heading h2 {
+    font-family: 'Playfair Display', serif;
+    color: #30291f;
+    font-size: 29px;
+    font-weight: 700;
+    margin: 9px 0;
+}
+
+.timeline-filter-heading p {
+    color: #888073;
+    font-size: 12px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.timeline-filter-form {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-group {
+    min-width: 115px;
+}
+
+.filter-group label {
+    display: block;
+    color: #75634d;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.filter-group .form-select {
+    min-height: 43px;
+    border-color: #e8dfd2;
+    border-radius: 3px;
+    background-color: #faf8f4;
+    color: #625543;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 12px;
+    box-shadow: none;
+}
+
+.filter-group .form-select:focus {
+    border-color: #a77b43;
+    box-shadow: 0 0 0 2px rgba(167, 123, 67, .1);
+}
+
+.timeline-filter-form .btn {
+    min-height: 43px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.timeline-reset-btn {
+    min-height: 43px;
+    padding: 0 12px;
+    border: 1px solid #e8dfd2;
+    border-radius: 3px;
+    background: #fff;
+    color: #87765f;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.timeline-reset-btn:hover {
+    background: #f5f0e7;
+}
+
+.timeline-search-form {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 5px 6px 5px 17px;
+    border: 1px solid #e9e1d5;
+    border-radius: 4px;
+    background: #f8f6f1;
+}
+
+.timeline-search-form > i {
+    color: #a77b43;
+    font-size: 17px;
+}
+
+.timeline-search-form input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 13px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #332d25;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.timeline-search-form input::placeholder {
+    color: #aaa195;
+}
+
+.timeline-search-form button {
+    height: 38px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 3px;
+    background: #87633d;
+    color: #fff;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.timeline-search-form button:hover {
+    background: #68492b;
+}
+
+/* =========================================
+   TIMELINE CONTENT
+========================================= */
+
+.timeline-content-section {
+    background: #fbfaf7;
+    min-height: 500px;
+}
+
+.timeline-list-heading {
+    margin-bottom: 50px;
+}
+
+.timeline-list-heading h2 {
+    font-size: 34px;
+}
+
+.timeline-list-heading p {
+    color: #948a7c;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.timeline-period {
+    padding: 11px 16px;
+    background: #f2ece1;
+    color: #8a7558;
+    border-radius: 3px;
+    font-size: 11px;
+}
+
+/* =========================================
+   VERTICAL TIMELINE
+========================================= */
+
+.timeline-list {
+    position: relative;
+    max-width: 1020px;
+    margin: 0 auto;
+}
+
+.timeline-year-group {
+    position: relative;
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    column-gap: 45px;
+    padding-bottom: 48px;
+}
+
+.timeline-year-group:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-year-rail {
+    position: relative;
+    padding-top: 4px;
+}
+
+.timeline-year-rail::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: -50px;
+    left: 100%;
+    width: 1px;
+    background: #ded2bf;
+}
+
+.timeline-year-group:last-child .timeline-year-rail::before {
+    display: none;
+}
+
+.timeline-year-dot {
+    position: absolute;
+    top: 8px;
+    left: calc(100% - 5px);
+    z-index: 2;
+    width: 11px;
+    height: 11px;
+    border: 2px solid #a77b43;
+    border-radius: 50%;
+    background: #fbfaf7;
+    box-shadow: 0 0 0 5px #f2ece1;
+}
+
+.timeline-year-label {
+    font-family: 'Playfair Display', serif;
+    color: #947047;
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.timeline-year-caption {
+    display: block;
+    margin-top: 9px;
+    color: #aaa08f;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+/* EVENT CARD */
+
+.timeline-event-card {
+    position: relative;
+    padding: 24px 27px;
+    background: #fff;
+    border: 1px solid #eee8de;
+    border-left: 3px solid #c5a477;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.timeline-event-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 24px rgba(52, 40, 24, .07);
+}
+
+.timeline-event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.timeline-event-type {
+    color: #a27b49;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+}
+
+.timeline-event-date {
+    color: #a69b8c;
+    font-size: 10px;
+}
+
+.timeline-event-title {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    color: #30291f;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.65;
+    margin-bottom: 10px;
+}
+
+.timeline-event-description {
+    color: #80796f;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+}
+
+.timeline-event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid #f0ebe3;
+}
+
+.timeline-event-location {
+    color: #8b795e;
+    font-size: 11px;
+}
+
+.timeline-event-detail {
+    border: none;
+    padding: 0;
+    background: transparent;
+    color: #9b7140;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.timeline-event-detail:hover {
+    color: #634321;
+}
+
+/* =========================================
+   STATES
+========================================= */
+
+.timeline-state {
+    width: 100%;
+    padding: 65px 15px;
+    text-align: center;
+    color: #958774;
+}
+
+.timeline-state .spinner-border {
+    width: 30px;
+    height: 30px;
+    color: #9b774b;
+    margin-bottom: 15px;
+}
+
+.timeline-state > i {
+    display: block;
+    color: #b69a73;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.timeline-state h3 {
+    font-family: 'Playfair Display', serif;
+    color: #514333;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.timeline-state p {
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   DISCOVERY
+========================================= */
+
+.timeline-discovery {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+    padding: 55px 60px;
+    background: #55432f;
+    color: #fff;
+}
+
+.timeline-discovery > div:first-child {
+    max-width: 620px;
+}
+
+.timeline-discovery .section-kicker {
+    color: #d7b98c;
+}
+
+.timeline-discovery h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.timeline-discovery p {
+    color: #d4c8b8;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.timeline-discovery-icon {
+    padding-right: 40px;
+    color: rgba(238, 219, 187, .18);
+    font-size: 130px;
+}
+
+/* =========================================
+   EVENT MODAL
+========================================= */
+
+.timeline-modal-content {
+    border: none;
+    border-radius: 3px;
+    background: #fbfaf7;
+}
+
+.timeline-modal-content .modal-header {
+    padding: 22px 28px;
+    border-bottom: 1px solid #eae3d8;
+}
+
+.timeline-modal-content .modal-body {
+    padding: 30px;
+}
+
+.event-detail-year {
+    color: #a27b49;
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.event-detail-title {
+    color: #30291f;
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.event-detail-section {
+    margin-top: 27px;
+}
+
+.event-detail-section h4 {
+    color: #987448;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 11px;
+}
+
+.event-detail-section p {
+    color: #756d62;
+    font-size: 12px;
+    line-height: 1.95;
+    white-space: pre-line;
+}
+
+.event-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 17px;
+}
+
+.event-detail-meta span {
+    padding: 8px 12px;
+    background: #f0e9dc;
+    color: #80633f;
+    font-size: 11px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+    .timeline-filter-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-filter-form {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .timeline-hero {
+        padding: 65px 0;
+    }
+
+    .timeline-year-group {
+        grid-template-columns: 65px 1fr;
+        column-gap: 23px;
+        padding-bottom: 35px;
+    }
+
+    .timeline-year-rail::before {
+        left: 100%;
+        bottom: -37px;
+    }
+
+    .timeline-year-label {
+        font-size: 27px;
+    }
+
+    .timeline-year-caption {
+        font-size: 8px;
+        letter-spacing: .5px;
+    }
+
+    .timeline-year-dot {
+        left: calc(100% - 5px);
+    }
+
+    .timeline-event-card {
+        padding: 19px;
+    }
+
+    .timeline-event-title {
+        font-size: 15px;
+    }
+
+    .timeline-discovery {
+        padding: 35px 25px;
+    }
+
+    .timeline-discovery h2 {
+        font-size: 26px;
+    }
+
+    .timeline-discovery-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-filter-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .filter-group {
+        min-width: 0;
+    }
+
+    .timeline-filter-form .btn,
+    .timeline-reset-btn {
+        width: 100%;
+    }
+
+    .timeline-search-form button {
+        padding: 0 12px;
+    }
+
+    .timeline-year-group {
+        grid-template-columns: 53px 1fr;
+        column-gap: 17px;
+    }
+
+    .timeline-year-label {
+        font-size: 23px;
+    }
+
+    .timeline-event-card {
+        padding: 16px;
+    }
+
+    .timeline-modal-content .modal-body {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,10 @@
+
+fastapi
+uvicorn[standard]
+neo4j
+pydantic-settings
+python-dotenv
+PyMuPDF
+python-multipart
+langchain-text-splitters
+chromadb

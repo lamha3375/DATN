@@ -1,0 +1,136 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Type Checking & Linting
+.mypy_cache/
+.dmypy.json
+.pyre/
+.ruff_cache/
+
+
+.env
+.env.*
+!.env.example
+
+# API Keys / Credentials
+*.pem
+*.key
+credentials.json
+service-account.json
+
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+*.log
+logs/
+log/
+
+# ==========================================
+# MACHINE LEARNING & EMBEDDINGS
+# ==========================================
+
+# Hugging Face / Sentence Transformers
+.cache/
+cache/
+huggingface/
+transformers_cache/
+models/
+
+# TensorFlow
+*.h5
+*.keras
+saved_model/
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+
+# ==========================================
+# VECTOR DATABASE - CHROMADB
+# ==========================================
+chroma_db/
+chroma/
+vector_db/
+vectorstore/
+chroma_data/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# ==========================================
+# NEO4J
+# ==========================================
+neo4j_data/
+neo4j_logs/
+neo4j_import/
+data/databases/
+data/transactions/
+logs/neo4j/
+
+# ==========================================
+# DOCUMENT PROCESSING
+# ==========================================
+temp/
+tmp/
+uploads/
+extracted/
+processed/
+*.temp
+
+# ==========================================
+# DATASETS - DO NOT IGNORE SOURCE DATA
+# ==========================================
+
+# Ignore generated files only
+generated/
+output/
+exports/
+
+# ==========================================
+# FRONTEND (IF NODE.JS IS USED)
+# ==========================================
+node_modules/
+.npm/
+.next/
+.nuxt/
+dist/
+build/
+coverage/
+
+# ==========================================
+# OPERATING SYSTEM
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini

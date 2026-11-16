@@ -1,0 +1,532 @@
+
+/* =========================================
+   CHARACTER PAGE - TAY SON SU KY
+========================================= */
+
+.character-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0 90px;
+    background: #f5f0e7;
+}
+
+.character-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.character-hero .eyebrow {
+    margin-bottom: 24px;
+}
+
+.character-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #29251f;
+    margin-bottom: 24px;
+}
+
+.character-hero h1 em {
+    color: #a77b43;
+}
+
+.character-hero-content > p {
+    max-width: 650px;
+    color: #777064;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.character-hero-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 32px;
+    color: #82765f;
+    font-size: 13px;
+}
+
+.character-hero-note i {
+    color: #a77b43;
+    font-size: 19px;
+}
+
+.character-hero-decoration {
+    position: absolute;
+    right: -15px;
+    bottom: -45px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 17vw, 220px);
+    font-weight: 800;
+    color: rgba(127, 97, 58, 0.045);
+    pointer-events: none;
+}
+
+/* SEARCH */
+
+.character-search-section {
+    position: relative;
+    z-index: 3;
+    margin-top: -1px;
+    background: #fff;
+    padding: 48px 0;
+}
+
+.character-search-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+}
+
+.character-search-panel h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    color: #30291f;
+    margin: 9px 0;
+}
+
+.character-search-panel p {
+    color: #888073;
+    font-size: 13px;
+    margin: 0;
+}
+
+.character-search-form {
+    display: flex;
+    align-items: center;
+    width: min(480px, 100%);
+    height: 54px;
+    padding: 5px 6px 5px 18px;
+    background: #f7f4ee;
+    border: 1px solid #e9e1d5;
+    border-radius: 5px;
+}
+
+.character-search-form > i {
+    color: #a77b43;
+    font-size: 18px;
+}
+
+.character-search-form input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border: none;
+    outline: none;
+    padding: 0 13px;
+    background: transparent;
+    color: #332d25;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.character-search-form input::placeholder {
+    color: #aaa195;
+}
+
+.character-search-form button {
+    height: 42px;
+    border: none;
+    border-radius: 3px;
+    padding: 0 20px;
+    background: #87633d;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background .2s;
+}
+
+.character-search-form button:hover {
+    background: #68492b;
+}
+
+/* CHARACTER LIST */
+
+.character-list-section {
+    background: #fbfaf7;
+    min-height: 480px;
+}
+
+.character-list-heading {
+    margin-bottom: 35px;
+}
+
+.character-result-count {
+    margin: 12px 0 0;
+    color: #948a7c;
+    font-size: 12px;
+}
+
+.character-sort {
+    color: #8a7558;
+    font-size: 12px;
+    padding: 10px 15px;
+    background: #f2ece1;
+    border-radius: 3px;
+}
+
+/* CHARACTER CARD */
+
+.character-card {
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #eee8de;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(52, 40, 24, .09);
+}
+
+.character-portrait {
+    height: 230px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 38%, #d8c4a5 0%, transparent 38%),
+        linear-gradient(145deg, #e9dfcd, #c6b08e);
+}
+
+.character-portrait::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(103, 77, 43, .22);
+    border-radius: 50%;
+}
+
+.character-portrait::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(103, 77, 43, .16);
+    border-radius: 50%;
+}
+
+.character-portrait-icon {
+    position: relative;
+    z-index: 1;
+    font-size: 75px;
+    color: rgba(89, 65, 39, .65);
+}
+
+.character-portrait-id {
+    position: absolute;
+    left: 17px;
+    top: 16px;
+    z-index: 2;
+    color: #725a3e;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.character-portrait-label {
+    position: absolute;
+    right: 15px;
+    bottom: 14px;
+    z-index: 2;
+    color: rgba(75, 56, 35, .65);
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.character-card-body {
+    padding: 23px 22px 24px;
+}
+
+.character-category {
+    display: inline-block;
+    color: #a27b49;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.character-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: #30291f;
+    margin-bottom: 8px;
+}
+
+.character-alias {
+    color: #a18f78;
+    font-size: 11px;
+    line-height: 1.7;
+    min-height: 20px;
+    margin-bottom: 12px;
+}
+
+.character-description {
+    color: #80796f;
+    font-size: 12px;
+    line-height: 1.8;
+    min-height: 65px;
+    margin-bottom: 20px;
+}
+
+.character-card-footer {
+    padding-top: 16px;
+    border-top: 1px solid #eee9e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.character-faction {
+    color: #87745a;
+    font-size: 11px;
+}
+
+.character-detail-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #9b7140;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.character-detail-btn:hover {
+    color: #634321;
+}
+
+.character-detail-btn i {
+    margin-left: 5px;
+}
+
+/* STATES */
+
+.character-state {
+    width: 100%;
+    padding: 65px 15px;
+    text-align: center;
+    color: #958774;
+}
+
+.character-state .spinner-border {
+    color: #9b774b;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.character-state > i {
+    display: block;
+    font-size: 35px;
+    margin-bottom: 15px;
+    color: #b69a73;
+}
+
+.character-state h3 {
+    font-family: 'Playfair Display', serif;
+    color: #514333;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.character-state p {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+/* PAGINATION */
+
+.character-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    padding-top: 45px;
+    color: #75634d;
+    font-size: 13px;
+}
+
+.page-control {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e5dccf;
+    border-radius: 3px;
+    background: #fff;
+    color: #87633d;
+    transition: .2s;
+}
+
+.page-control:hover:not(:disabled) {
+    background: #87633d;
+    color: #fff;
+}
+
+.page-control:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+/* DISCOVERY BANNER */
+
+.character-discovery {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    overflow: hidden;
+    padding: 55px 60px;
+    background: #55432f;
+    color: #fff;
+}
+
+.character-discovery > div:first-child {
+    max-width: 620px;
+    position: relative;
+    z-index: 1;
+}
+
+.character-discovery .section-kicker {
+    color: #d7b98c;
+}
+
+.character-discovery h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.character-discovery p {
+    color: #d4c8b8;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.character-discovery-icon {
+    font-size: 130px;
+    color: rgba(238, 219, 187, .18);
+    padding-right: 40px;
+}
+
+/* MODAL */
+
+.character-modal-content {
+    border: none;
+    border-radius: 3px;
+    background: #fbfaf7;
+}
+
+.character-modal-content .modal-header {
+    padding: 22px 28px;
+    border-bottom: 1px solid #eae3d8;
+}
+
+.character-modal-content .modal-body {
+    padding: 28px;
+}
+
+.character-detail-title {
+    font-family: 'Playfair Display', serif;
+    color: #342b21;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.character-detail-section {
+    margin-top: 25px;
+}
+
+.character-detail-section h4 {
+    color: #987448;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.character-detail-section p {
+    color: #756d62;
+    font-size: 13px;
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.character-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.character-detail-meta span {
+    padding: 7px 12px;
+    background: #f0e9dc;
+    color: #80633f;
+    font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 991px) {
+    .character-search-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .character-search-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .character-hero {
+        padding: 65px 0;
+    }
+
+    .character-hero-decoration {
+        font-size: 90px;
+        bottom: -15px;
+    }
+
+    .character-search-section {
+        padding: 35px 0;
+    }
+
+    .character-search-panel h2 {
+        font-size: 25px;
+    }
+
+    .character-search-form button {
+        padding: 0 13px;
+    }
+
+    .character-discovery {
+        padding: 35px 25px;
+    }
+
+    .character-discovery h2 {
+        font-size: 25px;
+    }
+
+    .character-discovery-icon {
+        display: none;
+    }
+
+    .character-modal-content .modal-body {
+        padding: 20px;
+    }
+}
