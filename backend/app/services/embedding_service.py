@@ -6,7 +6,7 @@ import torch
 from sentence_transformers import SentenceTransformer
 
 from app.schemas.chunk import TextChunk
-from app.schemas.embedding import EmbeddingItem
+from app.schemas.embedding import EmbeddingItem, EmbeddingResponse
 
 
 class EmbeddingService:
@@ -56,6 +56,17 @@ class EmbeddingService:
                         f"Chunk {chunk.chunk_id} có nội dung rỗng."
                     )
 
+                token_count = len(model.tokenizer.encode(
+                    f"passage: {content}",
+                    add_special_tokens=True,
+                    truncation=False,
+                ))
+                if token_count > self.MAX_SEQUENCE_LENGTH:
+                    raise ValueError(
+                        f"Chunk {chunk.chunk_id} có {token_count} token, "
+                        f"vượt giới hạn {self.MAX_SEQUENCE_LENGTH}. Hãy chia chunk nhỏ hơn."
+                    )
+
                 texts.append(f"passage: {content}")
 
             vectors = model.encode(
@@ -83,9 +94,13 @@ class EmbeddingService:
                 results.append(
                     EmbeddingItem(
                         chunk_id=chunk.chunk_id,
+                        document_id=chunk.document_id,
                         document_name=chunk.document_name,
                         page_number=chunk.page_number,
                         chunk_index=chunk.chunk_index,
+                        source_id=chunk.source_id,
+                        content_hash=chunk.content_hash,
+                        token_count=chunk.token_count,
                         content=chunk.content,
                         embedding=vector.tolist(),
                         dimensions=dimensions
@@ -93,6 +108,24 @@ class EmbeddingService:
                 )
 
             yield results
+
+
+    def embed_chunks(self, chunks: List[TextChunk]) -> EmbeddingResponse:
+        """Tạo embedding cho toàn bộ chunks (phục vụ API /documents/embed)."""
+        if not chunks:
+            raise ValueError("Danh sách chunks không được để trống.")
+
+        all_embeddings = []
+        for batch in self.embed_chunks_in_batches(chunks):
+            all_embeddings.extend(batch)
+
+        dimensions = all_embeddings[0].dimensions if all_embeddings else 0
+        return EmbeddingResponse(
+            model_name=self.MODEL_NAME,
+            total_chunks=len(all_embeddings),
+            dimensions=dimensions,
+            embeddings=all_embeddings,
+        )
 
     def embed_query(self, query: str) -> List[float]:
         if not query or not query.strip():

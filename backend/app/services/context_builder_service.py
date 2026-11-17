@@ -8,16 +8,16 @@ class ContextBuilderService:
     """
     Xây dựng ngữ cảnh từ kết quả Hybrid Retrieval.
 
-    Input:
-        Kết quả từ RetrievalService.
-
-    Output:
-        Vector Context, Graph Context và Combined Context.
+    Bao gồm:
+    - Vector Context
+    - Graph Context
+    - Combined Context
+    - Danh sách Source đã được ánh xạ từ DocumentFile
     """
 
-    MAX_VECTOR_RESULTS = 5
-    MAX_GRAPH_RESULTS = 5
-    MAX_CONTEXT_LENGTH = 12000
+    MAX_VECTOR_RESULTS = 10
+    MAX_GRAPH_RESULTS = 10
+    MAX_CONTEXT_LENGTH = 20000
 
     def __init__(self):
         pass
@@ -28,7 +28,6 @@ class ContextBuilderService:
 
     @staticmethod
     def _normalize_text(text: Any) -> str:
-        """Chuẩn hóa văn bản để so sánh và loại bỏ trùng lặp."""
 
         if text is None:
             return ""
@@ -40,7 +39,6 @@ class ContextBuilderService:
 
     @staticmethod
     def _safe_string(value: Any) -> str:
-        """Chuyển dữ liệu thành chuỗi an toàn."""
 
         if value is None:
             return ""
@@ -55,26 +53,113 @@ class ContextBuilderService:
         return str(value)
 
     # =====================================================
-    # 2. VECTOR CONTEXT
+    # 2. SOURCE HELPERS
+    # =====================================================
+
+    @staticmethod
+    def _get_source_id(source: Dict[str, Any]) -> str:
+
+        source_id = (
+            source.get("id")
+            or source.get("source_id")
+        )
+
+        return str(source_id).strip() if source_id else ""
+
+    @staticmethod
+    def _get_source_name(source: Dict[str, Any]) -> str:
+
+        for field in (
+            "name",
+            "title",
+            "file",
+            "filename",
+            "document_name",
+        ):
+
+            value = source.get(field)
+
+            if value:
+                return str(value).strip()
+
+        return "Không rõ tên nguồn"
+
+    def _collect_unique_sources(
+        self,
+        vector_context: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """
+        Tổng hợp Source từ các vector chunk.
+
+        Một PDF có thể liên kết nhiều Source.
+        Một Source xuất hiện ở nhiều chunk chỉ được trả một lần.
+        """
+
+        unique_sources = {}
+
+        for item in vector_context:
+
+            for source in item.get("sources") or []:
+
+                if not isinstance(source, dict):
+                    continue
+
+                source_id = self._get_source_id(source)
+
+                if not source_id:
+                    continue
+
+                if source_id not in unique_sources:
+
+                    unique_sources[source_id] = {
+                        **source,
+                        "id": source_id,
+                        "name": self._get_source_name(source),
+                        "document_names": [],
+                        "pages": [],
+                    }
+
+                current = unique_sources[source_id]
+
+                document_name = item.get("document_name")
+                page_number = item.get("page_number")
+
+                if (
+                    document_name
+                    and document_name not in current["document_names"]
+                ):
+                    current["document_names"].append(document_name)
+
+                if (
+                    page_number is not None
+                    and page_number not in current["pages"]
+                ):
+                    current["pages"].append(page_number)
+
+        results = list(unique_sources.values())
+
+        for source in results:
+            source["pages"].sort()
+
+        return results
+
+    # =====================================================
+    # 3. VECTOR CONTEXT
     # =====================================================
 
     def build_vector_context(
         self,
         vector_results: List[Dict[str, Any]],
     ) -> List[Dict[str, Any]]:
-        """
-        Chuẩn hóa kết quả Vector Retrieval.
-
-        Distance càng thấp thì kết quả càng gần
-        với câu truy vấn theo khoảng cách của vector store.
-        """
 
         if not vector_results:
             return []
 
         sorted_results = sorted(
             vector_results,
-            key=lambda item: float(item.get("distance", float("inf"))),
+            key=lambda item: float(
+                item.get("distance", float("inf"))
+            ),
         )
 
         results = []
@@ -94,13 +179,28 @@ class ContextBuilderService:
 
             seen_contents.add(normalized_content)
 
+            sources = item.get("sources") or []
+
+            # Chuẩn hóa source để tránh dữ liệu không phải dict.
+            sources = [
+                source
+                for source in sources
+                if isinstance(source, dict)
+            ]
+
             results.append({
                 "chunk_id": item.get("chunk_id"),
+                "document_id": item.get("document_id"),
                 "document_name": item.get("document_name"),
+                "source_id": item.get("source_id"),
+                "sources": sources,
+                "content_hash": item.get("content_hash"),
+                "token_count": item.get("token_count"),
                 "page_number": item.get("page_number"),
                 "chunk_index": item.get("chunk_index"),
                 "content": content,
                 "distance": item.get("distance"),
+                "similarity": item.get("similarity"),
             })
 
             if len(results) >= self.MAX_VECTOR_RESULTS:
@@ -109,16 +209,13 @@ class ContextBuilderService:
         return results
 
     # =====================================================
-    # 3. GRAPH CONTEXT
+    # 4. GRAPH CONTEXT
     # =====================================================
 
     def build_graph_context(
         self,
         graph_results: List[Dict[str, Any]],
     ) -> List[Dict[str, Any]]:
-        """
-        Chuẩn hóa node và relationship từ Graph Retrieval.
-        """
 
         if not graph_results:
             return []
@@ -139,7 +236,6 @@ class ContextBuilderService:
             properties = item.get("properties") or {}
             labels = item.get("labels") or []
 
-            # Tạo khóa nhận diện node
             if node_id is not None:
                 node_key = str(node_id)
             else:
@@ -189,14 +285,13 @@ class ContextBuilderService:
         return results
 
     # =====================================================
-    # 4. FORMAT VECTOR CONTEXT
+    # 5. FORMAT VECTOR CONTEXT
     # =====================================================
 
     def format_vector_context(
         self,
         vector_context: List[Dict[str, Any]],
     ) -> str:
-        """Chuyển Vector Context thành văn bản."""
 
         sections = []
 
@@ -206,9 +301,29 @@ class ContextBuilderService:
             page_number = item.get("page_number")
             chunk_index = item.get("chunk_index")
 
+            source_lines = []
+
+            for source in item.get("sources") or []:
+
+                source_id = self._get_source_id(source)
+                source_name = self._get_source_name(source)
+
+                if source_id:
+                    source_lines.append(
+                        f"- {source_id}: {source_name}"
+                    )
+
+            source_text = (
+                "\n".join(source_lines)
+                if source_lines
+                else "Chưa đối chiếu được nguồn thư mục."
+            )
+
             sections.append(
                 f"[Tài liệu {index}]\n"
-                f"Nguồn: {document_name}\n"
+                f"Document ID: {item.get('document_id')}\n"
+                f"Tên PDF: {document_name}\n"
+                f"Nguồn tham khảo:\n{source_text}\n"
                 f"Trang: {page_number}\n"
                 f"Chunk: {chunk_index}\n"
                 f"Nội dung:\n{item['content']}"
@@ -217,14 +332,13 @@ class ContextBuilderService:
         return "\n\n".join(sections)
 
     # =====================================================
-    # 5. FORMAT GRAPH CONTEXT
+    # 6. FORMAT GRAPH CONTEXT
     # =====================================================
 
     def format_graph_context(
         self,
         graph_context: List[Dict[str, Any]],
     ) -> str:
-        """Chuyển thông tin đồ thị thành văn bản."""
 
         sections = []
 
@@ -248,7 +362,6 @@ class ContextBuilderService:
             lines.append("Thuộc tính:")
 
             for key, value in properties.items():
-
                 lines.append(
                     f"- {key}: {self._safe_string(value)}"
                 )
@@ -256,6 +369,7 @@ class ContextBuilderService:
             relationships = node.get("relationships") or []
 
             if relationships:
+
                 lines.append("Các quan hệ:")
 
                 for relationship in relationships:
@@ -295,7 +409,7 @@ class ContextBuilderService:
         return "\n\n".join(sections)
 
     # =====================================================
-    # 6. BUILD COMBINED CONTEXT
+    # 7. BUILD COMBINED CONTEXT
     # =====================================================
 
     def build_combined_context(
@@ -303,12 +417,6 @@ class ContextBuilderService:
         vector_context: str,
         graph_context: str,
     ) -> str:
-        """
-        Kết hợp hai nguồn thông tin thành một context.
-
-        Giới hạn độ dài để tránh đưa quá nhiều dữ liệu
-        vào LLM.
-        """
 
         combined = (
             "=== VECTOR CONTEXT ===\n"
@@ -323,23 +431,22 @@ class ContextBuilderService:
         return combined
 
     # =====================================================
-    # 7. MAIN CONTEXT BUILDER
+    # 8. MAIN CONTEXT BUILDER
     # =====================================================
 
     def build(
         self,
         retrieval_result: Dict[str, Any],
     ) -> Dict[str, Any]:
-        """
-        Điều phối quá trình xây dựng context.
-        """
 
         if not isinstance(retrieval_result, dict):
             raise TypeError(
                 "retrieval_result phải là dictionary."
             )
 
-        query = str(retrieval_result.get("query") or "").strip()
+        query = str(
+            retrieval_result.get("query") or ""
+        ).strip()
 
         if not query:
             raise ValueError(
@@ -356,17 +463,22 @@ class ContextBuilderService:
             retrieval.get("graph", {}).get("results") or []
         )
 
-        # 1. Chuẩn hóa Vector Context
+        # 1. Vector Context
         vector_context = self.build_vector_context(
-            vector_results[:self.MAX_VECTOR_RESULTS * 2]
+            vector_results
         )
 
-        # 2. Chuẩn hóa Graph Context
+        # 2. Graph Context
         graph_context = self.build_graph_context(
-            graph_results[:self.MAX_GRAPH_RESULTS * 2]
+            graph_results
         )
 
-        # 3. Format hai nguồn dữ liệu
+        # 3. Tổng hợp Source duy nhất
+        sources = self._collect_unique_sources(
+            vector_context
+        )
+
+        # 4. Format
         formatted_vector = self.format_vector_context(
             vector_context
         )
@@ -375,13 +487,12 @@ class ContextBuilderService:
             graph_context
         )
 
-        # 4. Kết hợp context
+        # 5. Combined Context
         combined_context = self.build_combined_context(
             formatted_vector,
             formatted_graph,
         )
 
-        # 5. Trả kết quả
         return {
             "query": query,
 
@@ -389,11 +500,20 @@ class ContextBuilderService:
                 "vector_context": vector_context,
                 "graph_context": graph_context,
                 "combined_context": combined_context,
+                "sources": sources,
             },
+
+            "sources": sources,
 
             "metadata": {
                 "vector_count": len(vector_context),
                 "graph_count": len(graph_context),
+                "source_count": len(sources),
+                "unique_document_count": len({
+                    item.get("document_id")
+                    for item in vector_context
+                    if item.get("document_id")
+                }),
                 "combined_context_length": len(combined_context),
             },
         }

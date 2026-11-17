@@ -27,7 +27,7 @@ class RAGPipelineService:
         if not query:
             raise ValueError("Câu hỏi không được để trống.")
 
-        # 1. Retrieval
+        # 1. Hybrid Retrieval
         retrieval_result = self.retrieval_service.retrieve(
             query=query,
             vector_top_k=vector_top_k,
@@ -40,6 +40,7 @@ class RAGPipelineService:
         )
 
         context = context_result.get("context", {})
+        sources = context_result.get("sources", [])
 
         # 3. Answer Generation
         answer_result = self.answer_generation_service.generate(
@@ -56,6 +57,9 @@ class RAGPipelineService:
             "retrieval": retrieval_result.get("retrieval", {}),
 
             "context": context,
+
+            # Danh sách Source đã ánh xạ từ DocumentFile.
+            "sources": sources,
 
             "answer": answer_result.model_dump(),
 

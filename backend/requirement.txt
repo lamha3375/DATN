@@ -8,3 +8,7 @@ PyMuPDF
 python-multipart
 langchain-text-splitters
 chromadb
+numpy
+torch
+transformers
+sentence-transformers

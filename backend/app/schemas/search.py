@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field
 
 
@@ -9,7 +9,11 @@ class SearchRequest(BaseModel):
 
 class SearchResultItem(BaseModel):
     chunk_id: str
+    document_id: Optional[str] = None
     document_name: str
+    source_id: Optional[str] = None
+    content_hash: Optional[str] = None
+    token_count: Optional[int] = None
     page_number: int
     chunk_index: int
     content: str

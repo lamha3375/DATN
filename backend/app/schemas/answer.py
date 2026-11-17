@@ -8,6 +8,7 @@ class AnswerSource(BaseModel):
     document_name: str
     page_number: Optional[int] = None
     chunk_id: Optional[str] = None
+    source_id: Optional[str] = None
 
 class GeneratedAnswer(BaseModel):
     answer: str = Field(

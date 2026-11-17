@@ -1,4 +1,6 @@
 
+from typing import Optional
+
 from app.core.config import settings
 
 
@@ -7,51 +9,67 @@ class EventService:
     def __init__(self, driver):
         self.driver = driver
 
+    # =====================================================
+    # GET ALL EVENTS
+    # =====================================================
+
     def get_all_events(
         self,
         skip: int = 0,
         limit: int = 20,
-        keyword: str = None
+        keyword: Optional[str] = None
     ):
+
         keyword = keyword.strip() if keyword else None
 
         query = """
-        MATCH (e:SuKien)
+        MATCH (e:Event)
 
         WHERE $keyword IS NULL
-           OR toLower(coalesce(e.event_name, ''))
+           OR toLower(coalesce(e.name, ''))
                 CONTAINS toLower($keyword)
            OR toLower(coalesce(e.description, ''))
                 CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.significance, ''))
+                CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.result, ''))
+                CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.eventType, ''))
+                CONTAINS toLower($keyword)
 
         RETURN
-            e.event_id AS event_id,
-            e.event_name AS event_name,
-            e.start_date AS start_date,
-            e.end_date AS end_date,
+            e.id AS event_id,
+            e.name AS event_name,
+            e.startDate AS start_date,
+            e.endDate AS end_date,
+            e.period AS period,
+            e.module AS module,
             e.description AS description,
             e.significance AS significance,
             e.result AS result,
-            e.people AS people,
-            e.location AS location,
-            e.event_type AS event_type,
-            e.time_precision AS time_precision,
-            e.verification_status AS verification_status,
-            e.scope_status AS scope_status
+            e.eventType AS event_type,
+            e.tags AS tags,
+            e.rag_text AS rag_text
 
-        ORDER BY e.start_date ASC
+        ORDER BY e.startDate ASC
 
         SKIP $skip
         LIMIT $limit
         """
 
         count_query = """
-        MATCH (e:SuKien)
+        MATCH (e:Event)
 
         WHERE $keyword IS NULL
-           OR toLower(coalesce(e.event_name, ''))
+           OR toLower(coalesce(e.name, ''))
                 CONTAINS toLower($keyword)
            OR toLower(coalesce(e.description, ''))
+                CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.significance, ''))
+                CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.result, ''))
+                CONTAINS toLower($keyword)
+           OR toLower(coalesce(e.eventType, ''))
                 CONTAINS toLower($keyword)
 
         RETURN count(e) AS total
@@ -87,25 +105,28 @@ class EventService:
             "data": events
         }
 
+    # =====================================================
+    # GET EVENT BY ID
+    # =====================================================
+
     def get_event_by_id(self, event_id: str):
 
         query = """
-        MATCH (e:SuKien {event_id: $event_id})
+        MATCH (e:Event {id: $event_id})
 
         RETURN
-            e.event_id AS event_id,
-            e.event_name AS event_name,
-            e.start_date AS start_date,
-            e.end_date AS end_date,
+            e.id AS event_id,
+            e.name AS event_name,
+            e.startDate AS start_date,
+            e.endDate AS end_date,
+            e.period AS period,
+            e.module AS module,
             e.description AS description,
             e.significance AS significance,
             e.result AS result,
-            e.people AS people,
-            e.location AS location,
-            e.event_type AS event_type,
-            e.time_precision AS time_precision,
-            e.verification_status AS verification_status,
-            e.scope_status AS scope_status
+            e.eventType AS event_type,
+            e.tags AS tags,
+            e.rag_text AS rag_text
 
         LIMIT 1
         """

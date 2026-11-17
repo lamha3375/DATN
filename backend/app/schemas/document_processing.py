@@ -10,6 +10,7 @@ class DocumentProcessingResponse(BaseModel):
     total_chunks: int = Field(..., ge=0)
     previously_stored: int = Field(..., ge=0)
     newly_stored: int = Field(..., ge=0)
+    removed_stale_chunks: int = Field(default=0, ge=0)
 
     total_stored: int = Field(..., ge=0)
 

@@ -35,17 +35,16 @@ class AnswerGenerationService:
         seen = set()
 
         for item in vector_context:
-
             document_name = item.get("document_name")
 
             if not document_name:
                 continue
 
+            document_id = item.get("document_id")
             page_number = item.get("page_number")
-            chunk_id = item.get("chunk_id")
 
             source_key = (
-                document_name,
+                document_id or document_name,
                 page_number
             )
 
@@ -58,7 +57,8 @@ class AnswerGenerationService:
                 AnswerSource(
                     document_name=document_name,
                     page_number=page_number,
-                    chunk_id=chunk_id
+                    chunk_id=item.get("chunk_id"),
+                    source_id=item.get("source_id")
                 )
             )
 

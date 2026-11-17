@@ -13,19 +13,27 @@ service = EmbeddingService()
 chunks = [
     TextChunk(
         chunk_id="CHUNK_001",
+        document_id="lich_su_tay_son_test",
         document_name="lich_su_tay_son.pdf",
+        source_id=None,
+        content_hash="test-content-hash",
+        token_count=24,
         page_number=1,
         content="Năm 1771, phong trào khởi nghĩa Tây Sơn bùng nổ tại Bình Định.",
         character_count=65,
-        chunk_index=0
+        chunk_index=1
     ),
     TextChunk(
         chunk_id="CHUNK_002",
+        document_id="lich_su_tay_son_test",
         document_name="lich_su_tay_son.pdf",
+        source_id=None,
+        content_hash="test-content-hash",
+        token_count=27,
         page_number=2,
         content="Nguyễn Huệ là một trong những lãnh tụ tiêu biểu của phong trào Tây Sơn.",
         character_count=75,
-        chunk_index=1
+        chunk_index=2
     )
 ]
 

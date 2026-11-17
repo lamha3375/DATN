@@ -3,6 +3,7 @@ from app.core.config import settings
 
 
 class SourceService:
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -14,9 +15,8 @@ class SourceService:
     ):
         keyword = keyword.strip() if keyword else None
 
-        # Tìm kiếm trên tất cả thuộc tính của node
         query = """
-        MATCH (s:NguonTaiLieu)
+        MATCH (s:Source)
         WITH s, properties(s) AS props
         WHERE $keyword IS NULL
            OR any(
@@ -26,18 +26,16 @@ class SourceService:
            )
         RETURN props AS source
         ORDER BY coalesce(
-            s.source_name,
-            s.title,
             s.name,
-            s.source_id
+            s.id,
+            s.file
         ) ASC
         SKIP $skip
         LIMIT $limit
         """
 
-        # Đếm tổng số nguồn tài liệu phù hợp
         count_query = """
-        MATCH (s:NguonTaiLieu)
+        MATCH (s:Source)
         WITH s, properties(s) AS props
         WHERE $keyword IS NULL
            OR any(
@@ -52,12 +50,11 @@ class SourceService:
             database=settings.NEO4J_DATABASE
         ) as session:
 
-            total_result = session.run(
+            total_record = session.run(
                 count_query,
                 keyword=keyword
-            )
+            ).single()
 
-            total_record = total_result.single()
             total = total_record["total"] if total_record else 0
 
             result = session.run(
@@ -80,11 +77,10 @@ class SourceService:
         }
 
     def get_source_by_id(self, source_id: str):
+
         query = """
-        MATCH (s:NguonTaiLieu)
-        WHERE toString(s.source_id) = $source_id
-           OR toString(s.document_id) = $source_id
-           OR toString(s.id) = $source_id
+        MATCH (s:Source)
+        WHERE toString(s.id) = $source_id
         RETURN properties(s) AS source
         LIMIT 1
         """
@@ -93,12 +89,10 @@ class SourceService:
             database=settings.NEO4J_DATABASE
         ) as session:
 
-            result = session.run(
+            record = session.run(
                 query,
                 source_id=source_id
-            )
-
-            record = result.single()
+            ).single()
 
             if record is None:
                 return None

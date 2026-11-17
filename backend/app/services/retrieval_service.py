@@ -11,10 +11,11 @@ from app.services.query_analysis_service import query_analysis_service
 class RetrievalService:
     """
     Hybrid Retrieval:
-    - Query Analysis: phân tích câu hỏi và trích xuất keywords.
-    - Vector Retrieval: tìm kiếm ngữ nghĩa trên ChromaDB.
-    - Graph Retrieval: tìm kiếm thực thể trên Neo4j.
-    - Relationship Expansion: mở rộng quan hệ theo intent.
+    - Query Analysis
+    - Vector Retrieval
+    - Graph Retrieval
+    - Relationship Expansion
+    - Source Mapping: DocumentFile -> Source
     """
 
     MAX_VECTOR_TOP_K = 10
@@ -22,62 +23,28 @@ class RetrievalService:
     MAX_NEIGHBORS = 3
 
     IDENTITY_KEYS = [
-        "name",
-        "ten",
-        "title",
-        "entity",
-        "entity_name",
-        "canonical_name",
-        "event_name",
-        "person_name",
-        "location_name",
-        "aliases",
-        "alias",
-        "ten_nhan_vat",
-        "ten_su_kien",
-        "ten_dia_diem",
+        "name", "ten", "title", "entity", "entity_name",
+        "canonical_name", "event_name", "person_name",
+        "location_name", "aliases", "alias",
+        "ten_nhan_vat", "ten_su_kien", "ten_dia_diem",
     ]
 
     EXCLUDED_KEYS = {
-        "embedding",
-        "vector",
-        "raw_text",
-        "raw_content",
-        "content",
+        "embedding", "vector", "raw_text",
+        "raw_content", "content",
     }
 
     PRIORITY_PROPERTIES = [
-        "id",
-        "entity_id",
-        "event_id",
-        "person_id",
-        "name",
-        "ten",
-        "title",
-        "entity",
-        "event_name",
-        "person_name",
-        "type",
-        "entity_type",
-        "year",
-        "date",
-        "start_date",
-        "end_date",
-        "start_year",
-        "end_year",
-        "description",
-        "aliases",
-        "source",
+        "id", "entity_id", "event_id", "person_id",
+        "name", "ten", "title", "entity",
+        "event_name", "person_name", "type",
+        "entity_type", "year", "date",
+        "start_date", "end_date", "start_year",
+        "end_year", "description", "aliases", "source",
     ]
 
     GENERIC_TERMS = [
-        "quân",
-        "đại",
-        "phá",
-        "trận",
-        "vua",
-        "năm",
-        "nhà",
+        "quân", "đại", "phá", "trận", "vua", "năm", "nhà",
     ]
 
     def __init__(self):
@@ -94,10 +61,7 @@ class RetrievalService:
         top_k: int = 5,
     ) -> List[Dict[str, Any]]:
 
-        top_k = max(
-            1,
-            min(top_k, self.MAX_VECTOR_TOP_K),
-        )
+        top_k = max(1, min(top_k, self.MAX_VECTOR_TOP_K))
 
         request = SearchRequest(
             query=query,
@@ -112,11 +76,95 @@ class RetrievalService:
         ]
 
     # =====================================================
-    # 2. DATA NORMALIZATION
+    # 2. SOURCE MAPPING
+    # =====================================================
+
+    def attach_sources_to_vectors(
+        self,
+        vector_results: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """
+        Ánh xạ:
+        ChromaDB document_id
+            -> Neo4j DocumentFile
+            -> Source thông qua USES_FILE.
+
+        Một DocumentFile có thể liên kết nhiều Source.
+        Không gán tùy tiện một source_id duy nhất cho chunk.
+        """
+
+        if not vector_results:
+            return vector_results
+
+        document_ids = list(dict.fromkeys(
+            item.get("document_id")
+            for item in vector_results
+            if item.get("document_id")
+        ))
+
+        if not document_ids:
+            for item in vector_results:
+                item["sources"] = []
+            return vector_results
+
+        query = """
+        UNWIND $document_ids AS document_id
+
+        OPTIONAL MATCH (df:DocumentFile {
+            document_id: document_id
+        })
+
+        OPTIONAL MATCH (s:Source)-[:USES_FILE]->(df)
+
+        RETURN
+            document_id,
+            collect(
+                DISTINCT CASE
+                    WHEN s IS NULL THEN null
+                    ELSE properties(s)
+                END
+            ) AS sources
+        """
+
+        driver = neo4j_connection.get_driver()
+
+        with driver.session(
+            database=settings.NEO4J_DATABASE
+        ) as session:
+
+            records = session.run(
+                query,
+                document_ids=document_ids
+            )
+
+            source_mapping = {}
+
+            for record in records:
+
+                sources = [
+                    source
+                    for source in (record["sources"] or [])
+                    if source is not None
+                ]
+
+                source_mapping[record["document_id"]] = sources
+
+        for item in vector_results:
+
+            document_id = item.get("document_id")
+
+            item["sources"] = source_mapping.get(
+                document_id,
+                []
+            )
+
+        return vector_results
+
+    # =====================================================
+    # 3. DATA NORMALIZATION
     # =====================================================
 
     def _to_json_safe(self, value: Any) -> Any:
-        """Chuyển dữ liệu Neo4j về kiểu có thể JSON hóa."""
 
         if value is None:
             return None
@@ -143,7 +191,6 @@ class RetrievalService:
         properties: Dict[str, Any],
         max_properties: int = 15,
     ) -> Dict[str, Any]:
-        """Giới hạn số lượng và độ dài thuộc tính trả về."""
 
         if not properties:
             return {}
@@ -178,7 +225,7 @@ class RetrievalService:
         return result
 
     # =====================================================
-    # 3. GRAPH RETRIEVAL
+    # 4. GRAPH RETRIEVAL
     # =====================================================
 
     def retrieve_graph(
@@ -189,20 +236,11 @@ class RetrievalService:
         retrieval_strategy: Optional[Dict[str, bool]] = None,
         intent: str = "general_query",
     ) -> List[Dict[str, Any]]:
-        """
-        Tìm kiếm node trên Neo4j.
-
-        Relationship Expansion chỉ được thực hiện
-        khi retrieval_strategy cho phép.
-        """
 
         if not keywords:
             return []
 
-        top_k = max(
-            1,
-            min(top_k, self.MAX_GRAPH_TOP_K),
-        )
+        top_k = max(1, min(top_k, self.MAX_GRAPH_TOP_K))
 
         if retrieval_strategy is None:
             retrieval_strategy = {
@@ -221,10 +259,6 @@ class RetrievalService:
             )
         else:
             max_neighbors = 0
-
-        # ---------------------------------------------
-        # Phần truy xuất và chấm điểm node
-        # ---------------------------------------------
 
         base_query = """
         MATCH (n)
@@ -316,10 +350,6 @@ class RetrievalService:
         LIMIT $top_k
         """
 
-        # ---------------------------------------------
-        # Phần mở rộng quan hệ
-        # ---------------------------------------------
-
         if expand_relationships and max_neighbors > 0:
 
             relationship_query = """
@@ -372,7 +402,6 @@ class RetrievalService:
                 labels(n) AS labels,
                 properties(n) AS properties,
                 relevance_score AS score,
-
                 identity_effective AS matched_identity_terms,
                 context_effective AS matched_context_terms,
 
@@ -386,28 +415,20 @@ class RetrievalService:
 
         else:
 
-            # Không thực hiện OPTIONAL MATCH khi không cần
-            # mở rộng quan hệ.
             relationship_query = """
             RETURN
                 elementId(n) AS node_id,
                 labels(n) AS labels,
                 properties(n) AS properties,
                 relevance_score AS score,
-
                 identity_effective AS matched_identity_terms,
                 context_effective AS matched_context_terms,
-
                 [] AS relationships
 
             ORDER BY score DESC
             """
 
         cypher_query = base_query + relationship_query
-
-        # ---------------------------------------------
-        # Thực thi Neo4j
-        # ---------------------------------------------
 
         driver = neo4j_connection.get_driver()
 
@@ -437,12 +458,10 @@ class RetrievalService:
                     relationships.append({
                         "type": relationship["type"],
                         "direction": relationship["direction"],
-
                         "target": {
                             "id": target["id"],
                             "labels": target["labels"],
                             "name": target["name"],
-
                             "properties": self._compact_properties(
                                 target["properties"]
                             ),
@@ -452,28 +471,21 @@ class RetrievalService:
                 results.append({
                     "node_id": record["node_id"],
                     "labels": record["labels"],
-
                     "properties": self._compact_properties(
                         record["properties"]
                     ),
-
-                    "score": round(
-                        float(record["score"]),
-                        3,
-                    ),
-
+                    "score": round(float(record["score"]), 3),
                     "matched_terms": (
                         record["matched_identity_terms"]
                         + record["matched_context_terms"]
                     ),
-
                     "relationships": relationships,
                 })
 
         return results
 
     # =====================================================
-    # 4. MAIN RETRIEVAL
+    # 5. MAIN RETRIEVAL
     # =====================================================
 
     def retrieve(
@@ -482,11 +494,7 @@ class RetrievalService:
         vector_top_k: int = 5,
         graph_top_k: int = 5,
     ) -> Dict[str, Any]:
-        """
-        Điều phối toàn bộ quá trình Hybrid Retrieval.
-        """
 
-        # 1. Phân tích câu hỏi
         analysis = self.query_analysis_service.analyze(query)
 
         normalized_query = analysis["normalized_query"]
@@ -494,7 +502,6 @@ class RetrievalService:
         intent = analysis["intent"]
         retrieval_strategy = analysis["retrieval_strategy"]
 
-        # 2. Giới hạn số lượng kết quả
         vector_top_k = max(
             1,
             min(vector_top_k, self.MAX_VECTOR_TOP_K),
@@ -505,7 +512,7 @@ class RetrievalService:
             min(graph_top_k, self.MAX_GRAPH_TOP_K),
         )
 
-        # 3. Vector Retrieval
+        # Vector Retrieval
         vector_results = []
 
         if retrieval_strategy.get("vector_search", True):
@@ -515,7 +522,12 @@ class RetrievalService:
                 top_k=vector_top_k,
             )
 
-        # 4. Graph Retrieval
+            # Gắn danh sách Source vào từng kết quả vector.
+            vector_results = self.attach_sources_to_vectors(
+                vector_results
+            )
+
+        # Graph Retrieval
         graph_results = []
 
         if retrieval_strategy.get("graph_search", True):
@@ -528,7 +540,6 @@ class RetrievalService:
                 intent=intent,
             )
 
-        # 5. Tổng hợp kết quả
         return {
             "query": query.strip(),
 
