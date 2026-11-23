@@ -94,7 +94,7 @@ body {
 .graph-hero h1 {
     margin: 18px 0 17px;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: clamp(40px, 5vw, 58px);
     font-weight: 700;
     line-height: 1.2;
@@ -155,7 +155,7 @@ body {
 .graph-heading h2 {
     margin: 10px 0 8px;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 30px;
     font-weight: 700;
     line-height: 1.35;
@@ -189,7 +189,7 @@ body {
 .graph-stat span {
     display: block;
     color: var(--kg-brown);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 25px;
     font-weight: 700;
     line-height: 1.3;
@@ -422,7 +422,7 @@ body {
     border-radius: 50%;
     background: #f1e7d5;
     color: var(--kg-gold);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 13px;
     font-weight: 700;
 }
@@ -530,7 +530,7 @@ body {
 .graph-card-heading h3 {
     margin: 6px 0 0;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 20px;
     font-weight: 700;
 }
@@ -616,7 +616,7 @@ body {
 
 .graph-overlay h5 {
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 21px;
     font-weight: 700;
 }
@@ -718,7 +718,7 @@ body {
 .detail-panel-heading h3 {
     margin: 6px 0 0;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 20px;
     font-weight: 700;
 }
@@ -762,7 +762,7 @@ body {
 .detail-placeholder h4 {
     margin: 0;
     color: var(--kg-brown);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 19px;
     font-weight: 700;
 }
@@ -811,7 +811,7 @@ body {
 .detail-entity-name {
     margin: 18px 0 5px;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 25px;
     font-weight: 700;
     line-height: 1.4;
@@ -1187,7 +1187,7 @@ body {
 .discovery-content h2 {
     margin: 8px 0;
     color: var(--kg-ink);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 22px;
     font-weight: 700;
     line-height: 1.4;
@@ -1241,7 +1241,7 @@ body {
 
 .footer-brand {
     color: var(--kg-brown);
-    font-family: "Playfair Display", serif;
+    font-family: var(--kg-serif);
     font-size: 23px;
     font-weight: 600;
     text-decoration: none;
@@ -1530,4 +1530,317 @@ body {
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
     }
+}
+
+
+/* =========================================
+   KNOWLEDGE EXPLORER - PERSON-CENTERED VIEW
+   NLC-inspired interaction, Tây Sơn visual identity
+========================================= */
+
+.graph-workspace {
+    grid-template-columns: minmax(0, 1fr) minmax(310px, 360px);
+    gap: 18px;
+    align-items: start;
+}
+
+.graph-card-title { min-width: 0; }
+.graph-card-description {
+    margin: 7px 0 0;
+    color: var(--kg-muted);
+    font-size: 11px;
+    line-height: 1.65;
+}
+.graph-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 9px;
+}
+.graph-clear-focus {
+    padding: 7px 11px;
+    border: 1px solid var(--kg-border-dark);
+    border-radius: 6px;
+    background: var(--kg-paper-soft);
+    color: var(--kg-brown);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    transition: background .2s, border-color .2s;
+}
+.graph-clear-focus:hover {
+    border-color: var(--kg-gold);
+    background: #f1e7d5;
+}
+.graph-clear-focus[hidden] { display: none !important; }
+.graph-canvas-wrapper {
+    height: min(74vh, 760px);
+    min-height: 620px;
+    background:
+        radial-gradient(circle, rgba(167,125,62,.075) 1px, transparent 1px),
+        var(--kg-paper);
+    background-size: 25px 25px;
+}
+#knowledge-network { width: 100%; height: 100%; cursor: grab; }
+#knowledge-network:active { cursor: grabbing; }
+.graph-detail-panel {
+    position: sticky;
+    top: 92px;
+    max-height: 760px;
+    overflow-y: auto;
+    align-self: start;
+}
+.relation-description {
+    margin: 7px 0 13px;
+    color: var(--kg-muted);
+    font-size: 11px;
+    line-height: 1.65;
+}
+@media (max-width: 1199px) {
+    .graph-workspace { grid-template-columns: minmax(0, 1fr) 320px; }
+    .graph-canvas-wrapper { min-height: 570px; }
+}
+@media (max-width: 991px) {
+    .graph-workspace { grid-template-columns: 1fr; }
+    .graph-detail-panel { position: static; max-height: none; }
+    .graph-canvas-wrapper { height: 590px; min-height: 0; }
+}
+@media (max-width: 767px) {
+    .graph-card-heading { align-items: flex-start; }
+    .graph-card-actions { flex-shrink: 0; }
+    .graph-canvas-wrapper { height: 480px; }
+}
+@media (max-width: 480px) {
+    .graph-canvas-wrapper { height: 400px; }
+    .graph-card-description { max-width: 230px; }
+}
+
+/* Bộ lọc nhiều lựa chọn theo nhóm thực thể */
+.graph-toolbar-actions { position: relative; }
+.kg-filter-menu { position: relative; z-index: 20; }
+.kg-filter-menu > summary {
+    display: inline-flex; align-items: center; gap: 8px; height: 43px;
+    padding: 0 14px; border: 1px solid var(--kg-border-dark); border-radius: 8px;
+    background: var(--kg-paper); color: var(--kg-brown); cursor: pointer;
+    font-size: 12px; font-weight: 600; list-style: none;
+}
+.kg-filter-menu > summary::-webkit-details-marker { display: none; }
+.kg-filter-menu[open] > summary { border-color: var(--kg-gold); background: #f7f0e4; }
+.kg-filter-options {
+    position: absolute; top: calc(100% + 8px); right: 0; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 10px 16px; width: 290px;
+    padding: 15px; border: 1px solid var(--kg-border); border-radius: 10px;
+    background: var(--kg-paper); box-shadow: 0 12px 32px rgba(48,39,31,.13);
+}
+.kg-filter-options label { display: flex; align-items: center; gap: 8px; color: var(--kg-brown); font-size: 11px; cursor: pointer; }
+.kg-filter-options input { accent-color: var(--kg-gold); width: 14px; height: 14px; }
+.kg-filter-options button {
+    grid-column: 1 / -1; justify-self: start; padding: 6px 10px;
+    border: 1px solid var(--kg-border-dark); border-radius: 6px;
+    background: #f7f1e6; color: var(--kg-brown); font: inherit; font-size: 11px;
+}
+.graph-card-description { max-width: 650px; }
+@media (max-width: 575px) {
+    .graph-toolbar-actions { flex-wrap: wrap; }
+    .kg-filter-options { right: -75px; width: min(290px, calc(100vw - 42px)); }
+}
+
+
+/* Bộ lọc quan hệ: nhóm mở rộng được tách nhẹ khỏi 5 nhóm cốt lõi. */
+.kg-filter-secondary {
+    border-top: 1px solid rgba(128, 97, 62, .18);
+    margin-top: 6px;
+    padding-top: 8px;
+    color: #80613e;
+}
+.expand-node-btn[data-action="collapse"] {
+    background: #f1e8dc;
+    border-color: #b58b68;
+    color: #684a35;
+}
+
+
+/* Icon thực thể và nút điều khiển nhánh đặt trong khung đồ thị cố định. */
+.graph-canvas-wrapper {
+    height: clamp(430px, 68vh, 720px);
+    min-height: 430px;
+    max-height: 720px;
+    overflow: hidden;
+    contain: layout paint;
+}
+#knowledge-network { position: absolute; inset: 0; width: 100%; height: 100%; }
+.graph-node-controls { position: absolute; inset: 0; z-index: 4; overflow: hidden; pointer-events: none; }
+.kg-node-toggle {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 23px; height: 23px; padding: 0; border-radius: 50%;
+    border: 1px solid #9c7547; background: #fffdf8; color: #65472e;
+    box-shadow: 0 2px 7px rgba(45, 32, 20, .2);
+    font: 700 17px/20px "Be Vietnam Pro", sans-serif;
+    pointer-events: auto; cursor: pointer;
+}
+.kg-node-toggle:hover { background: #e9d7b8; transform: translate(-50%, -50%) scale(1.08); }
+.kg-node-toggle.is-expanded { background: #6e5239; color: #fffaf1; border-color: #6e5239; }
+.kg-node-toggle:disabled { opacity: .55; cursor: wait; }
+.graph-search { flex-wrap: nowrap; }
+.graph-search select#graph-search-type {
+    min-width: 112px; max-width: 145px; height: 42px; padding: 0 9px;
+    border: 1px solid var(--kg-border); border-radius: 6px;
+    background: #fffdf8; color: var(--kg-brown); font: inherit; font-size: 12px;
+}
+.graph-search input[type="search"] { min-width: 180px; flex: 1 1 240px; }
+@media (max-width: 575px) {
+    .graph-canvas-wrapper { height: 480px; min-height: 400px; }
+    .graph-search { height: auto; min-height: 48px; flex-wrap: wrap; padding: 6px; }
+    .graph-search > i { margin-left: 8px; }
+    .graph-search select#graph-search-type { max-width: none; flex: 1 1 100%; height: 36px; }
+    .graph-search input { flex: 1 1 100%; height: 38px; }
+    .graph-search > button { height: 34px; }
+}
+
+.graph-zoom-controls {
+    position: absolute; z-index: 5; left: 14px; bottom: 14px;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 5px 7px; border: 1px solid var(--kg-border);
+    border-radius: 8px; background: rgba(255,253,248,.96);
+    box-shadow: 0 3px 12px rgba(45,32,20,.1);
+}
+.graph-zoom-controls button {
+    width: 27px; height: 27px; border: 1px solid var(--kg-border);
+    border-radius: 5px; background: #f7f0e4; color: var(--kg-brown);
+    font: 600 17px/22px "Be Vietnam Pro", sans-serif;
+}
+.graph-zoom-controls button:hover { background: #ead9bd; }
+.graph-zoom-controls span { min-width: 43px; text-align: center; color: var(--kg-brown); font-size: 11px; font-weight: 600; }
+
+
+/* v4: bộ lọc quan hệ động theo từng nút, biểu tượng và kết quả tìm kiếm đồng nhất */
+.kg-filter-options { max-height: min(62vh, 440px); overflow-y: auto; }
+.kg-relation-filter-item { display:flex; align-items:center; gap:8px; padding:5px 2px; color:var(--kg-brown); font-size:11px; line-height:1.4; cursor:pointer; }
+.kg-relation-filter-item input { flex:0 0 auto; accent-color:var(--kg-gold); }
+.kg-filter-empty { margin:0; color:var(--kg-muted); font-size:11px; line-height:1.6; }
+.kg-filter-extended { grid-column:1 / -1; border-top:1px solid var(--kg-border); margin-top:7px; padding-top:7px; }
+.kg-filter-extended summary { color:var(--kg-gold); font-size:11px; font-weight:700; cursor:pointer; margin-bottom:5px; }
+.search-result-item { display:flex; align-items:center; gap:10px; }
+.search-result-name { flex:1; text-align:left; }
+.search-result-type-icon { display:grid; place-items:center; flex:0 0 30px; width:30px; height:30px; border:1px solid var(--kg-border); border-radius:50%; background:#f1e7d6; color:var(--kg-brown); }
+.graph-zoom-controls button { font-size:15px; }
+
+/* v5 — Typography, workspace composition and restrained graph controls */
+:root {
+    --kg-serif: "Noto Serif", "Times New Roman", serif;
+    --kg-sans: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
+}
+
+html, body,
+.graph-hero, .graph-explorer-section, .graph-discovery-section,
+.graph-detail-panel, .graph-toolbar, .graph-main-card,
+.graph-search input, .graph-search select, .graph-search button,
+.kg-filter-menu, .kg-filter-options {
+    font-family: var(--kg-sans) !important;
+}
+
+.graph-hero h1,
+.graph-heading h2,
+.graph-stat span,
+.graph-card-heading h3,
+.detail-panel-heading h3,
+.detail-entity-name,
+.graph-discovery-card h2 {
+    font-family: var(--kg-serif) !important;
+    font-weight: 600;
+}
+
+.graph-hero { padding: 48px 0 42px; }
+.graph-hero h1 { margin: 10px 0 11px; font-size: clamp(36px, 4.2vw, 49px); line-height: 1.22; }
+.graph-hero-content > p { max-width: 720px; font-size: 14px; line-height: 1.75; }
+.graph-hero-note { margin-top: 13px; padding: 9px 13px; font-size: 12px; }
+.graph-explorer-section { padding: 34px 0 42px; }
+.graph-heading { align-items: center; margin-bottom: 18px; }
+.graph-heading h2 { margin: 5px 0 5px; font-size: 26px; }
+.graph-heading p { font-size: 12px; }
+.graph-stat { min-width: 108px; padding: 8px 12px; }
+.graph-stat span { font-size: 22px; }
+.graph-stat small { font-size: 10px; }
+
+/* Search and relation filters now belong to the graph card, not a floating row. */
+.graph-card-tools {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--kg-border);
+    background: #fcfaf5;
+}
+.graph-toolbar { display: flex; align-items: center; gap: 10px; margin: 0; }
+.graph-search { max-width: none; flex: 1 1 auto; height: 42px; border-radius: 7px; }
+.graph-search > i { margin-left: 12px; font-size: 13px; }
+.graph-search select#graph-search-type { min-width: 112px; max-width: 132px; height: 36px; font-size: 11px; }
+.graph-search input[type="search"] { font-size: 12px; }
+.graph-search > button { height: 32px; padding: 0 14px; font-size: 11px; }
+.graph-toolbar-actions { flex: 0 0 auto; gap: 6px; }
+.kg-filter-menu > summary { height: 40px; padding: 0 11px; font-size: 11px; }
+.graph-icon-btn { flex-basis: 38px; width: 38px; height: 38px; font-size: 13px; }
+.graph-card-heading { padding: 14px 18px; }
+.graph-card-heading h3 { font-size: 18px; }
+.graph-card-description { margin-top: 4px; font-size: 10px; }
+.graph-canvas-wrapper { height: clamp(440px, 64vh, 660px); min-height: 440px; }
+
+/* Compact, contextual legend: only entity types currently present in the graph. */
+.graph-canvas-legend {
+    position: absolute;
+    z-index: 6;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-width: 176px;
+    padding: 9px 11px;
+    border: 1px solid rgba(220, 210, 194, .9);
+    border-radius: 8px;
+    background: rgba(255, 254, 250, .93);
+    box-shadow: 0 2px 9px rgba(45, 32, 20, .06);
+    pointer-events: none;
+}
+.canvas-legend-title { color: var(--kg-gold); font-size: 9px; font-weight: 700; letter-spacing: .8px; }
+#graph-legend-items { display: flex; flex-wrap: wrap; gap: 5px 10px; }
+.canvas-legend-item { display: inline-flex; align-items: center; gap: 5px; color: var(--kg-muted); font-size: 10px; line-height: 1.35; white-space: nowrap; }
+.canvas-legend-dot { display: inline-block; width: 9px; height: 9px; flex: 0 0 9px; border: 1px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(92, 73, 51, .12); }
+.legend-empty { color: var(--kg-muted-light); font-size: 9px; line-height: 1.4; }
+
+/* Less heavy node action controls and icon outlines. */
+.kg-node-toggle {
+    width: 20px; height: 20px;
+    border: 1px solid #cdbb9f;
+    background: rgba(255, 254, 250, .96);
+    color: #80613e;
+    box-shadow: 0 1px 4px rgba(45, 32, 20, .10);
+    font: 500 14px/18px var(--kg-sans);
+}
+.kg-node-toggle.is-expanded { background: #8b704d; color: #fff; border-color: #8b704d; }
+.kg-node-toggle:hover { background: #eee4d3; color: #684a35; }
+.graph-zoom-controls { left: 12px; bottom: 12px; }
+.canvas-hint { font-size: 10px; }
+
+@media (max-width: 991px) {
+    .graph-toolbar { flex-wrap: wrap; }
+    .graph-search { flex-basis: 100%; }
+    .graph-toolbar-actions { justify-content: flex-end; }
+    .graph-canvas-wrapper { height: 560px; min-height: 0; }
+}
+@media (max-width: 575px) {
+    .graph-hero { padding: 36px 0 30px; }
+    .graph-explorer-section { padding: 26px 0 32px; }
+    .graph-heading { align-items: flex-start; gap: 12px; }
+    .graph-heading h2 { font-size: 22px; }
+    .graph-stats { gap: 6px; }
+    .graph-stat { min-width: 76px; padding: 7px 8px; }
+    .graph-stat small { font-size: 9px; }
+    .graph-card-tools { padding: 10px; }
+    .graph-search { height: auto; min-height: 42px; flex-wrap: wrap; padding: 5px; }
+    .graph-search select#graph-search-type { flex: 0 0 100%; max-width: none; order: 0; }
+    .graph-search > i { display: none; }
+    .graph-search input[type="search"] { flex: 1 1 calc(100% - 90px); height: 34px; }
+    .graph-search > button { flex: 0 0 auto; margin: 0; }
+    .graph-toolbar-actions { width: 100%; justify-content: flex-start; }
+    .graph-canvas-legend { top: 8px; right: 8px; max-width: 142px; padding: 7px 8px; }
+    .canvas-legend-item { font-size: 9px; }
+    .graph-canvas-wrapper { height: 470px; min-height: 0; }
 }

@@ -18,13 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
         status: $("graph-status-text"),
 
         searchInput: $("graph-search-input"),
+        searchType: $("graph-search-type"),
         searchButton: $("graph-search-btn"),
+        nodeControls: $("graph-node-controls"),
+        zoomIn: $("graph-zoom-in"),
+        zoomOut: $("graph-zoom-out"),
+        zoomLevel: $("graph-zoom-level"),
         searchResults: $("search-results"),
 
         filter: $("entity-filter"),
         fit: $("fit-graph-btn"),
         reset: $("reset-graph-btn"),
         retry: $("graph-retry-btn"),
+        clearFocus: $("clear-focus-btn"),
 
         placeholder: $("detail-placeholder"),
         content: $("detail-content"),
@@ -39,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         INITIAL_LIMIT: 40,
-        INITIAL_NODE_COUNT: 18,
-        EXPANSION_LIMIT: 30,
+        INITIAL_NODE_COUNT: 1,
+        EXPANSION_LIMIT: 8,
         SEARCH_LIMIT: 20,
         MAX_PROPERTY_LENGTH: 1200
     };
@@ -55,8 +61,29 @@ document.addEventListener("DOMContentLoaded", () => {
         Unit: "Đơn vị",
         Tactics: "Chiến thuật",
         Source: "Nguồn tư liệu",
+        NhanVat: "Nhân vật",
+        SuKien: "Sự kiện",
+        DiaDiem: "Địa điểm",
+        TheLuc: "Phe phái",
+        NguonTaiLieu: "Nguồn tư liệu",
         Unknown: "Thực thể"
     };
+
+    const TYPE_ALIASES = {
+        NhanVat: "Person", SuKien: "Event", DiaDiem: "Location",
+        TheLuc: "Faction", NguonTaiLieu: "Source"
+    };
+
+    const RELATION_GROUPS = {
+        family: { label: "Gia đình – Huyết thống" },
+        allies: { label: "Đồng minh – Thân cận" },
+        hierarchy: { label: "Cấp trên – Cấp dưới" },
+        teachers: { label: "Thầy – Trò" },
+        opponents: { label: "Đối thủ – Kẻ thù" },
+        other: { label: "Quan hệ khác" }
+    };
+
+    const RELATION_PRIORITY = ["family", "allies", "hierarchy", "teachers", "opponents", "other"];
 
     const PROPERTY_LABELS = {
         name: "Tên",
@@ -227,11 +254,16 @@ document.addEventListener("DOMContentLoaded", () => {
         edgeMap: new Map(),
 
         selectedId: null,
+        rootId: null,
         expandedIds: new Set(),
+        expansionHistory: new Map(),
 
         loading: false,
         expanding: false,
-        searchRequest: 0
+        searchRequest: 0,
+        searchDebounce: null,
+        overlayFrame: null,
+        zoomClamping: false
     };
 
     // ================================================
@@ -255,11 +287,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function getNodeType(node) {
         const labels = node?.labels;
 
-        if (Array.isArray(labels)) {
-            return labels.find(label => LABELS[label]) || labels[0] || "Unknown";
-        }
-
-        return labels || "Unknown";
+        const raw = Array.isArray(labels)
+            ? (labels.find(label => LABELS[label]) || labels[0])
+            : labels;
+        return TYPE_ALIASES[raw] || raw || "Unknown";
     }
 
     function getNodeName(node) {
@@ -354,15 +385,138 @@ document.addEventListener("DOMContentLoaded", () => {
         el.status.textContent = message;
     }
 
-    function getFilter() {
-        return el.filter.value || "all";
+    function getEnabledRelationGroups() {
+        if (!el.filter) return new Set();
+        return new Set(Array.from(el.filter.querySelectorAll('input[data-relation-type]:checked'))
+            .map(input => input.dataset.relationType));
+    }
+
+    function getEnabledRelationTypes() {
+        return getEnabledRelationGroups();
+    }
+
+    function normalizeRelationType(value) {
+        return String(value || "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toUpperCase()
+            .replace(/[\s-]+/g, "_");
+    }
+
+    function getRelationGroup(edge) {
+        const type = normalizeRelationType(edge?.type || edge?.display_type);
+
+        if (/CHA_ME|CHA_CUA|ME_CUA|ANH_EM|VO_CHONG|VO_CUA|CHONG_CUA|CON_CUA|HUYET_THONG|GIA_DINH/.test(type)) return "family";
+        if (/DONG_MINH|LIEN_MINH|BAN_BE|THAN_CAN|UNG_HO|HO_TRO|CUU_MANG|CUU_GIUP|CUNG_CHI_HUONG|THAM_GIA|CHU_TRI|THAM_DU|THAM_CHIEN/.test(type)) return "allies";
+        if (/CHI_HUY|CHU_TUONG|CAP_TREN|CAP_DUOI|LANH_DAO|PHUC_VU|THUOC_QUYEN|THUOC_DUOI|TUONG_LINH/.test(type)) return "hierarchy";
+        if (/THAY_HOC|THAY_DAY|DAY_DO|TRUYEN_DAY|HOC_TRO|MON_DE|KE_THUA/.test(type)) return "teachers";
+        if (/DOI_THU|DOI_DAU|CHONG_DOI|KE_THU|PHAN_BOI|DANH_BAI|TIEU_DIET|HA_SAT|XU_TU|TRANH_GIANH/.test(type)) return "opponents";
+
+        return "other";
+    }
+
+    function isEdgeAllowed(edge) {
+        const enabled = getEnabledRelationTypes();
+        return enabled.has(normalizeRelationType(edge?.type || edge?.display_type));
+    }
+
+    function renderRelationFilters(nodeId) {
+        if (!el.filter) return;
+        const types = new Map();
+        state.edgeMap.forEach(edge => {
+            if (normalizeId(edge.source) !== nodeId && normalizeId(edge.target) !== nodeId) return;
+            const raw = String(edge.type || edge.display_type || "QUAN_HE_KHAC");
+            const key = normalizeRelationType(raw);
+            if (!types.has(key)) types.set(key, { raw, label: getRelationshipName(edge), group: getRelationGroup(edge) });
+        });
+        const ordered = [...types.entries()].sort((a, b) => {
+            const pa = RELATION_PRIORITY.indexOf(a[1].group);
+            const pb = RELATION_PRIORITY.indexOf(b[1].group);
+            return (pa < 0 ? 99 : pa) - (pb < 0 ? 99 : pb) || a[1].label.localeCompare(b[1].label, "vi");
+        });
+        const primary = ordered.filter(([, item]) => item.group !== "other");
+        const extended = ordered.filter(([, item]) => item.group === "other");
+        const checkbox = ([key, item], checked) => `
+            <label class="kg-relation-filter-item">
+                <input type="checkbox" data-relation-type="${escapeHTML(key)}" ${checked ? "checked" : ""}>
+                <span>${escapeHTML(item.label)}</span>
+            </label>`;
+        el.filter.innerHTML = primary.length
+            ? primary.map(item => checkbox(item, true)).join("")
+            : '<p class="kg-filter-empty">Nhân vật/nút này chưa có quan hệ thuộc nhóm chính.</p>';
+        if (extended.length) {
+            el.filter.innerHTML += `
+                <details class="kg-filter-extended">
+                    <summary>Quan hệ mở rộng (${extended.length})</summary>
+                    ${extended.map(item => checkbox(item, false)).join("")}
+                </details>`;
+        }
     }
 
     function isNodeAllowed(node) {
-        const filter = getFilter();
-        const labels = Array.isArray(node.labels) ? node.labels : [node.labels];
+        const nodeId = normalizeId(node.id);
+        if (nodeId === state.rootId || nodeId === state.selectedId) return true;
 
-        return filter === "all" || labels.includes(filter);
+        return Array.from(state.edgeMap.values()).some(edge => {
+            if (!isEdgeAllowed(edge)) return false;
+            const source = normalizeId(edge.source);
+            const target = normalizeId(edge.target);
+            return (source === nodeId || target === nodeId) &&
+                state.nodeMap.has(source) && state.nodeMap.has(target);
+        });
+    }
+
+    function wrapNodeLabel(name, maxLength = 19) {
+        const words = String(name || "").trim().split(/\s+/);
+        const lines = [];
+        let current = "";
+
+        words.forEach(word => {
+            const candidate = current ? `${current} ${word}` : word;
+            if (candidate.length > maxLength && current) {
+                lines.push(current);
+                current = word;
+            } else {
+                current = candidate;
+            }
+        });
+        if (current) lines.push(current);
+        if (lines.length > 2) {
+            lines.length = 2;
+            lines[1] = lines[1].slice(0, Math.max(1, maxLength - 3)) + "...";
+        }
+        return lines.join("\n");
+    }
+
+    function getNeighborIds(nodeId) {
+        const neighbors = new Set();
+        if (!nodeId) return neighbors;
+        state.edgeMap.forEach(edge => {
+            const source = normalizeId(edge.source);
+            const target = normalizeId(edge.target);
+            if (source === nodeId) neighbors.add(target);
+            if (target === nodeId) neighbors.add(source);
+        });
+        return neighbors;
+    }
+
+    function getNodeIconData(type) {
+        const paths = {
+            Person: '<circle cx="32" cy="23" r="11"/><path d="M12 57c2-12 9-18 20-18s18 6 20 18"/>',
+            Event: '<rect x="12" y="15" width="40" height="38" rx="5"/><path d="M21 9v12M43 9v12M12 27h40M22 37h7M35 37h7M22 45h7"/>',
+            Location: '<path d="M32 58s19-20 19-34a19 19 0 1 0-38 0c0 14 19 34 19 34Z"/><circle cx="32" cy="24" r="6"/>',
+            Faction: '<path d="M15 58V9M17 12h34L42 25l9 13H17"/>',
+            Policy: '<path d="M15 10h34v48H15zM22 22h20M22 32h20M22 42h14"/>',
+            Document: '<path d="M18 8h23l11 11v37H18zM41 8v12h11M25 31h19M25 40h19M25 49h13"/>',
+            Unit: '<path d="M32 8 53 19v17c0 13-9 21-21 26C20 57 11 49 11 36V19zM22 33l7 7 14-15"/>',
+            Tactics: '<path d="M12 50 27 35l9 8 17-22M42 21h11v11"/>',
+            Source: '<path d="M13 14h39v42H13zM21 24h23M21 33h23M21 42h17"/>',
+            Unknown: '<circle cx="32" cy="32" r="22"/><path d="M25 25a7 7 0 1 1 12 5c-4 3-5 4-5 9M32 47h.1"/>'
+        };
+        const body = paths[type] || paths.Unknown;
+        const palette = getNodeColor(type);
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 72 72"><circle cx="36" cy="36" r="27" fill="${palette.background}" stroke="#ffffff" stroke-width="2.2"/><g transform="translate(4 4)" fill="none" stroke="#ffffff" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round">${body}</g></svg>`;
+        return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
     }
 
     // ================================================
@@ -375,74 +529,102 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = getNodeName(node);
         const id = normalizeId(node.id);
         const selected = state.selectedId === id;
+        const neighbors = getNeighborIds(state.selectedId);
+        const related = neighbors.has(id);
+        const emphasized = !state.selectedId || selected || related;
+        const expanded = state.expandedIds.has(id);
+        const nodeLabel = wrapNodeLabel(name, selected ? 24 : 19);
 
         return {
             id,
-            label: name.length > 25 ? `${name.slice(0, 22)}...` : name,
+            label: emphasized ? nodeLabel : "",
             title: escapeHTML(name),
             group: type,
-            shape: "dot",
-            size: selected ? 25 : 18,
-
+            shape: "image",
+            image: getNodeIconData(type),
+            size: selected ? 30 : related ? 23 : 19,
             color: {
-                background: color.background,
-                border: selected ? "#805a2b" : color.border,
-                highlight: {
-                    background: color.background,
-                    border: "#805a2b"
-                },
-                hover: {
-                    background: color.background,
-                    border: "#805a2b"
-                }
+                background: emphasized ? color.background : "#e9e4db",
+                border: selected ? "#805a2b" : emphasized ? color.border : "#d5cdbf",
+                highlight: { background: color.background, border: "#805a2b" },
+                hover: { background: color.background, border: "#805a2b" }
             },
-
-            borderWidth: selected ? 4 : 2,
-
+            borderWidth: selected ? 4 : related ? 2.5 : 1.5,
             font: {
                 face: "Be Vietnam Pro",
-                size: selected ? 14 : 12,
-                color: "#35291f",
+                size: selected ? 14 : 11,
+                color: emphasized ? "#35291f" : "#aaa194",
                 strokeWidth: 4,
                 strokeColor: "#fffdf8"
             },
-
             hidden: !isNodeAllowed(node)
         };
     }
 
     function convertEdge(edge) {
         const relationship = getRelationshipName(edge);
+        const source = normalizeId(edge.source);
+        const target = normalizeId(edge.target);
+        const focused = !state.selectedId || source === state.selectedId || target === state.selectedId;
+        const shortLabel = relationship.length > 22
+            ? relationship.slice(0, 19) + "..."
+            : relationship;
 
         return {
             id: normalizeId(edge.id),
-            from: normalizeId(edge.source),
-            to: normalizeId(edge.target),
-
-            label: "",
+            from: source,
+            to: target,
+            label: state.selectedId && focused ? shortLabel : "",
             title: escapeHTML(relationship),
-
-            arrows: {
-                to: {
-                    enabled: true,
-                    scaleFactor: 0.55
-                }
+            font: {
+                face: "Be Vietnam Pro",
+                size: 10,
+                color: "#80613e",
+                background: "#fffdf8",
+                strokeWidth: 0,
+                align: "middle"
             },
-
+            arrows: { to: { enabled: true, scaleFactor: 0.45 } },
             color: {
-                color: "#cbbda8",
+                color: focused ? "#b49a75" : "#e6e0d6",
                 highlight: "#a87948",
                 hover: "#a87948"
             },
-
-            width: 1.4,
-
-            smooth: {
-                enabled: true,
-                type: "continuous",
-                roundness: 0.22
-            }
+            width: focused ? 1.8 : 1,
+            smooth: { enabled: true, type: "continuous", roundness: 0.25 },
+            hidden: !focused
         };
+    }
+
+    function refreshGraphAppearance() {
+        if (!state.nodes || !state.edges) return;
+        state.nodes.update(Array.from(state.nodeMap.values()).map(convertNode));
+        state.edges.update(Array.from(state.edgeMap.values()).map(convertEdge));
+        applyFilter();
+        updateGraphLegend();
+    }
+
+    function updateGraphLegend() {
+        const container = $("graph-legend-items");
+        if (!container) return;
+
+        const typeOrder = ["Person", "Event", "Location", "Faction", "Policy", "Document", "Unit", "Tactics", "Source", "Unknown"];
+        const presentTypes = new Set();
+        state.nodeMap.forEach(node => {
+            if (isNodeAllowed(node)) presentTypes.add(getNodeType(node));
+        });
+
+        const items = typeOrder.filter(type => presentTypes.has(type));
+        if (!items.length) {
+            container.innerHTML = '<span class="legend-empty">Chưa có nút nào được hiển thị.</span>';
+            return;
+        }
+
+        container.innerHTML = items.map(type => {
+            const palette = getNodeColor(type);
+            const label = LABELS[type] || "Thực thể";
+            return `<span class="canvas-legend-item"><i class="canvas-legend-dot" style="background:${palette.background}"></i>${escapeHTML(label)}</span>`;
+        }).join("");
     }
 
     // ================================================
@@ -461,9 +643,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const source = state.nodeMap.get(normalizeId(edge.source));
             const target = state.nodeMap.get(normalizeId(edge.target));
 
-            if (source && target && isNodeAllowed(source) && isNodeAllowed(target)) {
-                visibleEdges++;
-            }
+            if (source && target && isEdgeAllowed(edge) &&
+                (normalizeId(edge.source) === state.selectedId ||
+                 normalizeId(edge.target) === state.selectedId ||
+                 normalizeId(edge.source) === state.rootId ||
+                 normalizeId(edge.target) === state.rootId)) visibleEdges++;
         });
 
         el.totalNodes.textContent = state.nodeMap.size;
@@ -523,6 +707,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
         applyFilter();
         updateCounters();
+        updateGraphLegend();
+    }
+
+    function updateZoomLevel() {
+        if (!state.network || !el.zoomLevel) return;
+        el.zoomLevel.textContent = `${Math.round(state.network.getScale() * 100)}%`;
+    }
+
+    function changeZoom(factor) {
+        if (!state.network) return;
+        const current = state.network.getScale();
+        const next = Math.max(0.38, Math.min(1.25, current * factor));
+        state.network.moveTo({ scale: next, animation: { duration: 180, easingFunction: "easeInOutQuad" } });
+        updateZoomLevel();
+    }
+
+    function renderNodeControls() {
+        if (!el.nodeControls || !state.network) return;
+        const visible = [];
+        state.nodeMap.forEach((node, id) => {
+            if (!isNodeAllowed(node)) return;
+            const isExpanded = state.expandedIds.has(id);
+            const pos = state.network.getPositions([id])[id];
+            if (!pos) return;
+            const dom = state.network.canvasToDOM(pos);
+            visible.push({ id, x: dom.x, y: dom.y, expanded: isExpanded });
+        });
+        el.nodeControls.innerHTML = visible.map(item => `
+            <button type="button" class="kg-node-toggle ${item.expanded ? 'is-expanded' : ''}"
+                data-node-id="${escapeHTML(item.id)}"
+                style="left:${item.x + 15}px;top:${item.y - 25}px"
+                title="${item.expanded ? 'Thu gọn nhánh' : 'Mở rộng quan hệ'}"
+                aria-label="${item.expanded ? 'Thu gọn' : 'Mở rộng'} quan hệ">
+                ${item.expanded ? '−' : '+'}
+            </button>`).join('');
+        el.nodeControls.querySelectorAll('.kg-node-toggle').forEach(button => {
+            button.addEventListener('click', async event => {
+                event.preventDefault(); event.stopPropagation();
+                const id = normalizeId(button.dataset.nodeId);
+                button.disabled = true;
+                try {
+                    if (state.expandedIds.has(id)) collapseNode(id);
+                    else await expandNode(id);
+                } catch (error) {
+                    console.error('Node toggle error:', error);
+                    showError('Không thể cập nhật nhánh quan hệ: ' + error.message);
+                } finally {
+                    renderNodeControls();
+                }
+            });
+        });
+    }
+
+    function scheduleNodeControls() {
+        if (state.overlayFrame) cancelAnimationFrame(state.overlayFrame);
+        state.overlayFrame = requestAnimationFrame(renderNodeControls);
     }
 
     // ================================================
@@ -559,12 +799,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     solver: "forceAtlas2Based",
 
                     forceAtlas2Based: {
-                        gravitationalConstant: -85,
-                        centralGravity: 0.012,
-                        springLength: 155,
-                        springConstant: 0.045,
-                        damping: 0.58,
-                        avoidOverlap: 0.9
+                        gravitationalConstant: -125,
+                        centralGravity: 0.008,
+                        springLength: 190,
+                        springConstant: 0.035,
+                        damping: 0.72,
+                        avoidOverlap: 1.05
                     },
 
                     stabilization: {
@@ -587,15 +827,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         state.network.on("click", params => {
             if (params.nodes.length) {
-                showDetails(params.nodes[0]);
+                focusNode(params.nodes[0]);
             }
         });
 
-        state.network.on("doubleClick", params => {
-            if (params.nodes.length) {
-                expandNode(params.nodes[0]).catch(console.error);
+        // Mở rộng/thu gọn được thực hiện bằng nút +/- nổi trên từng nút.
+        // Nhấp đúp không còn là thao tác bắt buộc để tránh thao tác khó phát hiện.
+        state.network.on("afterDrawing", scheduleNodeControls);
+        state.network.on("zoom", () => {
+            if (!state.zoomClamping) {
+                const scale = state.network.getScale();
+                const bounded = Math.max(0.38, Math.min(1.25, scale));
+                if (bounded !== scale) {
+                    state.zoomClamping = true;
+                    state.network.moveTo({ scale: bounded });
+                    state.zoomClamping = false;
+                }
             }
+            scheduleNodeControls();
+            updateZoomLevel();
         });
+        state.network.on("dragEnd", scheduleNodeControls);
+        state.network.on("selectNode", scheduleNodeControls);
+        state.network.on("deselectNode", scheduleNodeControls);
 
         state.network.once("stabilizationIterationsDone", () => {
             state.network.setOptions({
@@ -623,10 +877,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = state.nodeMap.get(normalizeId(edge.target));
 
             const visible =
-                source &&
-                target &&
-                isNodeAllowed(source) &&
-                isNodeAllowed(target);
+                source && target && isEdgeAllowed(edge) &&
+                (normalizeId(edge.source) === state.selectedId ||
+                 normalizeId(edge.target) === state.selectedId ||
+                 normalizeId(edge.source) === state.rootId ||
+                 normalizeId(edge.target) === state.rootId);
 
             state.edges.update({
                 id: normalizeId(edge.id),
@@ -646,6 +901,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const hasVisibleNodes = Array.from(state.nodeMap.values()).some(isNodeAllowed);
         el.empty.hidden = hasVisibleNodes;
+        updateGraphLegend();
     }
 
     // ================================================
@@ -654,9 +910,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function clearDetails() {
         state.selectedId = null;
-
         el.placeholder.hidden = false;
         el.content.hidden = true;
+        if (el.clearFocus) el.clearFocus.hidden = true;
+        refreshGraphAppearance();
     }
 
     function getRelations(nodeId) {
@@ -667,6 +924,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const target = normalizeId(edge.target);
 
             if (source !== nodeId && target !== nodeId) return;
+            if (!isEdgeAllowed(edge)) return;
 
             const isSource = source === nodeId;
             const relatedId = isSource ? target : source;
@@ -682,7 +940,22 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        relations.sort((a, b) => {
+            const pa = RELATION_PRIORITY.indexOf(getRelationGroup(a.edge));
+            const pb = RELATION_PRIORITY.indexOf(getRelationGroup(b.edge));
+            return pa - pb || getNodeName(a.relatedNode).localeCompare(getNodeName(b.relatedNode), "vi");
+        });
         return relations;
+    }
+
+    function updateExpandButton(nodeId) {
+        if (!el.expand) return;
+        const expanded = state.expandedIds.has(normalizeId(nodeId));
+        el.expand.disabled = false;
+        el.expand.innerHTML = expanded
+            ? '<i class="bi bi-dash-circle"></i> Thu gọn nhánh này'
+            : '<i class="bi bi-plus-circle"></i> Mở rộng các mối quan hệ';
+        el.expand.dataset.action = expanded ? "collapse" : "expand";
     }
 
     function showDetails(nodeId) {
@@ -706,13 +979,12 @@ document.addEventListener("DOMContentLoaded", () => {
             : "";
 
         renderProperties(node.properties || {});
+        renderRelationFilters(nodeId);
         renderRelations(nodeId);
 
-        state.nodes.update(
-            Array.from(state.nodeMap.values()).map(convertNode)
-        );
-
-        el.expand.disabled = false;
+        refreshGraphAppearance();
+        if (el.clearFocus) el.clearFocus.hidden = false;
+        updateExpandButton(nodeId);
     }
 
     function renderProperties(properties) {
@@ -828,11 +1100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const node = state.nodeMap.get(nodeId);
         if (!node || !state.network) return;
 
-        if (!isNodeAllowed(node)) {
-            el.filter.value = "all";
-            applyFilter();
-        }
-
+        state.rootId = nodeId;
         showDetails(nodeId);
         state.network.selectNodes([nodeId]);
 
@@ -851,51 +1119,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function selectInitialNodes(nodes, edges) {
         const filter = getFilter();
-
         const candidates = nodes.filter(node => {
-            const labels = Array.isArray(node.labels)
-                ? node.labels
-                : [node.labels];
-
+            const labels = Array.isArray(node.labels) ? node.labels : [node.labels];
             return filter === "all" || labels.includes(filter);
         });
-
-        const degree = new Map();
-
-        candidates.forEach(node => degree.set(normalizeId(node.id), 0));
-
+        const degree = new Map(candidates.map(node => [normalizeId(node.id), 0]));
         edges.forEach(edge => {
             const source = normalizeId(edge.source);
             const target = normalizeId(edge.target);
-
             if (degree.has(source)) degree.set(source, degree.get(source) + 1);
             if (degree.has(target)) degree.set(target, degree.get(target) + 1);
         });
-
-        const priority = [
-            "Person",
-            "Event",
-            "Location",
-            "Faction",
-            "Policy",
-            "Document",
-            "Unit",
-            "Tactics",
-            "Source"
-        ];
-
-        candidates.sort((a, b) => {
-            const degreeDifference =
-                (degree.get(normalizeId(b.id)) || 0) -
-                (degree.get(normalizeId(a.id)) || 0);
-
-            if (degreeDifference !== 0) return degreeDifference;
-
-            return priority.indexOf(getNodeType(a)) -
-                priority.indexOf(getNodeType(b));
-        });
-
-        return candidates.slice(0, CONFIG.INITIAL_NODE_COUNT);
+        const priority = ["Person", "Event", "Location", "Faction", "Policy", "Document", "Unit", "Tactics", "Source"];
+        const groups = new Map(priority.map(type => [
+            type,
+            candidates.filter(node => getNodeType(node) === type)
+                .sort((a, b) => (degree.get(normalizeId(b.id)) || 0) - (degree.get(normalizeId(a.id)) || 0))
+        ]));
+        const selected = [];
+        while (selected.length < CONFIG.INITIAL_NODE_COUNT) {
+            let added = false;
+            priority.forEach(type => {
+                const group = groups.get(type);
+                if (group.length && selected.length < CONFIG.INITIAL_NODE_COUNT) {
+                    selected.push(group.shift());
+                    added = true;
+                }
+            });
+            if (!added) break;
+        }
+        return selected;
     }
 
     function buildInitialGraph(nodes, edges) {
@@ -949,33 +1202,68 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error("Không tìm thấy ApiClient.");
             }
 
-            const response = await API.get("/api/graph/", {
-                limit: CONFIG.INITIAL_LIMIT
+            const params = new URLSearchParams(window.location.search);
+            const requestedName = params.get("personName") || params.get("character") ||
+                params.get("person") || params.get("name") || "Nguyễn Huệ";
+            const requestedNodeId = params.get("nodeId") || params.get("personId") ||
+                params.get("characterId");
+
+            let response;
+            if (requestedNodeId) {
+                const detail = await API.get(
+                    `/api/graph/node/${encodeURIComponent(requestedNodeId)}`,
+                    { limit: CONFIG.EXPANSION_LIMIT }
+                );
+                const center = detail?.center ||
+                    (Array.isArray(detail?.nodes)
+                        ? detail.nodes.find(item => normalizeId(item.id) === normalizeId(requestedNodeId))
+                        : null);
+                if (!center) throw new Error("Không tìm thấy nhân vật theo mã định danh trên trang.");
+                response = { results: [{
+                    ...center,
+                    node_id: center.id,
+                    name: center.name || center.properties?.name
+                }] };
+            } else {
+                response = await API.get("/api/graph/search", {
+                    keyword: requestedName,
+                    limit: CONFIG.SEARCH_LIMIT,
+                    entity_type: "Person"
+                });
+            }
+            const results = Array.isArray(response?.results) ? response.results : [];
+            const normalizedQuery = requestedName.toLocaleLowerCase("vi");
+            const root = results.find(item => {
+                const labels = Array.isArray(item.labels) ? item.labels : [item.labels];
+                const name = String(item.name || item.properties?.name || item.properties?.full_name || "").toLocaleLowerCase("vi");
+                return labels.includes("Person") && name === normalizedQuery;
+            }) || results.find(item => {
+                const labels = Array.isArray(item.labels) ? item.labels : [item.labels];
+                return labels.includes("Person");
             });
 
-            if (
-                !response ||
-                !Array.isArray(response.nodes) ||
-                !Array.isArray(response.edges)
-            ) {
-                throw new Error("Dữ liệu đồ thị không hợp lệ.");
-            }
+            if (!root) throw new Error(`Không tìm thấy nhân vật "${requestedName}" trong dữ liệu.`);
 
-            if (!state.network) {
-                initializeNetwork();
-            }
-
-            state.nodeMap.clear();
-            state.edgeMap.clear();
-            state.nodes.clear();
-            state.edges.clear();
+            if (!state.network) initializeNetwork();
+            state.nodeMap.clear(); state.edgeMap.clear();
+            state.nodes.clear(); state.edges.clear();
             state.expandedIds.clear();
+            state.expansionHistory.clear();
             state.selectedId = null;
-
+            state.rootId = normalizeId(root.node_id || root.id);
             clearDetails();
 
-            buildInitialGraph(response.nodes, response.edges);
-
+            const rootNode = {
+                id: normalizeId(root.node_id || root.id),
+                business_id: root.business_id,
+                labels: root.labels || ["Person"],
+                display_labels: root.display_labels || [],
+                properties: root.properties || { name: root.name }
+            };
+            mergeData({ nodes: [rootNode], edges: [] });
+            focusNode(rootNode.id);
+            await expandNode(rootNode.id);
+            updateStatus(`Đang khám phá từ ${getNodeName(rootNode)}`);
             updateCounters();
 
         } catch (error) {
@@ -990,89 +1278,124 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function reflowNetwork() {
+        if (!state.network) return;
+        state.network.setOptions({
+            physics: {
+                enabled: true,
+                solver: "forceAtlas2Based",
+                forceAtlas2Based: {
+                    gravitationalConstant: -120,
+                    centralGravity: 0.008,
+                    springLength: 190,
+                    springConstant: 0.035,
+                    damping: 0.75,
+                    avoidOverlap: 1
+                },
+                stabilization: { enabled: true, iterations: 180, updateInterval: 25 }
+            }
+        });
+        state.network.once("stabilizationIterationsDone", () => {
+            state.network.setOptions({ physics: { enabled: false } });
+        });
+        state.network.stabilize(180);
+    }
+
     // ================================================
     // EXPANSION
     // ================================================
 
     async function expandNode(nodeId) {
         nodeId = normalizeId(nodeId);
-
         if (state.expanding) return;
-
         if (state.expandedIds.has(nodeId)) {
             showDetails(nodeId);
             return;
         }
-
-        if (!API) {
-            throw new Error("Không tìm thấy ApiClient.");
-        }
+        if (!API) throw new Error("Không tìm thấy ApiClient.");
 
         state.expanding = true;
         el.expand.disabled = true;
+        el.expand.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Đang tải...';
 
-        el.expand.innerHTML = `
-            <span class="spinner-border spinner-border-sm me-2"></span>
-            Đang khám phá...
-        `;
+        // Nút được mở rộng trở thành tâm khám phá hiện tại.
+        state.rootId = nodeId;
 
         try {
             const response = await API.get(
                 `/api/graph/node/${encodeURIComponent(nodeId)}`,
-                {
-                    limit: CONFIG.EXPANSION_LIMIT
-                }
+                { limit: CONFIG.EXPANSION_LIMIT }
             );
-
-            if (
-                !response ||
-                !Array.isArray(response.nodes) ||
-                !Array.isArray(response.edges)
-            ) {
+            if (!response || !Array.isArray(response.nodes) || !Array.isArray(response.edges)) {
                 throw new Error("Dữ liệu kết nối không hợp lệ.");
             }
 
-            // Một số API trả thêm center riêng.
             const nodes = [...response.nodes];
-
-            if (response.center?.id !== undefined) {
-                const centerId = normalizeId(response.center.id);
-
-                if (!nodes.some(node => normalizeId(node.id) === centerId)) {
-                    nodes.push(response.center);
-                }
+            if (response.center?.id !== undefined &&
+                !nodes.some(node => normalizeId(node.id) === normalizeId(response.center.id))) {
+                nodes.push(response.center);
             }
 
-            mergeData({
-                nodes,
-                edges: response.edges
-            });
+            mergeData({ nodes, edges: response.edges });
 
+            // Lưu toàn bộ nội dung API trả về, không chỉ phần mới thêm vào DataSet.
+            // Nhờ vậy một nút/cạnh được nhiều nhánh cùng sử dụng sẽ không bị xóa nhầm.
+            const ownedNodeIds = nodes.map(item => normalizeId(item.id)).filter(Boolean);
+            const ownedEdgeIds = response.edges.map(item => normalizeId(item.id)).filter(Boolean);
+            state.expansionHistory.set(nodeId, { nodeIds: ownedNodeIds, edgeIds: ownedEdgeIds });
             state.expandedIds.add(nodeId);
 
+            refreshGraphAppearance();
+            reflowNetwork();
             showDetails(nodeId);
-
             state.network.selectNodes([nodeId]);
-
             state.network.focus(nodeId, {
                 scale: 1.05,
-                animation: {
-                    duration: 500,
-                    easingFunction: "easeInOutQuad"
+                animation: { duration: 450, easingFunction: "easeInOutQuad" }
+            });
+            updateStatus("Đã mở rộng các mối quan hệ");
+            scheduleNodeControls();
+        } finally {
+            state.expanding = false;
+            updateExpandButton(state.selectedId || nodeId);
+        }
+    }
+
+    function collapseNode(nodeId) {
+        nodeId = normalizeId(nodeId);
+        const snapshot = state.expansionHistory.get(nodeId);
+        state.expandedIds.delete(nodeId);
+        state.expansionHistory.delete(nodeId);
+
+        if (snapshot) {
+            // Chỉ gỡ cạnh nếu không còn nhánh đang mở nào sở hữu cạnh đó.
+            snapshot.edgeIds.forEach(edgeId => {
+                const ownedElsewhere = [...state.expansionHistory.values()].some(item => item.edgeIds.includes(edgeId));
+                if (!ownedElsewhere) {
+                    state.edgeMap.delete(edgeId);
+                    state.edges.remove(edgeId);
                 }
             });
 
-            updateStatus("Đã mở rộng kết nối");
-
-        } finally {
-            state.expanding = false;
-            el.expand.disabled = false;
-
-            el.expand.innerHTML = `
-                <i class="bi bi-plus-circle"></i>
-                Khám phá các kết nối
-            `;
+            // Giữ nút trung tâm/đang chọn và mọi nút còn được nhánh khác tham chiếu.
+            snapshot.nodeIds.forEach(ownedId => {
+                if (ownedId === state.rootId || ownedId === state.selectedId) return;
+                const ownedElsewhere = [...state.expansionHistory.values()].some(item => item.nodeIds.includes(ownedId));
+                const stillConnected = [...state.edgeMap.values()].some(edge =>
+                    normalizeId(edge.source) === ownedId || normalizeId(edge.target) === ownedId
+                );
+                if (!ownedElsewhere && !stillConnected) {
+                    state.nodeMap.delete(ownedId);
+                    state.nodes.remove(ownedId);
+                }
+            });
         }
+
+        refreshGraphAppearance();
+        updateCounters();
+        if (state.selectedId === nodeId && state.nodeMap.has(nodeId)) showDetails(nodeId);
+        updateStatus("Đã thu gọn các kết nối do nút này mở");
+        scheduleNodeControls();
     }
 
     // ================================================
@@ -1096,28 +1419,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? item.labels
                 : [item.labels];
 
-            const type = labels
-                .filter(Boolean)
-                .map(label => LABELS[label] || label)
-                .join(", ") || "Thực thể";
-
+            const rawType = labels.find(Boolean) || "Unknown";
+            const type = TYPE_ALIASES[rawType] || rawType;
+            const icon = ({ Person: "bi-person", Location: "bi-geo-alt", Event: "bi-calendar-event", Faction: "bi-flag", Source: "bi-journal-text" })[type] || "bi-diagram-3";
             return `
-                <button
-                    type="button"
-                    class="search-result-item"
-                    data-index="${index}">
-
-                    <span class="search-result-name">
-                        ${escapeHTML(getNodeName(item))}
-                    </span>
-
-                    <span class="search-result-type">
-                        ${escapeHTML(type)}
-                    </span>
-
+                <button type="button" class="search-result-item" data-index="${index}">
+                    <span class="search-result-type-icon"><i class="bi ${icon}"></i></span>
+                    <span class="search-result-name">${escapeHTML(getNodeName(item))}</span>
                     <i class="bi bi-arrow-up-right"></i>
-                </button>
-            `;
+                </button>`;
         }).join("");
 
         el.searchResults.querySelectorAll(".search-result-item").forEach(button => {
@@ -1127,50 +1437,50 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function matchesSearchType(item, selectedType) {
+        if (!selectedType || selectedType === "all") return true;
+        const labels = Array.isArray(item.labels) ? item.labels : [item.labels || item.entity_type || item.node_type];
+        if (item.display_labels) labels.push(...(Array.isArray(item.display_labels) ? item.display_labels : [item.display_labels]));
+        const aliases = {
+            NhanVat: ["NhanVat", "Person"], Person: ["NhanVat", "Person"],
+            SuKien: ["SuKien", "Event"], Event: ["SuKien", "Event"],
+            DiaDiem: ["DiaDiem", "Location"], Location: ["DiaDiem", "Location"],
+            TheLuc: ["TheLuc", "Faction"], Faction: ["TheLuc", "Faction"],
+            NguonTaiLieu: ["NguonTaiLieu", "Source"], Source: ["NguonTaiLieu", "Source"]
+        };
+        return (aliases[selectedType] || [selectedType]).some(label => labels.includes(label));
+    }
+
     async function searchEntities() {
         const keyword = el.searchInput.value.trim();
-
-        if (!keyword) {
-            el.searchInput.focus();
-            return;
-        }
-
-        if (!API) {
-            showError("Không tìm thấy ApiClient.");
-            return;
-        }
+        if (!keyword) { el.searchInput.focus(); return; }
+        if (!API) { showError("Không tìm thấy ApiClient."); return; }
 
         const requestId = ++state.searchRequest;
-
+        const selectedType = el.searchType?.value || "";
         el.searchButton.disabled = true;
         el.searchButton.textContent = "Đang tìm...";
-
         try {
-            const params = {
-                keyword,
-                limit: CONFIG.SEARCH_LIMIT
-            };
-
-            if (getFilter() !== "all") {
-                params.entity_type = getFilter();
+            // Ưu tiên lọc ở backend; nếu backend chưa hỗ trợ nhãn tiếng Việt thì fallback lọc phía client.
+            let response = await API.get("/api/graph/search", {
+                keyword, limit: CONFIG.SEARCH_LIMIT,
+                ...(selectedType ? { entity_type: selectedType } : {})
+            });
+            let results = Array.isArray(response?.results) ? response.results : [];
+            if (selectedType) {
+                results = results.filter(item => matchesSearchType(item, selectedType));
+                if (!results.length) {
+                    const fallback = await API.get("/api/graph/search", { keyword, limit: CONFIG.SEARCH_LIMIT * 3 });
+                    if (requestId !== state.searchRequest) return;
+                    results = (fallback?.results || []).filter(item => matchesSearchType(item, selectedType));
+                }
             }
-
-            const response = await API.get("/api/graph/search", params);
-
             if (requestId !== state.searchRequest) return;
-
-            renderSearchResults(response.results || []);
-
+            renderSearchResults(results);
         } catch (error) {
             console.error("Search error:", error);
-
             el.searchResults.hidden = false;
-            el.searchResults.innerHTML = `
-                <div class="search-no-result">
-                    ${escapeHTML(error.message || "Không thể tìm kiếm.")}
-                </div>
-            `;
-
+            el.searchResults.innerHTML = `<div class="search-no-result">${escapeHTML(error.message || "Không thể tìm kiếm.")}</div>`;
         } finally {
             if (requestId === state.searchRequest) {
                 el.searchButton.disabled = false;
@@ -1201,6 +1511,16 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Khi chọn một nhân vật mới từ ô tìm kiếm, dựng lại đồ thị quanh nhân vật đó.
+        state.nodeMap.clear();
+        state.edgeMap.clear();
+        state.nodes.clear();
+        state.edges.clear();
+        state.expandedIds.clear();
+        state.expansionHistory.clear();
+        state.rootId = nodeId;
+        state.selectedId = null;
+
         const node = {
             id: nodeId,
             business_id: result.business_id,
@@ -1212,10 +1532,6 @@ document.addEventListener("DOMContentLoaded", () => {
         state.nodeMap.set(nodeId, node);
         state.nodes.update(convertNode(node));
 
-        if (!isNodeAllowed(node)) {
-            el.filter.value = "all";
-        }
-
         applyFilter();
         focusNode(nodeId);
 
@@ -1225,6 +1541,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // ================================================
     // EVENTS
     // ================================================
+
+    if (el.zoomIn) el.zoomIn.addEventListener("click", () => changeZoom(1.12));
+    if (el.zoomOut) el.zoomOut.addEventListener("click", () => changeZoom(1 / 1.12));
+
+    if (el.clearFocus) {
+        el.clearFocus.addEventListener("click", () => {
+            clearDetails();
+            if (state.network) {
+                state.network.unselectAll();
+                state.network.fit({ animation: { duration: 450, easingFunction: "easeInOutQuad" } });
+            }
+            updateStatus("Đang xem toàn bộ mạng lưới");
+        });
+    }
+
 
     el.searchButton.addEventListener("click", searchEntities);
 
@@ -1237,38 +1568,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     el.searchInput.addEventListener("input", () => {
-        if (!el.searchInput.value.trim()) {
+        const value = el.searchInput.value.trim();
+        if (!value) {
             el.searchResults.hidden = true;
+            return;
         }
+        if (value.length >= 2) {
+            clearTimeout(state.searchDebounce);
+            state.searchDebounce = setTimeout(() => searchEntities(), 380);
+        }
+    });
+
+    if (el.searchType) el.searchType.addEventListener("change", () => {
+        if (el.searchInput.value.trim().length >= 2) searchEntities();
     });
 
     el.filter.addEventListener("change", () => {
         applyFilter();
+        if (state.selectedId) renderRelations(state.selectedId);
         el.searchResults.hidden = true;
-
-        if (state.network) {
-            state.network.fit({
-                animation: {
-                    duration: 400,
-                    easingFunction: "easeInOutQuad"
-                }
-            });
-        }
+        scheduleNodeControls();
     });
 
     el.fit.addEventListener("click", () => {
         if (!state.network) return;
 
         state.network.fit({
-            animation: {
-                duration: 500,
-                easingFunction: "easeInOutQuad"
-            }
+            nodes: state.nodes.getIds(),
+            minZoomLevel: 0.35,
+            maxZoomLevel: 1.5,
+            animation: { duration: 500, easingFunction: "easeInOutQuad" }
         });
+        scheduleNodeControls();
     });
 
     el.reset.addEventListener("click", () => {
-        el.filter.value = "all";
+        el.filter.querySelectorAll('input[type="checkbox"]').forEach(input => input.checked = true);
+        state.rootId = null;
         el.searchInput.value = "";
         el.searchResults.hidden = true;
 
@@ -1280,12 +1616,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     el.expand.addEventListener("click", async () => {
         if (!state.selectedId) return;
-
+        const nodeId = state.selectedId;
         try {
-            await expandNode(state.selectedId);
+            if (state.expandedIds.has(nodeId)) collapseNode(nodeId);
+            else await expandNode(nodeId);
         } catch (error) {
-            console.error("Expand error:", error);
-            showError("Không thể mở rộng kết nối: " + error.message);
+            console.error("Graph expansion error:", error);
+            showError("Không thể cập nhật nhánh quan hệ: " + error.message);
+            updateExpandButton(nodeId);
         }
     });
 
